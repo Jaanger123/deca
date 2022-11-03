@@ -25,7 +25,7 @@ const Carousel = () => {
                 bulletClass: 'bullets swiper-pagination-bullet',
             }}
             modules={[Autoplay, Pagination]}
-            className="mySwiper"
+            className="swiper"
         >
             <SwiperSlide>
                 <FirstSlide />

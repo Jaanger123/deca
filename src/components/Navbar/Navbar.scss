@@ -9,7 +9,7 @@ $medium: 900px;
 
 nav {
     height: 3.75rem;
-    box-shadow: 13px -16px 34px rgba(0, 0, 0, 0.25);
+    box-shadow: 0.75em -1em 2.125em rgba(0, 0, 0, 0.25);
     background-color: #fff;
 
     .nav-wrapper {
@@ -45,13 +45,12 @@ nav {
                 justify-content: right;
 
                 button {
-                    padding: 0.5em 1.5em;
-                    border-radius: 0.5rem;
-                    transition: all 0.2s;
+                    padding: 0.375em 1.375em;
+                    border-radius: 0.5em;
                 }
 
                 .nav-sign-in {
-                    border: 0.125rem solid #000;
+                    border: 0.125em solid #000;
                 }
 
                 .nav-sign-in:hover {
@@ -62,7 +61,7 @@ nav {
                 .nav-sign-up {
                     color: #fff;
                     background-color: #dd5555;
-                    border: 0.125rem solid #dd5555;
+                    border: 0.125em solid #dd5555;
                     margin-left: 1em;
                 }
 
