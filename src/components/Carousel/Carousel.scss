@@ -1,3 +1,8 @@
+.swiper-pagination-bullet {
+    background-color: #aeaeae;
+    opacity: 1;
+}
+
 .active-bullet {
     background-color: #dd5555;
     opacity: 1;
@@ -8,7 +13,10 @@
     opacity: 1;
 }
 
-.swiper {
-    // width: 100%;
+.main-swiper {
     height: 100%;
+}
+
+.video-slide {
+    z-index: -1;
 }

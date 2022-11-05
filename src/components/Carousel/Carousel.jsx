@@ -1,17 +1,19 @@
-import { Autoplay, Pagination } from 'swiper';
+import { FirstSlide, SecondSlide, ThirdSlide } from '../Slides';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper';
 import React from 'react';
 
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
+
 import './Carousel.scss';
-import { FirstSlide } from '../Slides';
 
 const Carousel = () => {
     return (
         <Swiper
             // spaceBetween={30}
+            followFinger={false}
             centeredSlides={true}
             loop={true}
             speed={1500}
@@ -25,16 +27,18 @@ const Carousel = () => {
                 bulletClass: 'bullets swiper-pagination-bullet',
             }}
             modules={[Autoplay, Pagination]}
-            className="swiper"
+            className="main-swiper"
         >
+            <SwiperSlide className="video-slide">
+                {/* <FirstSlide /> */}
+                <SecondSlide />
+            </SwiperSlide>
             <SwiperSlide>
                 <FirstSlide />
             </SwiperSlide>
             <SwiperSlide>
-                <h1>Hello World</h1>
-            </SwiperSlide>
-            <SwiperSlide>
-                <h1>Hello World</h1>
+                <ThirdSlide />
+                {/* <ThirdSlide /> */}
             </SwiperSlide>
         </Swiper>
     );

@@ -9,7 +9,7 @@ const Navbar = () => {
             <div className="nav-wrapper">
                 <img
                     className="nav-logo"
-                    src={require('../../images/logo.svg').default}
+                    src={require('../../assets/images/logo.svg').default}
                     alt="Deca logo"
                 />
                 <div className="nav-buttons">

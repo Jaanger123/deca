@@ -1,10 +1,11 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './Slides.scss';
 
 const FirstSlide = () => {
     return (
-        <section className="first-slide">
+        <section className="slide">
             <div className="slide-container">
                 <div className="slide-content">
                     <h1 className="slide-title">
@@ -15,10 +16,13 @@ const FirstSlide = () => {
                     <p className="slide-description">
                         Role-playing board games now in Kyrgyzstan
                     </p>
-                    <button className="slide-button">ABOUT US</button>
+                    <NavLink to="/about">
+                        <button className="slide-button">ABOUT US</button>
+                    </NavLink>
                 </div>
                 <img
-                    src={require('../../images/pieces.png')}
+                    className="first-slide-puzzle"
+                    src={require('../../assets/images/pieces.png')}
                     alt="Puzzle pieces"
                 />
             </div>
