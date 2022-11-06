@@ -1,3 +1,8 @@
+.bullets:hover {
+    background-color: #dd5555;
+    opacity: 1;
+}
+
 .swiper-pagination-bullet {
     background-color: #aeaeae;
     opacity: 1;
@@ -8,15 +13,17 @@
     opacity: 1;
 }
 
-.bullets:hover {
-    background-color: #dd5555;
-    opacity: 1;
-}
+header {
+    .main-swiper {
+        height: 100%;
 
-.main-swiper {
-    height: 100%;
-}
+        .swiper-pagination {
+            height: 20px;
+            padding-bottom: 3em;
+        }
 
-.video-slide {
-    z-index: -1;
+        .video-slide {
+            z-index: -1;
+        }
+    }
 }
