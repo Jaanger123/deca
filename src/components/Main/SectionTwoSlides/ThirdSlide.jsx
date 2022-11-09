@@ -9,7 +9,7 @@ const ThirdSlide = () => {
             <TemplateSlide
                 characterImg={require('../../../assets/images/character-four.png')}
             >
-                <h4>Aika game set</h4>
+                <h4>Spooky game set</h4>
                 <div className="hm-st-players-quantity">
                     <img
                         src={

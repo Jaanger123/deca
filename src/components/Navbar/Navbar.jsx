@@ -1,5 +1,5 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
+import React from 'react';
 
 import './Navbar.scss';
 
@@ -7,11 +7,13 @@ const Navbar = () => {
     return (
         <nav>
             <div className="nav-wrapper">
-                <img
-                    className="nav-logo"
-                    src={require('../../assets/images/logo.svg').default}
-                    alt="Deca logo"
-                />
+                <NavLink to="/home">
+                    <img
+                        className="nav-logo"
+                        src={require('../../assets/images/logo.svg').default}
+                        alt="Deca logo"
+                    />
+                </NavLink>
                 <div className="nav-buttons">
                     <ul>
                         <li>

@@ -18,8 +18,14 @@ nav {
         margin: auto;
         @include flex-sb-center;
 
-        .nav-logo {
-            width: 7rem;
+        & > a {
+            display: flex;
+            align-items: center;
+
+            .nav-logo {
+                width: 7rem;
+                cursor: pointer;
+            }
         }
 
         .nav-buttons {
@@ -33,10 +39,10 @@ nav {
 
                 a {
                     transition: 0.2s;
-                }
 
-                a:hover {
-                    color: #dd5555;
+                    &:hover {
+                        color: #dd5555;
+                    }
                 }
             }
 

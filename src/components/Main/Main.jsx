@@ -1,5 +1,5 @@
-import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
 import SectionOne from './SectionOneSlides';
 import SectionTwo from './SectionTwoSlides';
 import React from 'react';
@@ -63,50 +63,6 @@ const Main = () => {
                     </div>
                 </div>
             </section>
-            {/* <div style={{ backgroundColor: 'blue', padding: '10px' }}>
-                <div
-                    style={{
-                        width: '300px',
-                        display: 'flex',
-                        justifyContent: 'space-between',
-                        overflow: 'auto',
-                        borderLeft: '2px solid yellow',
-                        borderRight: '2px solid yellow',
-                        margin: 'auto',
-                    }}
-                >
-                    <div
-                        style={{
-                            minWidth: 100,
-                            height: 100,
-                            backgroundColor: 'red',
-                            display: 'block',
-                            border: '2px solid yellow',
-                            marginLeft: '-2px',
-                        }}
-                    ></div>
-                    <div
-                        style={{
-                            minWidth: 100,
-                            height: 100,
-                            backgroundColor: 'red',
-                            display: 'block',
-                            border: '2px solid yellow',
-                            margin: '0 20px',
-                        }}
-                    ></div>
-                    <div
-                        style={{
-                            minWidth: 100,
-                            height: 100,
-                            backgroundColor: 'red',
-
-                            display: 'block',
-                            border: '2px solid yellow',
-                        }}
-                    ></div>
-                </div>
-            </div> */}
         </main>
     );
 };

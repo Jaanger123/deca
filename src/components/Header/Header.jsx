@@ -1,6 +1,6 @@
-import React from 'react';
 import Carousel from '../Carousel';
 import Navbar from '../Navbar';
+import React from 'react';
 
 import './Header.scss';
 

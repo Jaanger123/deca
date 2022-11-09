@@ -8,6 +8,7 @@ import 'swiper/css/pagination';
 import 'swiper/css';
 
 import './Slides.scss';
+import swiperBreakpoints from './swiperStyle';
 
 const ThirdSlide = () => {
     return (
@@ -36,11 +37,12 @@ const ThirdSlide = () => {
                         slidesPerView={3}
                         coverflowEffect={{
                             rotate: 0,
-                            stretch: 502,
+                            stretch: 200,
                             depth: 300,
                             modifier: 1,
                             slideShadows: false,
                         }}
+                        breakpoints={swiperBreakpoints}
                         initialSlide={1}
                         navigation={true}
                         modules={[EffectCoverflow, Navigation]}

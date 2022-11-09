@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
-import React from 'react';
 import Video from './Video';
+import React from 'react';
 
 import './Slides.scss';
 
