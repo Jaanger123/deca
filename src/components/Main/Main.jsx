@@ -1,4 +1,4 @@
-import { Navigation, Pagination, Scrollbar } from 'swiper';
+import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SectionOne from './SectionOneSlides';
 import SectionTwo from './SectionTwoSlides';
@@ -50,8 +50,6 @@ const Main = () => {
                         <hr />
                     </div>
 
-                    {/* CUSTOM */}
-
                     <div className="custom-slider">
                         <div className="custom-slide-wrapper new-game">
                             <SectionTwo.FirstSlide />
@@ -63,32 +61,6 @@ const Main = () => {
                             <SectionTwo.ThirdSlide />
                         </div>
                     </div>
-
-                    {/* CUSTOM */}
-
-                    {/* <Swiper
-                        followFinger={false}
-                        centeredSlides={true}
-                        speed={1500}
-                        slidesPerView={1}
-                        scrollbar={{
-                            hide: true,
-                            draggable: true,
-                            snapOnRelease: false,
-                        }}
-                        modules={[Scrollbar]}
-                        className="home-section-two-swiper"
-                    >
-                        <SwiperSlide>
-                            <SectionTwo.FirstSlide />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <SectionTwo.FirstSlide />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <SectionTwo.FirstSlide />
-                        </SwiperSlide>
-                    </Swiper> */}
                 </div>
             </section>
         </main>
