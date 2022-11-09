@@ -5,7 +5,7 @@ import './Slides.scss';
 
 const SecondSlide = () => {
     return (
-        <div className="hm-slide hm-slide-second">
+        <div className="hm-so-slide hm-so-slide-second">
             <TemplateSlide
                 slideImg={require('../../../assets/images/people.svg').default}
                 imgAlt="People"

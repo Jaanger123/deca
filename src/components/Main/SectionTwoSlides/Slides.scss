@@ -1,0 +1,100 @@
+.hm-st-slide {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: auto;
+    border: 0.18em solid #a5a5a5;
+    border-radius: 1em;
+    background-repeat: no-repeat;
+    background-size: 55%;
+    // background-size: 50%;
+    background-position: 18% 10%;
+    // background-position: 15% 10%;
+
+    & > img {
+        width: 32%;
+        // width: 28%;
+        padding: 3.25em 0 1.5em 1.5em;
+    }
+
+    .hm-so-slide-text {
+        padding-right: 1.5em;
+        margin-bottom: 15%;
+        font-size: 1rem;
+
+        h3,
+        h4,
+        p {
+            font-weight: 400;
+        }
+
+        h3 {
+            opacity: 0;
+            font-size: 3.5em;
+            // font-size: 3.25em;
+            color: #dd5555;
+        }
+
+        h4 {
+            font-size: 2em;
+            // font-size: 1.75em;
+        }
+
+        p {
+            color: #595959;
+            font-size: 1.5em;
+            // font-size: 1.25em;
+        }
+
+        .hm-st-players-quantity {
+            display: flex;
+            align-items: center;
+
+            & > img {
+                width: 12%;
+                padding-right: 0.25em;
+            }
+        }
+    }
+
+    @media screen and (max-width: 1340px) {
+        .hm-so-slide-text {
+            font-size: 0.875rem;
+        }
+    }
+
+    @media screen and (max-width: 1170px) {
+        .hm-so-slide-text {
+            font-size: 0.75rem;
+        }
+    }
+}
+
+// HOME MAIN SECTION TWO FISRT SLIDE
+
+.hm-st-slide-first {
+    background-image: url('../../../assets/images/kyrgyz-flag-sm.png');
+}
+
+// HOME MAIN SECTION TWO SECOND SLIDE
+
+.hm-st-slide-second {
+    background-image: url('../../../assets/images/skull-sm.png');
+    background-size: 45%;
+    background-position: 25% 10%;
+
+    .second-slide-character-sm {
+        width: 16%;
+        padding: 3em 0;
+        margin-left: -1em;
+    }
+}
+
+// HOME MAIN SECTION TWO THIRD SLIDE
+
+.hm-st-slide-third {
+    background-image: url('../../../assets/images/skull-sm.png');
+    background-size: 45%;
+    background-position: 22% 10%;
+}

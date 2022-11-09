@@ -6,6 +6,7 @@
     box-sizing: border-box;
     font-family: 'Hammersmith One', sans-serif;
     user-select: none;
+    // overscroll-behavior: none;
 }
 
 a {
@@ -30,5 +31,11 @@ button {
 @media screen and (max-width: 968px) {
     html {
         font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 818px) {
+    html {
+        font-size: 11px;
     }
 }

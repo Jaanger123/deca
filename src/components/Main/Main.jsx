@@ -1,9 +1,12 @@
+import { Navigation, Pagination, Scrollbar } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper';
+import SectionOne from './SectionOneSlides';
+import SectionTwo from './SectionTwoSlides';
 import React from 'react';
 
+import 'swiper/css/scrollbar';
+
 import './Main.scss';
-import { FirstSlide, SecondSlide, ThirdSlide } from './SectionOneSlides';
 
 const Main = () => {
     return (
@@ -14,31 +17,31 @@ const Main = () => {
                         <p>GENERAL</p>
                         <hr />
                     </div>
-                    <Swiper
-                        followFinger={false}
-                        centeredSlides={true}
-                        loop={true}
-                        speed={1500}
-                        pagination={{
-                            clickable: true,
-                            bulletActiveClass: 'active-bullet',
-                            bulletClass: 'bullets swiper-pagination-bullet',
-                        }}
-                        navigation={true}
-                        modules={[Pagination, Navigation]}
-                        className="home-section-one-swiper"
-                    >
-                        <SwiperSlide>
-                            <FirstSlide />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <SecondSlide />
-                        </SwiperSlide>
-                        <SwiperSlide>
-                            <ThirdSlide />
-                        </SwiperSlide>
-                    </Swiper>
                 </div>
+
+                <Swiper
+                    followFinger={false}
+                    centeredSlides={true}
+                    speed={1500}
+                    pagination={{
+                        clickable: true,
+                        bulletActiveClass: 'active-bullet',
+                        bulletClass: 'bullets swiper-pagination-bullet',
+                    }}
+                    navigation={true}
+                    modules={[Pagination, Navigation]}
+                    className="home-section-one-swiper"
+                >
+                    <SwiperSlide>
+                        <SectionOne.FirstSlide />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <SectionOne.SecondSlide />
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <SectionOne.ThirdSlide />
+                    </SwiperSlide>
+                </Swiper>
             </section>
             <section className="home-section home-section-two">
                 <div className="home-container">
@@ -46,6 +49,46 @@ const Main = () => {
                         <p>RECOMMENDED GAMES</p>
                         <hr />
                     </div>
+
+                    {/* CUSTOM */}
+
+                    <div className="custom-slider">
+                        <div className="custom-slide-wrapper new-game">
+                            <SectionTwo.FirstSlide />
+                        </div>
+                        <div className="custom-slide-wrapper st-mid-slide">
+                            <SectionTwo.SecondSlide />
+                        </div>
+                        <div className="custom-slide-wrapper">
+                            <SectionTwo.ThirdSlide />
+                        </div>
+                    </div>
+
+                    {/* CUSTOM */}
+
+                    {/* <Swiper
+                        followFinger={false}
+                        centeredSlides={true}
+                        speed={1500}
+                        slidesPerView={1}
+                        scrollbar={{
+                            hide: true,
+                            draggable: true,
+                            snapOnRelease: false,
+                        }}
+                        modules={[Scrollbar]}
+                        className="home-section-two-swiper"
+                    >
+                        <SwiperSlide>
+                            <SectionTwo.FirstSlide />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <SectionTwo.FirstSlide />
+                        </SwiperSlide>
+                        <SwiperSlide>
+                            <SectionTwo.FirstSlide />
+                        </SwiperSlide>
+                    </Swiper> */}
                 </div>
             </section>
         </main>

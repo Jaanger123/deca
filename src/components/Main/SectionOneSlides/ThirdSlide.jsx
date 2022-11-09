@@ -5,9 +5,12 @@ import './Slides.scss';
 
 const ThirdSlide = () => {
     return (
-        <div className="hm-slide hm-slide-one">
+        <div className="hm-so-slide hm-so-slide-third">
             <TemplateSlide
-                slideImg={require('../../../assets/images/people.svg').default}
+                slideImg={
+                    require('../../../assets/images/halloween-pumpkin.svg')
+                        .default
+                }
                 imgAlt="People"
             >
                 <h2>Lorem ipsum dolor sit amet</h2>

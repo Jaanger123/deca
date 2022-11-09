@@ -5,7 +5,7 @@ import './Slides.scss';
 const TemplateSlide = ({ children, slideImg, imgAlt }) => {
     return (
         <>
-            <div className="hm-slide-text">{children}</div>
+            <div className="hm-so-slide-text">{children}</div>
             <img src={slideImg} alt={imgAlt} />
         </>
     );

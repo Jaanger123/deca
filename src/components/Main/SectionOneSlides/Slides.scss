@@ -1,18 +1,21 @@
-.hm-slide {
+.hm-so-slide {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     margin: 4em auto 7em;
+    background-size: 35%;
+    background-repeat: no-repeat;
+    background-position: center;
 
     img {
         width: 45%;
-        padding: 1em 0;
+        padding: 1em 4.5em 1em 0;
     }
 
-    .hm-slide-text {
+    .hm-so-slide-text {
         width: 50%;
-        padding-left: 4.5em;
+        padding-left: 8.5em;
         margin-bottom: -1.25em;
 
         h2 {
@@ -29,16 +32,29 @@
             font-size: 1.625rem;
             padding-bottom: 0.75em;
         }
+
+        @media screen and (max-width: 1000px) {
+            h2 {
+                font-size: 2rem;
+            }
+        }
     }
 }
 
-// HOME MAIN FISRT SLIDE
+// HOME MAIN SECTION ONE FISRT SLIDE
 
-// HOME MAIN SECOND SLIDE
+.hm-so-slide-first {
+    background-image: url('../../../assets/images/skull.png');
+}
 
-.hm-slide-second {
+// HOME MAIN SECTION ONE SECOND SLIDE
+
+.hm-so-slide-second {
     background-image: url('../../../assets/images/kyrgyz-flag.png');
-    background-size: 35%;
-    background-repeat: no-repeat;
-    background-position: center;
+}
+
+// HOME MAIN SECTION ONE THIRD SLIDE
+
+.hm-so-slide-third {
+    background-image: url('../../../assets/images/pumpkin.png');
 }

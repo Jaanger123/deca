@@ -12,7 +12,6 @@ import './Carousel.scss';
 const Carousel = () => {
     return (
         <Swiper
-            // spaceBetween={30}
             followFinger={false}
             centeredSlides={true}
             loop={true}
