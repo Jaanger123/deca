@@ -16,10 +16,10 @@ const Carousel = () => {
             centeredSlides={true}
             loop={true}
             speed={1500}
-            // autoplay={{
-            //     delay: 6000,
-            //     disableOnInteraction: false,
-            // }}
+            autoplay={{
+                delay: 6000,
+                disableOnInteraction: false,
+            }}
             navigation={false}
             pagination={{
                 clickable: true,
@@ -30,13 +30,13 @@ const Carousel = () => {
             className="main-swiper"
         >
             <SwiperSlide>
-                <ThirdSlide />
-            </SwiperSlide>
-            <SwiperSlide>
                 <FirstSlide />
             </SwiperSlide>
             <SwiperSlide className="video-slide">
                 <SecondSlide />
+            </SwiperSlide>
+            <SwiperSlide>
+                <ThirdSlide />
             </SwiperSlide>
         </Swiper>
     );
