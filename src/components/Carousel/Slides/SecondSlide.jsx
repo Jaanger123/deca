@@ -1,18 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import React from 'react';
+import Video from './Video';
 
 import './Slides.scss';
 
 const SecondSlide = () => {
     return (
         <section className="second-slide">
-            <video
-                src={require('../../assets/videos/IMG_3284.mp4')}
-                type="type/mp4"
-                autoPlay
-                loop
-                muted
-            ></video>
+            <Video />
             <div className="second-slide-background">
                 <div className="slide-container">
                     <div className="slide-content second-slide-content">
@@ -30,7 +25,7 @@ const SecondSlide = () => {
                     <div className="second-slide-reviews">
                         <img
                             src={
-                                require('../../assets/images/camera-icon.svg')
+                                require('../../../assets/images/camera-icon.svg')
                                     .default
                             }
                             alt="Camera icon"

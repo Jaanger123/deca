@@ -1,7 +1,7 @@
 import { EffectCoverflow, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -10,17 +10,6 @@ import 'swiper/css';
 import './Slides.scss';
 
 const ThirdSlide = () => {
-    // const swiper = useRef();
-
-    // console.log(swiper.current);
-
-    // useEffect(() => {
-    //     swiper.current = document.querySelector('.swiper').swiper;
-    // }, []);
-    // const swiper = document.querySelector('.third-slide-swiper');
-    // console.log(swiper.slideNext());
-    // const swiper = new Swiper('.third-slide-swiper');
-
     return (
         <section className="slide">
             <div className="slide-container">
@@ -52,7 +41,7 @@ const ThirdSlide = () => {
                             modifier: 1,
                             slideShadows: false,
                         }}
-                        loop={true}
+                        initialSlide={1}
                         navigation={true}
                         modules={[EffectCoverflow, Navigation]}
                         className="third-slide-swiper"
@@ -60,21 +49,21 @@ const ThirdSlide = () => {
                         <SwiperSlide>
                             <img
                                 className="third-slide-character"
-                                src={require('../../assets/images/character-one.png')}
+                                src={require('../../../assets/images/character-one.png')}
                                 alt="Character"
                             />
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
                                 className="third-slide-character"
-                                src={require('../../assets/images/character-two.png')}
+                                src={require('../../../assets/images/character-two.png')}
                                 alt="Character"
                             />
                         </SwiperSlide>
                         <SwiperSlide>
                             <img
                                 className="third-slide-character"
-                                src={require('../../assets/images/character-three.png')}
+                                src={require('../../../assets/images/character-three.png')}
                                 alt="Character"
                             />
                         </SwiperSlide>

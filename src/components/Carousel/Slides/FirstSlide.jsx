@@ -16,13 +16,13 @@ const FirstSlide = () => {
                     <p className="slide-description">
                         Role-playing board games now in Kyrgyzstan
                     </p>
-                    <NavLink to="/about">
+                    <NavLink to="#">
                         <button className="slide-button">ABOUT US</button>
                     </NavLink>
                 </div>
                 <img
                     className="first-slide-puzzle"
-                    src={require('../../assets/images/pieces.png')}
+                    src={require('../../../assets/images/pieces.png')}
                     alt="Puzzle pieces"
                 />
             </div>

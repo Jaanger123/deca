@@ -1,4 +1,4 @@
-import { FirstSlide, SecondSlide, ThirdSlide } from '../Slides';
+import { FirstSlide, SecondSlide, ThirdSlide } from './Slides';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper';
 import React from 'react';
@@ -16,10 +16,11 @@ const Carousel = () => {
             centeredSlides={true}
             loop={true}
             speed={1500}
-            // autoplay={{
-            //     delay: 2000,
-            //     disableOnInteraction: false,
-            // }}
+            autoplay={{
+                delay: 6000,
+                disableOnInteraction: false,
+            }}
+            navigation={false}
             pagination={{
                 clickable: true,
                 bulletActiveClass: 'active-bullet',
@@ -28,16 +29,14 @@ const Carousel = () => {
             modules={[Autoplay, Pagination]}
             className="main-swiper"
         >
-            <SwiperSlide className="video-slide">
-                {/* <FirstSlide /> */}
-                <SecondSlide />
-            </SwiperSlide>
             <SwiperSlide>
                 <FirstSlide />
             </SwiperSlide>
+            <SwiperSlide className="video-slide">
+                <SecondSlide />
+            </SwiperSlide>
             <SwiperSlide>
                 <ThirdSlide />
-                {/* <ThirdSlide /> */}
             </SwiperSlide>
         </Swiper>
     );

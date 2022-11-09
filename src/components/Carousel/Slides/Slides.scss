@@ -1,7 +1,7 @@
 .slide {
     background-color: white;
     height: 100%;
-    background-image: url('../../assets/images/header-background.svg');
+    background-image: url('../../../assets/images/header-background.svg');
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -57,7 +57,6 @@ img.first-slide-puzzle {
 }
 
 .slide-content {
-    // width: 50%;
     height: 46%;
     display: flex;
     flex-direction: column;
@@ -143,26 +142,25 @@ img.first-slide-puzzle {
     width: 50%;
 
     .third-slide-swiper {
-        .swiper-button-prev::after,
-        .swiper-button-next::after {
-            content: none !important;
-        }
-
         .swiper-button-prev,
         .swiper-button-next {
             height: 25% !important;
             width: 20% !important;
             background-size: cover;
             top: 40% !important;
+
+            &::after {
+                content: none !important;
+            }
         }
 
         .swiper-button-prev {
-            background-image: url('../../assets/images/red-prev.png');
+            background-image: url('../../../assets/images/red-prev.png');
             left: 4% !important;
         }
 
         .swiper-button-next {
-            background-image: url('../../assets/images/red-next.png');
+            background-image: url('../../../assets/images/red-next.png');
             right: 4% !important;
         }
 

@@ -15,7 +15,7 @@ const Navbar = () => {
                 <div className="nav-buttons">
                     <ul>
                         <li>
-                            <NavLink to="/about">About</NavLink>
+                            <NavLink to="#">About</NavLink>
                         </li>
                         <li>
                             <NavLink to="#">Civic Engagement</NavLink>
