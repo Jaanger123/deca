@@ -38,18 +38,10 @@ nav {
                 @include flex-sb-center;
 
                 a {
-                    font-size: 1.125rem;
                     transition: 0.2s;
 
                     &:hover {
                         color: #dd5555;
-                    }
-                }
-
-                @media screen and (max-width: 1500px) {
-                    a {
-                        font-size: 1rem;
-                        transition: 0.2s;
                     }
                 }
             }
@@ -61,13 +53,6 @@ nav {
                 button {
                     padding: 0.375em 1.375em;
                     border-radius: 0.5em;
-                    font-size: 1.125rem;
-                }
-
-                @media screen and (max-width: 1500px) {
-                    button {
-                        font-size: 1rem;
-                    }
                 }
 
                 .nav-sign-in {
