@@ -16,7 +16,7 @@ const FirstSlide = () => {
                     <p className="slide-description">
                         Role-playing board games now in Kyrgyzstan
                     </p>
-                    <NavLink to="#">
+                    <NavLink to="/about">
                         <button className="slide-button">ABOUT US</button>
                     </NavLink>
                 </div>

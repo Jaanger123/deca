@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
 * {
     margin: 0;
@@ -10,11 +10,16 @@
 
 html {
     font-size: 21px;
+    scroll-behavior: smooth;
 }
 
 a {
     text-decoration: none;
     color: #252525;
+
+    &.active {
+        color: #dd5555;
+    }
 }
 
 button {

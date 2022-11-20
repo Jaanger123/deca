@@ -14,6 +14,7 @@ const Carousel = () => {
         <Swiper
             followFinger={false}
             centeredSlides={true}
+            allowTouchMove={false}
             loop={true}
             speed={1500}
             autoplay={{

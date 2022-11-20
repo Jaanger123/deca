@@ -16,9 +16,9 @@ const ThirdSlide = () => {
             <div className="slide-container">
                 <div className="slide-content">
                     <h1 className="slide-title">
-                        Our site has a
+                        Your own
                         <br />
-                        character creator!
+                        game mode!
                     </h1>
                     <p className="slide-description third-slide-description">
                         Use our easy-access character creator for your next D&D

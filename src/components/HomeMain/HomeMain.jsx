@@ -6,7 +6,7 @@ import React from 'react';
 
 import 'swiper/css/scrollbar';
 
-import './Main.scss';
+import './HomeMain.scss';
 
 const Main = () => {
     return (

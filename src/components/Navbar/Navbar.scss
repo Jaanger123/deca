@@ -4,9 +4,6 @@
     align-items: center;
 }
 
-$large: 1100px;
-$medium: 900px;
-
 nav {
     height: 4rem;
     box-shadow: 0.75em -1em 2.125em rgba(0, 0, 0, 0.25);
@@ -78,13 +75,13 @@ nav {
             }
         }
 
-        @media screen and (max-width: $large) {
+        @media screen and (max-width: 1100px) {
             .nav-buttons {
                 width: 65%;
             }
         }
 
-        @media screen and (max-width: $medium) {
+        @media screen and (max-width: 900px) {
             .nav-buttons {
                 width: 75%;
             }

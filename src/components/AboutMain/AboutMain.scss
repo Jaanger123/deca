@@ -1,0 +1,197 @@
+.about-main {
+    width: 100%;
+    background-image: url('../../assets/images/background-lg.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .about-welcome {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+
+        .about-arrow {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            animation: 1s arrow-bounce ease-in-out infinite alternate;
+
+            & > img {
+                width: 70%;
+            }
+        }
+
+        & > h1 {
+            margin-top: 1.2em;
+            font-size: 5rem;
+            font-weight: 400;
+            color: #dd5555;
+            margin-bottom: -0.125em;
+        }
+
+        & > p {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 100;
+            font-size: 1.75rem;
+            width: 30%;
+            color: #797979;
+        }
+
+        & > img {
+            margin-top: 1em;
+            width: 50%;
+            min-width: 460px;
+        }
+
+        @media screen and (max-width: 1300px) {
+            & > h1 {
+                font-size: 4.5rem;
+            }
+
+            & > p {
+                width: 40%;
+            }
+        }
+    }
+
+    .about-content {
+        padding-top: 5em;
+        width: 100%;
+
+        & p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 100;
+            line-height: 97%;
+            color: #121212;
+        }
+
+        .about-container {
+            width: 90%;
+            margin: auto;
+            padding-top: 2em;
+
+            .about-us {
+                display: flex;
+                align-items: center;
+                background-color: white;
+                border-radius: 1em;
+                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                padding: 0 1em;
+
+                & > h3 {
+                    width: 30%;
+                    text-align: center;
+                    margin-inline: 1em;
+                    font-size: 3.5rem;
+                    color: #dd5555;
+                }
+
+                .about-us-text {
+                    width: 65%;
+                    margin-block: 3em;
+
+                    & > p:first-child {
+                        margin-bottom: 0.5em;
+                    }
+                }
+            }
+
+            .about-our-goal-wrapper {
+                display: flex;
+                width: 100%;
+
+                .about-character {
+                    display: flex;
+                    justify-content: right;
+                    align-items: flex-end;
+                    width: 25%;
+                    background-image: url('../../assets/images/kyrgyz-flag-sm.png');
+                    background-repeat: no-repeat;
+                    background-size: 80%;
+                    background-position: center 40%;
+
+                    & > img {
+                        width: 30%;
+                        margin-right: 2em;
+                    }
+                }
+
+                .about-our-goal {
+                    background-color: white;
+                    border-radius: 1em;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    width: 75%;
+                    margin-block: 3em;
+                    padding: 2.5em 0 1em 3.5em;
+
+                    & > p {
+                        width: 88%;
+                        margin-bottom: 1em;
+                    }
+
+                    & > p:first-child {
+                        width: 86%;
+                        margin-bottom: 1em;
+                    }
+                }
+            }
+
+            .about-success-wrapper {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                width: 100%;
+
+                .about-success {
+                    background-color: #fff;
+                    border-radius: 1em;
+                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    width: 74%;
+                    padding: 6em 3.5em;
+                }
+
+                & > button {
+                    font-size: 1.25rem;
+                    border-radius: 0.5em;
+                    color: #fff;
+                    background-color: #dd5555;
+                    border: 0.125em solid #dd5555;
+                    padding: 0.625em 1.75em;
+
+                    &:hover {
+                        background-color: #fff;
+                        color: #dd5555;
+                    }
+                }
+            }
+
+            .about-collaboration {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 60%;
+                margin: auto;
+                padding: 4em 0 6em;
+
+                & > img {
+                    width: 30%;
+                }
+            }
+        }
+    }
+}
+
+@keyframes arrow-bounce {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 10px;
+    }
+}

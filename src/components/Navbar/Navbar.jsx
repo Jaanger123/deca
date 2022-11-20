@@ -17,13 +17,13 @@ const Navbar = () => {
                 <div className="nav-buttons">
                     <ul>
                         <li>
-                            <NavLink to="#">About</NavLink>
+                            <NavLink to="/about">About</NavLink>
                         </li>
                         <li>
-                            <NavLink to="#">Civic Engagement</NavLink>
+                            <NavLink to="/civic">Civic Engagement</NavLink>
                         </li>
                         <li>
-                            <NavLink to="#">Products</NavLink>
+                            <NavLink to="/products">Products</NavLink>
                         </li>
                     </ul>
                     <div className="nav-auth-buttons">
