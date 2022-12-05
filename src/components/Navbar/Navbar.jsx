@@ -7,7 +7,7 @@ const Navbar = () => {
     return (
         <nav>
             <div className="nav-wrapper">
-                <NavLink to="/home">
+                <NavLink to="/">
                     <img
                         className="nav-logo"
                         src={require('../../assets/images/logo.svg').default}

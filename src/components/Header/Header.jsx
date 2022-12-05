@@ -1,5 +1,4 @@
 import Carousel from '../Carousel';
-import Navbar from '../Navbar';
 import React from 'react';
 
 import './Header.scss';
@@ -7,7 +6,6 @@ import './Header.scss';
 const Header = () => {
     return (
         <header>
-            <Navbar />
             <Carousel />
         </header>
     );

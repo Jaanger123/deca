@@ -1,13 +1,17 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Home, About } from '../pages';
+import NavbarFooterLayout from './NavbarFooterLayout';
+import { Home, About, Register } from '../pages';
 import React from 'react';
 
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="*" element={<Navigate to="/home" />} />
+            <Route path="/" element={<NavbarFooterLayout />}>
+                <Route index element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/register" element={<Register />} />
+            </Route>
+            <Route path="*" element={<Navigate to="/" />} />
         </Routes>
     );
 };
