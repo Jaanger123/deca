@@ -1,10 +1,24 @@
+import { register } from '../../firebaseAuthClient';
+import React, { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
-import React, { useEffect, useRef, useState } from 'react';
 
 import './RegisterMain.scss';
 import './Calendar.scss';
 
+import KG from '../../assets/images/input-kyrgyz-flag.svg';
+import RU from '../../assets/images/input-russian-flag.svg';
+
 const RegisterMain = () => {
+    const [surname, setSurname] = useState('');
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [number, setNumber] = useState('+996 ');
+    const [selectNumber, setSelectNumber] = useState('+996 ');
+    const [gameSet, setGameSet] = useState('');
+    const [players, setPlayers] = useState('');
+    const [characters, setCharacters] = useState('');
+    const [time, setTime] = useState('');
+
     const monthNames = [
         'January',
         'February',
@@ -43,41 +57,143 @@ const RegisterMain = () => {
                     <div className="register-contact-form-inputs">
                         <div className="form-input">
                             <span>Surname</span>
-                            <input type="text" />
+                            <input
+                                type="text"
+                                placeholder="Your surname"
+                                value={surname}
+                                onChange={(event) =>
+                                    setSurname(event.target.value)
+                                }
+                            />
                         </div>
                         <div className="form-input">
                             <span>Name</span>
-                            <input type="text" />
+                            <input
+                                type="text"
+                                placeholder="Your name"
+                                value={name}
+                                onChange={(event) =>
+                                    setName(event.target.value)
+                                }
+                            />
                         </div>
                         <div className="form-input">
                             <span>Email</span>
-                            <input type="email" />
+                            <input
+                                type="email"
+                                placeholder="Your email"
+                                value={email}
+                                onChange={(event) =>
+                                    setEmail(event.target.value)
+                                }
+                            />
                         </div>
                         <div className="form-input">
                             <span>Number</span>
-                            <input type="tel" defaultValue="+996" />
+                            <div className="register-contact-form-editable-select">
+                                <input
+                                    type="tel"
+                                    value={number}
+                                    onChange={(event) =>
+                                        setNumber(
+                                            selectNumber +
+                                                event.target.value.slice(
+                                                    selectNumber.length
+                                                )
+                                        )
+                                    }
+                                />
+                                <div className="register-contact-form-flag-arrow">
+                                    <div className="register-contact-form-flag-wrapper">
+                                        <img
+                                            className="register-contact-form-flag"
+                                            src={
+                                                selectNumber === '+996 '
+                                                    ? KG
+                                                    : RU
+                                            }
+                                            alt="dafs"
+                                        />
+                                    </div>
+
+                                    <select
+                                        value={selectNumber}
+                                        onChange={(event) => {
+                                            setSelectNumber(event.target.value);
+                                            setNumber(event.target.value);
+                                        }}
+                                    >
+                                        <option value="+996 ">+996</option>
+                                        <option value="+7 ">+7</option>
+                                    </select>
+                                    <img
+                                        className="register-contact-form-arrow"
+                                        src={
+                                            require('../../assets/images/input-arrow-down.svg')
+                                                .default
+                                        }
+                                        alt="Arrow down"
+                                    />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div className="register-game-form">
                     <p>Game information</p>
                     <hr />
-                    <div className="register-game-form-inputs">
-                        <div className="form-input">
+                    <div className="register-game-form-selects">
+                        <div className="form-select">
                             <span>Game set</span>
-                            <input
-                                type="text"
-                                placeholder="Choose a game set"
-                            />
+                            <select
+                                value={gameSet}
+                                onChange={(event) =>
+                                    setGameSet(event.target.value)
+                                }
+                                className={gameSet !== '' ? '' : 'disabled'}
+                            >
+                                <option value="" disabled hidden>
+                                    Choose a game set
+                                </option>
+                                <option value="Aika">Aika</option>
+                                <option value="Jaga">Jaga</option>
+                            </select>
                         </div>
                         <div className="register-game-form-inputs-wrapper">
-                            <div className="form-input">
+                            <div className="form-select">
                                 <span>Number of players</span>
-                                <input type="text" />
+                                <select
+                                    value={players}
+                                    onChange={(event) =>
+                                        setPlayers(event.target.value)
+                                    }
+                                    className={players !== '' ? '' : 'disabled'}
+                                >
+                                    <option value="" disabled hidden>
+                                        Players number
+                                    </option>
+                                    <option value="2">2</option>
+                                    <option value="4">4</option>
+                                    <option value="6">6</option>
+                                </select>
                             </div>
-                            <div className="form-input">
+                            <div className="form-select">
                                 <span>Characters</span>
-                                <input type="text" />
+                                <select
+                                    value={characters}
+                                    onChange={(event) =>
+                                        setCharacters(event.target.value)
+                                    }
+                                    className={
+                                        characters !== '' ? '' : 'disabled'
+                                    }
+                                >
+                                    <option value="" disabled hidden>
+                                        Choose a character
+                                    </option>
+                                    <option value="Aika">Aika</option>
+                                    <option value="Jaga">Jaga</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -91,26 +207,36 @@ const RegisterMain = () => {
                         <div className="register-date-form-inputs">
                             <div className="form-input">
                                 <span>Date</span>
-                                <input
-                                    type="text"
-                                    // ref={dateInputRef}
-                                    value={dateInput}
-                                    // onChange={() => setDateInput}
-                                    // placeholder="Choose a game set"
-                                />
+                                <input type="text" value={dateInput} readOnly />
                             </div>
-                            <div className="form-input">
+                            <div className="form-select">
                                 <span>Time</span>
-                                <input
-                                    type="time"
-                                    // placeholder="Choose a game set"
-                                />
+                                <select
+                                    value={time}
+                                    onChange={(event) =>
+                                        setTime(event.target.value)
+                                    }
+                                    className={time !== '' ? '' : 'disabled'}
+                                >
+                                    <option value="" disabled hidden>
+                                        Select time
+                                    </option>
+                                    <option value="13:00 - 16:00 PM">
+                                        13:00 - 16:00 PM
+                                    </option>
+                                    <option value="16:00 - 19:00 PM">
+                                        16:00 - 19:00 PM
+                                    </option>
+                                    <option value="19:00 - 22:00 PM">
+                                        19:00 - 22:00 PM
+                                    </option>
+                                </select>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <button>Checkout</button>
+            <button onClick={() => register(email, surname)}>Checkout</button>
         </main>
     );
 };

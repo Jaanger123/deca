@@ -12,7 +12,8 @@
     }
 
     & span,
-    & input {
+    & input,
+    & select {
         font-family: 'Roboto', sans-serif;
         font-size: 1rem;
         font-weight: 400;
@@ -76,13 +77,52 @@
             margin-bottom: 1.375em;
         }
 
+        .form-select {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 0.75em;
+            width: 100%;
+
+            &::after {
+                content: '';
+                position: absolute;
+                z-index: 1;
+                top: 65%;
+                transform: translateY(-35%);
+                right: 0;
+                width: 1rem;
+                height: 1rem;
+                margin-right: 0.75em;
+                background-image: url('../../assets/images/input-arrow-down.svg');
+                background-repeat: no-repeat;
+                background-size: contain;
+                background-position: center;
+                pointer-events: none;
+            }
+
+            & select {
+                color: #252525;
+                background-color: #eeeeee;
+                border: none;
+                border-radius: 0.75em;
+                padding: 0.75em 1em;
+                outline-color: #dd5555;
+                appearance: none;
+
+                &.disabled {
+                    color: #8a8a8a;
+                }
+            }
+        }
+
         .form-input {
             display: flex;
             flex-direction: column;
             margin-bottom: 0.75em;
             width: 100%;
 
-            & > input {
+            & input {
                 color: #252525;
                 background-color: #eeeeee;
                 border: none;
@@ -98,6 +138,52 @@
 
         .register-contact-form {
             margin-bottom: 4em;
+
+            .form-input .register-contact-form-editable-select {
+                position: relative;
+
+                & > input {
+                    width: 100%;
+                }
+
+                .register-contact-form-flag-arrow {
+                    position: absolute;
+                    right: 0;
+                    top: 50%;
+                    height: 100%;
+                    padding: 0 0.725em;
+                    transform: translateY(-50%);
+                    display: flex;
+                    align-items: center;
+
+                    .register-contact-form-flag-wrapper {
+                        display: flex;
+                        align-items: center;
+                        width: 2.5rem;
+                        height: 1.25rem;
+                        margin-right: 0.5em;
+                        border-radius: 0.25em;
+                        overflow: hidden;
+
+                        .register-contact-form-flag {
+                            width: 100%;
+                        }
+                    }
+
+                    .register-contact-form-arrow {
+                        width: 1rem;
+                    }
+
+                    & > select {
+                        position: absolute;
+                        right: 1em;
+                        width: 1.5rem;
+                        height: 1.5rem;
+                        opacity: 0;
+                        cursor: pointer;
+                    }
+                }
+            }
         }
 
         .register-game-form {
