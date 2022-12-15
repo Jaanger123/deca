@@ -1,5 +1,7 @@
 import { register } from '../../firebaseAuthClient';
-import React, { useEffect, useState } from 'react';
+import { numberPattern } from '../../utils';
+import { monthNames } from '../../consts';
+import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 
 import './RegisterMain.scss';
@@ -19,21 +21,6 @@ const RegisterMain = () => {
     const [characters, setCharacters] = useState('');
     const [time, setTime] = useState('');
 
-    const monthNames = [
-        'January',
-        'February',
-        'March',
-        'April',
-        'May',
-        'June',
-        'July',
-        'August',
-        'September',
-        'October',
-        'November',
-        'December',
-    ];
-
     const transformDate = (date) => {
         return `${date.getDate()} ${
             monthNames[date.getMonth()]
@@ -43,9 +30,45 @@ const RegisterMain = () => {
     const [date, setDate] = useState(new Date());
     const [dateInput, setDateInput] = useState(transformDate(date));
 
-    useEffect(() => {
-        setDateInput(transformDate(date));
-    }, [date]);
+    const numberInputHandler = (event) => {
+        setNumber((prev) => {
+            return numberPattern(
+                selectNumber,
+                event.target.value.slice(selectNumber.length),
+                prev.slice(selectNumber.length)
+            );
+        });
+    };
+
+    const onCheckout = () => {
+        if (
+            surname.trim() === '' ||
+            name.trim() === '' ||
+            email.trim() === '' ||
+            number.trim() === '' ||
+            gameSet.trim() === '' ||
+            players.trim() === '' ||
+            characters.trim() === '' ||
+            time.trim() === ''
+        ) {
+            alert('Fill all fields');
+            return;
+        }
+
+        const data = {
+            surname,
+            name,
+            email,
+            phoneNumber: number,
+            gameSet,
+            playersQuantity: players,
+            characters,
+            date,
+            time,
+        };
+
+        console.log(data);
+    };
 
     return (
         <main className="register-main">
@@ -94,14 +117,7 @@ const RegisterMain = () => {
                                 <input
                                     type="tel"
                                     value={number}
-                                    onChange={(event) =>
-                                        setNumber(
-                                            selectNumber +
-                                                event.target.value.slice(
-                                                    selectNumber.length
-                                                )
-                                        )
-                                    }
+                                    onChange={numberInputHandler}
                                 />
                                 <div className="register-contact-form-flag-arrow">
                                     <div className="register-contact-form-flag-wrapper">
@@ -203,7 +219,13 @@ const RegisterMain = () => {
                     <p>Date</p>
                     <hr />
                     <div className="register-date-form-inputs-wrapper">
-                        <Calendar onChange={setDate} value={date} />
+                        <Calendar
+                            onChange={(date) => {
+                                setDate(date);
+                                setDateInput(transformDate(date));
+                            }}
+                            value={date}
+                        />
                         <div className="register-date-form-inputs">
                             <div className="form-input">
                                 <span>Date</span>
@@ -236,7 +258,7 @@ const RegisterMain = () => {
                     </div>
                 </div>
             </div>
-            <button onClick={() => register(email, surname)}>Checkout</button>
+            <button onClick={onCheckout}>Checkout</button>
         </main>
     );
 };
