@@ -1,265 +1,361 @@
-import { register } from '../../firebaseAuthClient';
-import { numberPattern } from '../../utils';
-import { monthNames } from '../../consts';
+import {
+    surnameInputHandler,
+    nameInputHandler,
+    emailInputHandler,
+    numberInputHandler,
+    countryCodeInputHandler,
+    gameSetSelectHandler,
+    playersSelectHandler,
+    charactersSelectHandler,
+    dateCalendarHandler,
+    timeSelectHandler,
+} from '../../utils/gameOrderFormUtils';
+import { GameOrderContext } from '../../contexts/GameOrderContext';
+import { addDocument } from '../../firestoreClient';
+import { ORDERS_COLLECTION } from '../../consts';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
+import { useContext } from 'react';
 
 import './RegisterMain.scss';
 import './Calendar.scss';
 
 import KG from '../../assets/images/input-kyrgyz-flag.svg';
 import RU from '../../assets/images/input-russian-flag.svg';
+import PopupModal from '../PopupModal/PopupModal';
 
 const RegisterMain = () => {
-    const [surname, setSurname] = useState('');
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [number, setNumber] = useState('+996 ');
-    const [selectNumber, setSelectNumber] = useState('+996 ');
-    const [gameSet, setGameSet] = useState('');
-    const [players, setPlayers] = useState('');
-    const [characters, setCharacters] = useState('');
-    const [time, setTime] = useState('');
+    const {
+        formData,
+        setFormData,
+        date,
+        setDate,
+        countryCode,
+        setCountryCode,
+    } = useContext(GameOrderContext);
 
-    const transformDate = (date) => {
-        return `${date.getDate()} ${
-            monthNames[date.getMonth()]
-        }, ${date.getFullYear()}`;
-    };
-
-    const [date, setDate] = useState(new Date());
-    const [dateInput, setDateInput] = useState(transformDate(date));
-
-    const numberInputHandler = (event) => {
-        setNumber((prev) => {
-            return numberPattern(
-                selectNumber,
-                event.target.value.slice(selectNumber.length),
-                prev.slice(selectNumber.length)
-            );
-        });
-    };
+    const [surnameError, setSurnameError] = useState(false);
+    const [nameError, setNameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [numberError, setNumberError] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
 
     const onCheckout = () => {
         if (
-            surname.trim() === '' ||
-            name.trim() === '' ||
-            email.trim() === '' ||
-            number.trim() === '' ||
-            gameSet.trim() === '' ||
-            players.trim() === '' ||
-            characters.trim() === '' ||
-            time.trim() === ''
+            formData.surname.trim() === '' ||
+            formData.name.trim() === '' ||
+            formData.email.trim() === '' ||
+            formData.number.trim() === '' ||
+            formData.gameSet.trim() === '' ||
+            formData.players.trim() === '' ||
+            formData.characters.trim() === '' ||
+            formData.time.trim() === ''
         ) {
-            alert('Fill all fields');
+            // alert('Fill in all the fields');
+            setShowPopup(true);
+            setTimeout(() => {
+                setShowPopup(false);
+            }, 3000);
+            return;
+        }
+
+        if (surnameError || nameError || emailError || numberError) {
+            alert('Invalid data given');
             return;
         }
 
         const data = {
-            surname,
-            name,
-            email,
-            phoneNumber: number,
-            gameSet,
-            playersQuantity: players,
-            characters,
+            surname: formData.surname,
+            name: formData.name,
+            email: formData.email,
+            phoneNumber: formData.number,
+            gameSet: formData.gameSet,
+            playersQuantity: formData.players,
+            characters: formData.characters,
+            time: formData.time,
             date,
-            time,
         };
 
-        console.log(data);
+        // addDocument(ORDERS_COLLECTION, data);
     };
 
     return (
-        <main className="register-main">
-            <div className="register-form">
-                <h2 className="register-title">Register to a game</h2>
-                <div className="register-contact-form">
-                    <p>Contact information</p>
-                    <hr />
-                    <div className="register-contact-form-inputs">
-                        <div className="form-input">
-                            <span>Surname</span>
-                            <input
-                                type="text"
-                                placeholder="Your surname"
-                                value={surname}
-                                onChange={(event) =>
-                                    setSurname(event.target.value)
-                                }
-                            />
-                        </div>
-                        <div className="form-input">
-                            <span>Name</span>
-                            <input
-                                type="text"
-                                placeholder="Your name"
-                                value={name}
-                                onChange={(event) =>
-                                    setName(event.target.value)
-                                }
-                            />
-                        </div>
-                        <div className="form-input">
-                            <span>Email</span>
-                            <input
-                                type="email"
-                                placeholder="Your email"
-                                value={email}
-                                onChange={(event) =>
-                                    setEmail(event.target.value)
-                                }
-                            />
-                        </div>
-                        <div className="form-input">
-                            <span>Number</span>
-                            <div className="register-contact-form-editable-select">
+        <>
+            <PopupModal
+                message={'Fill in all the fields!'}
+                showPopup={showPopup}
+                setShowPopup={setShowPopup}
+            />
+            <main className="register-main">
+                <div className="register-form">
+                    <h2 className="register-title">Register to a game</h2>
+                    <div className="register-contact-form">
+                        <p>Contact information</p>
+                        <hr />
+                        <div className="register-contact-form-inputs">
+                            <div className="form-input">
+                                <span>Surname</span>
                                 <input
-                                    type="tel"
-                                    value={number}
-                                    onChange={numberInputHandler}
+                                    type="text"
+                                    placeholder="Your surname"
+                                    name="surname"
+                                    value={formData.surname}
+                                    onChange={(event) =>
+                                        surnameInputHandler(
+                                            event,
+                                            setFormData,
+                                            setSurnameError
+                                        )
+                                    }
                                 />
-                                <div className="register-contact-form-flag-arrow">
-                                    <div className="register-contact-form-flag-wrapper">
-                                        <img
-                                            className="register-contact-form-flag"
-                                            src={
-                                                selectNumber === '+996 '
-                                                    ? KG
-                                                    : RU
+                                {surnameError ? (
+                                    <span className="error-message">
+                                        Invalid surname given
+                                    </span>
+                                ) : null}
+                            </div>
+                            <div className="form-input">
+                                <span>Name</span>
+                                <input
+                                    type="text"
+                                    placeholder="Your name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={(event) =>
+                                        nameInputHandler(
+                                            event,
+                                            setFormData,
+                                            setNameError
+                                        )
+                                    }
+                                />
+                                {nameError ? (
+                                    <span className="error-message">
+                                        Invalid name given
+                                    </span>
+                                ) : null}
+                            </div>
+                            <div className="form-input">
+                                <span>Email</span>
+                                <input
+                                    type="email"
+                                    placeholder="Your email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={(event) =>
+                                        emailInputHandler(
+                                            event,
+                                            setFormData,
+                                            setEmailError
+                                        )
+                                    }
+                                />
+                                {emailError ? (
+                                    <span className="error-message">
+                                        Invalid email given
+                                    </span>
+                                ) : null}
+                            </div>
+                            <div className="form-input">
+                                <span>Number</span>
+                                <div className="register-contact-form-editable-select">
+                                    <input
+                                        type="tel"
+                                        name="number"
+                                        value={formData.number}
+                                        onChange={(event) =>
+                                            numberInputHandler(
+                                                event,
+                                                setFormData,
+                                                countryCode
+                                            )
+                                        }
+                                    />
+                                    <div className="register-contact-form-flag-arrow">
+                                        <div className="register-contact-form-flag-wrapper">
+                                            <img
+                                                className="register-contact-form-flag"
+                                                src={
+                                                    countryCode === '+996 '
+                                                        ? KG
+                                                        : RU
+                                                }
+                                                alt="Country"
+                                            />
+                                        </div>
+
+                                        <select
+                                            name="countryCode"
+                                            value={countryCode}
+                                            onChange={(event) =>
+                                                countryCodeInputHandler(
+                                                    event,
+                                                    setFormData,
+                                                    setCountryCode
+                                                )
                                             }
-                                            alt="dafs"
+                                        >
+                                            <option value="+996 ">+996</option>
+                                            <option value="+7 ">+7</option>
+                                        </select>
+                                        <img
+                                            className="register-contact-form-arrow"
+                                            src={
+                                                require('../../assets/images/input-arrow-down.svg')
+                                                    .default
+                                            }
+                                            alt="Arrow down"
                                         />
                                     </div>
-
-                                    <select
-                                        value={selectNumber}
-                                        onChange={(event) => {
-                                            setSelectNumber(event.target.value);
-                                            setNumber(event.target.value);
-                                        }}
-                                    >
-                                        <option value="+996 ">+996</option>
-                                        <option value="+7 ">+7</option>
-                                    </select>
-                                    <img
-                                        className="register-contact-form-arrow"
-                                        src={
-                                            require('../../assets/images/input-arrow-down.svg')
-                                                .default
-                                        }
-                                        alt="Arrow down"
-                                    />
                                 </div>
+                                {numberError ? (
+                                    <span className="error-message">
+                                        Invalid phone number given
+                                    </span>
+                                ) : null}
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="register-game-form">
-                    <p>Game information</p>
-                    <hr />
-                    <div className="register-game-form-selects">
-                        <div className="form-select">
-                            <span>Game set</span>
-                            <select
-                                value={gameSet}
-                                onChange={(event) =>
-                                    setGameSet(event.target.value)
-                                }
-                                className={gameSet !== '' ? '' : 'disabled'}
-                            >
-                                <option value="" disabled hidden>
-                                    Choose a game set
-                                </option>
-                                <option value="Aika">Aika</option>
-                                <option value="Jaga">Jaga</option>
-                            </select>
-                        </div>
-                        <div className="register-game-form-inputs-wrapper">
+                    <div className="register-game-form">
+                        <p>Game information</p>
+                        <hr />
+                        <div className="register-game-form-selects">
                             <div className="form-select">
-                                <span>Number of players</span>
+                                <span>Game set</span>
                                 <select
-                                    value={players}
+                                    name="gameSet"
+                                    value={formData.gameSet}
                                     onChange={(event) =>
-                                        setPlayers(event.target.value)
-                                    }
-                                    className={players !== '' ? '' : 'disabled'}
-                                >
-                                    <option value="" disabled hidden>
-                                        Players number
-                                    </option>
-                                    <option value="2">2</option>
-                                    <option value="4">4</option>
-                                    <option value="6">6</option>
-                                </select>
-                            </div>
-                            <div className="form-select">
-                                <span>Characters</span>
-                                <select
-                                    value={characters}
-                                    onChange={(event) =>
-                                        setCharacters(event.target.value)
+                                        gameSetSelectHandler(event, setFormData)
                                     }
                                     className={
-                                        characters !== '' ? '' : 'disabled'
+                                        formData.gameSet !== ''
+                                            ? ''
+                                            : 'disabled'
                                     }
                                 >
                                     <option value="" disabled hidden>
-                                        Choose a character
+                                        Choose a game set
                                     </option>
                                     <option value="Aika">Aika</option>
                                     <option value="Jaga">Jaga</option>
                                 </select>
                             </div>
+                            <div className="register-game-form-inputs-wrapper">
+                                <div className="form-select">
+                                    <span>Number of players</span>
+                                    <select
+                                        name="players"
+                                        value={formData.players}
+                                        onChange={(event) =>
+                                            playersSelectHandler(
+                                                event,
+                                                setFormData
+                                            )
+                                        }
+                                        className={
+                                            formData.players !== ''
+                                                ? ''
+                                                : 'disabled'
+                                        }
+                                    >
+                                        <option value="" disabled hidden>
+                                            Players number
+                                        </option>
+                                        <option value="2">2</option>
+                                        <option value="4">4</option>
+                                        <option value="6">6</option>
+                                    </select>
+                                </div>
+                                <div className="form-select">
+                                    <span>Characters</span>
+                                    <select
+                                        name="characters"
+                                        value={formData.characters}
+                                        onChange={(event) =>
+                                            charactersSelectHandler(
+                                                event,
+                                                setFormData
+                                            )
+                                        }
+                                        className={
+                                            formData.characters !== ''
+                                                ? ''
+                                                : 'disabled'
+                                        }
+                                    >
+                                        <option value="" disabled hidden>
+                                            Choose a character
+                                        </option>
+                                        <option value="Aika">Aika</option>
+                                        <option value="Jaga">Jaga</option>
+                                    </select>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div className="register-date-form">
-                    <p>Date</p>
-                    <hr />
-                    <div className="register-date-form-inputs-wrapper">
-                        <Calendar
-                            onChange={(date) => {
-                                setDate(date);
-                                setDateInput(transformDate(date));
-                            }}
-                            value={date}
-                        />
-                        <div className="register-date-form-inputs">
-                            <div className="form-input">
-                                <span>Date</span>
-                                <input type="text" value={dateInput} readOnly />
-                            </div>
-                            <div className="form-select">
-                                <span>Time</span>
-                                <select
-                                    value={time}
-                                    onChange={(event) =>
-                                        setTime(event.target.value)
-                                    }
-                                    className={time !== '' ? '' : 'disabled'}
-                                >
-                                    <option value="" disabled hidden>
-                                        Select time
-                                    </option>
-                                    <option value="13:00 - 16:00 PM">
-                                        13:00 - 16:00 PM
-                                    </option>
-                                    <option value="16:00 - 19:00 PM">
-                                        16:00 - 19:00 PM
-                                    </option>
-                                    <option value="19:00 - 22:00 PM">
-                                        19:00 - 22:00 PM
-                                    </option>
-                                </select>
+                    <div className="register-date-form">
+                        <p>Date</p>
+                        <hr />
+                        <div className="register-date-form-inputs-wrapper">
+                            <Calendar
+                                onChange={(event) =>
+                                    dateCalendarHandler(
+                                        event,
+                                        setFormData,
+                                        setDate
+                                    )
+                                }
+                                value={date}
+                            />
+                            <div className="register-date-form-inputs">
+                                <div className="form-input">
+                                    <span>Date</span>
+                                    <input
+                                        type="text"
+                                        value={formData.dateInput}
+                                        readOnly
+                                    />
+                                </div>
+                                <div className="form-select">
+                                    <span>Time</span>
+                                    <select
+                                        name="time"
+                                        value={formData.time}
+                                        onChange={(event) =>
+                                            timeSelectHandler(
+                                                event,
+                                                setFormData
+                                            )
+                                        }
+                                        className={
+                                            formData.time !== ''
+                                                ? ''
+                                                : 'disabled'
+                                        }
+                                    >
+                                        <option value="" disabled hidden>
+                                            Select time
+                                        </option>
+                                        <option value="13:00 - 16:00 PM">
+                                            13:00 - 16:00 PM
+                                        </option>
+                                        <option value="16:00 - 19:00 PM">
+                                            16:00 - 19:00 PM
+                                        </option>
+                                        <option value="19:00 - 22:00 PM">
+                                            19:00 - 22:00 PM
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <button onClick={onCheckout}>Checkout</button>
-        </main>
+                <button onClick={onCheckout}>Checkout</button>
+            </main>
+        </>
     );
 };
 

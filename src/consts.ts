@@ -1,3 +1,5 @@
+export const ORDERS_COLLECTION = 'orders';
+
 export const monthNames = [
     'January',
     'February',

@@ -1,7 +1,6 @@
 import { FirstSlide, SecondSlide, ThirdSlide } from './Slides';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper';
-import React from 'react';
 
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
