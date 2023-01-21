@@ -1,15 +1,14 @@
 import TemplateSlide from './TemplateSlide';
-import React from 'react';
 
 import './Slides.scss';
 
-const ThirdSlide = () => {
+const FirstSlide = () => {
     return (
-        <div className="hm-st-slide hm-st-slide-third">
+        <div className="hm-st-slide hm-st-slide-first">
             <TemplateSlide
-                characterImg={require('../../../assets/images/character-four.png')}
+                characterImg={require('../../../assets/images/character-two.png')}
             >
-                <h4>Spooky game set</h4>
+                <h4>Manas game set</h4>
                 <div className="hm-st-players-quantity">
                     <img
                         src={
@@ -18,11 +17,11 @@ const ThirdSlide = () => {
                         }
                         alt="Players icon"
                     />
-                    <p>{'(10 players)'}</p>
+                    <p>{'(4-6 players)'}</p>
                 </div>
             </TemplateSlide>
         </div>
     );
 };
 
-export default ThirdSlide;
+export default FirstSlide;

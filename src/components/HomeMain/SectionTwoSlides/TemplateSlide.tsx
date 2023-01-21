@@ -1,8 +1,16 @@
-import React from 'react';
-
 import './Slides.scss';
 
-const TemplateSlide = ({ children, characterImg, isSecond }) => {
+interface ITemplateSlideProps {
+    children: React.ReactNode[];
+    characterImg: string;
+    isSecond?: boolean;
+}
+
+const TemplateSlide = ({
+    children,
+    characterImg,
+    isSecond,
+}: ITemplateSlideProps) => {
     return (
         <>
             <img src={characterImg} alt="Character" />

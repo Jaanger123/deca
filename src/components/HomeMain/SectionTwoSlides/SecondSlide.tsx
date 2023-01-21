@@ -1,15 +1,15 @@
 import TemplateSlide from './TemplateSlide';
-import React from 'react';
 
 import './Slides.scss';
 
-const FirstSlide = () => {
+const SecondSlide = () => {
     return (
-        <div className="hm-st-slide hm-st-slide-first">
+        <div className="hm-st-slide hm-st-slide-second">
             <TemplateSlide
-                characterImg={require('../../../assets/images/character-two.png')}
+                characterImg={require('../../../assets/images/character-three.png')}
+                isSecond={true}
             >
-                <h4>Manas game set</h4>
+                <h4>Classic game set</h4>
                 <div className="hm-st-players-quantity">
                     <img
                         src={
@@ -18,11 +18,12 @@ const FirstSlide = () => {
                         }
                         alt="Players icon"
                     />
-                    <p>{'(4-6 players)'}</p>
+
+                    <p>{'(4 players)'}</p>
                 </div>
             </TemplateSlide>
         </div>
     );
 };
 
-export default FirstSlide;
+export default SecondSlide;

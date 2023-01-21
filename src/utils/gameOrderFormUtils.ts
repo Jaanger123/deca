@@ -144,7 +144,7 @@ export const emailInputHandler = (
     });
 };
 
-export const numberInputHandler = (
+export const validateNumber = (
     event: React.ChangeEvent<HTMLInputElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>,
     countryCode: string
@@ -153,18 +153,20 @@ export const numberInputHandler = (
 
     setFormData((prev) => {
         const newObj = { ...prev };
-        newObj[key] = numberPattern(
+        const number = numberPattern(
             countryCode,
             event.target.value.slice(countryCode.length),
             prev.number.slice(countryCode.length)
         );
+
+        newObj[key] = number;
 
         return newObj;
     });
 };
 
 export const countryCodeInputHandler = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLSelectElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>,
     setCountryCode: React.Dispatch<React.SetStateAction<string>>
 ) => {
@@ -178,7 +180,7 @@ export const countryCodeInputHandler = (
 };
 
 export const gameSetSelectHandler = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLSelectElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>
 ) => {
     setFormData((prev) => {
@@ -192,7 +194,7 @@ export const gameSetSelectHandler = (
 };
 
 export const playersSelectHandler = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLSelectElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>
 ) => {
     setFormData((prev) => {
@@ -206,7 +208,7 @@ export const playersSelectHandler = (
 };
 
 export const charactersSelectHandler = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLSelectElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>
 ) => {
     setFormData((prev) => {
@@ -235,7 +237,7 @@ export const dateCalendarHandler = (
 };
 
 export const timeSelectHandler = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLSelectElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>
 ) => {
     setFormData((prev) => {

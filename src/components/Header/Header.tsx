@@ -1,5 +1,4 @@
 import Carousel from '../Carousel';
-import React from 'react';
 
 import './Header.scss';
 

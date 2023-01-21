@@ -2,7 +2,7 @@ import {
     surnameInputHandler,
     nameInputHandler,
     emailInputHandler,
-    numberInputHandler,
+    validateNumber,
     countryCodeInputHandler,
     gameSetSelectHandler,
     playersSelectHandler,
@@ -12,6 +12,7 @@ import {
 } from '../../utils/gameOrderFormUtils';
 import { GameOrderContext } from '../../contexts/GameOrderContext';
 import { addDocument } from '../../firestoreClient';
+import PopupModal from '../PopupModal/PopupModal';
 import { ORDERS_COLLECTION } from '../../consts';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
@@ -20,11 +21,25 @@ import { useContext } from 'react';
 import './RegisterMain.scss';
 import './Calendar.scss';
 
-import KG from '../../assets/images/input-kyrgyz-flag.svg';
-import RU from '../../assets/images/input-russian-flag.svg';
-import PopupModal from '../PopupModal/PopupModal';
+// import KG from '../../assets/images/input-kyrgyz-flag.svg'; // ????
+// import RU from '../../assets/images/input-russian-flag.svg'; // ????
+const KG = require('../../assets/images/input-kyrgyz-flag.svg') as string; // ????
+const RU = require('../../assets/images/input-russian-flag.svg') as string; // ????
 
 const RegisterMain = () => {
+    const [surnameError, setSurnameError] = useState(false);
+    const [nameError, setNameError] = useState(false);
+    const [emailError, setEmailError] = useState(false);
+    const [numberError, setNumberError] = useState(false);
+    const [showPopup, setShowPopup] = useState(false);
+    const [numberLength, setNumberLength] = useState(0);
+
+    console.log(numberLength);
+
+    const gameOrderContext = useContext(GameOrderContext); // ?????????
+
+    if (!gameOrderContext) return null;
+
     const {
         formData,
         setFormData,
@@ -32,13 +47,23 @@ const RegisterMain = () => {
         setDate,
         countryCode,
         setCountryCode,
-    } = useContext(GameOrderContext);
+    } = gameOrderContext;
 
-    const [surnameError, setSurnameError] = useState(false);
-    const [nameError, setNameError] = useState(false);
-    const [emailError, setEmailError] = useState(false);
-    const [numberError, setNumberError] = useState(false);
-    const [showPopup, setShowPopup] = useState(false);
+    const numberInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
+        validateNumber(event, setFormData, countryCode);
+        console.log(formData.number.length);
+
+        if (countryCode === '+996 ') {
+            setNumberError(
+                !(
+                    formData.number.length === 19 ||
+                    formData.number.length === 18
+                )
+            );
+        } else if (countryCode === '+7 ') {
+            setNumberError(!(formData.number.length === 18));
+        }
+    };
 
     const onCheckout = () => {
         if (
@@ -51,7 +76,6 @@ const RegisterMain = () => {
             formData.characters.trim() === '' ||
             formData.time.trim() === ''
         ) {
-            // alert('Fill in all the fields');
             setShowPopup(true);
             setTimeout(() => {
                 setShowPopup(false);
@@ -76,7 +100,7 @@ const RegisterMain = () => {
             date,
         };
 
-        // addDocument(ORDERS_COLLECTION, data);
+        addDocument(ORDERS_COLLECTION, data);
     };
 
     return (
@@ -163,13 +187,7 @@ const RegisterMain = () => {
                                         type="tel"
                                         name="number"
                                         value={formData.number}
-                                        onChange={(event) =>
-                                            numberInputHandler(
-                                                event,
-                                                setFormData,
-                                                countryCode
-                                            )
-                                        }
+                                        onChange={numberInputHandler}
                                     />
                                     <div className="register-contact-form-flag-arrow">
                                         <div className="register-contact-form-flag-wrapper">
@@ -300,13 +318,13 @@ const RegisterMain = () => {
                         <hr />
                         <div className="register-date-form-inputs-wrapper">
                             <Calendar
-                                onChange={(event) =>
+                                onChange={(date: Date) => {
                                     dateCalendarHandler(
-                                        event,
+                                        date,
                                         setFormData,
                                         setDate
-                                    )
-                                }
+                                    );
+                                }}
                                 value={date}
                             />
                             <div className="register-date-form-inputs">

@@ -1,4 +1,3 @@
-import React from 'react';
 import RegisterMain from '../components/RegisterMain/RegisterMain';
 
 const Register = () => {

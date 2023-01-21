@@ -1,10 +1,13 @@
-import React from 'react';
-
 import './PopupModal.scss';
 
-const PopupModal = ({ message, showPopup, setShowPopup }) => {
+interface IPopupModalProps {
+    message: string;
+    showPopup: boolean; // ? Should I use certain type for states?
+    setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const PopupModal = ({ message, showPopup, setShowPopup }: IPopupModalProps) => {
     const popupStyles = { top: '-200px' };
-    console.log(showPopup);
 
     return (
         <div className="popup" style={showPopup ? {} : popupStyles}>

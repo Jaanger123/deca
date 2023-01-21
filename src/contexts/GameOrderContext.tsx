@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { IFormData } from '../types/gameOrderTypes';
 import { transformDate } from '../utils/gameOrderFormUtils';
 
-interface AppContextInterface {
+interface IGameOrder {
     formData: IFormData;
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>;
     date: Date;
@@ -15,9 +15,16 @@ interface IGameOrderProviderProps {
     children: React.ReactNode;
 }
 
-export const GameOrderContext = React.createContext<AppContextInterface | null>(
-    null
-);
+// interface IValues {
+//     formData: IFormData;
+//     setFormData: React.Dispatch<React.SetStateAction<IFormData>>;
+//     date: Date;
+//     setDate: React.Dispatch<React.SetStateAction<Date>>;
+//     countryCode: string;
+//     setCountryCode: React.Dispatch<React.SetStateAction<string>>;
+// }
+
+export const GameOrderContext = React.createContext<IGameOrder | null>(null);
 
 export const GameOrderProvider = ({ children }: IGameOrderProviderProps) => {
     const [date, setDate] = useState(new Date());

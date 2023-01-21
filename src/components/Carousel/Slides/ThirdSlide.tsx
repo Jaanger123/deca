@@ -1,7 +1,6 @@
 import { EffectCoverflow, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { NavLink } from 'react-router-dom';
-import React from 'react';
 
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';

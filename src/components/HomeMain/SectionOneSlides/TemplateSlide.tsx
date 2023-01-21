@@ -1,8 +1,12 @@
-import React from 'react';
-
 import './Slides.scss';
 
-const TemplateSlide = ({ children, slideImg, imgAlt }) => {
+interface ITemplateSlideProps {
+    children: React.ReactNode;
+    slideImg: string;
+    imgAlt: string;
+}
+
+const TemplateSlide = ({ children, slideImg, imgAlt }: ITemplateSlideProps) => {
     return (
         <>
             <div className="hm-so-slide-text">{children}</div>

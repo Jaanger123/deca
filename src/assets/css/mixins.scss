@@ -1,0 +1,13 @@
+@mixin hammersmith-one {
+    font-family: 'Hammersmith One', sans-serif;
+}
+
+@mixin roboto {
+    font-family: 'Roboto', sans-serif;
+}
+
+@mixin flex-sb-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

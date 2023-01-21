@@ -1,10 +1,14 @@
+@import '../../../assets/css/variables.scss';
+
+$dark-gray-text: #595959;
+
 .hm-st-slide {
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     width: auto;
-    border: 0.18em solid #a5a5a5;
+    border: 0.18em solid $border;
     border-radius: 1em;
     background-repeat: no-repeat;
     background-size: 55%;
@@ -29,7 +33,7 @@
         h3 {
             opacity: 0;
             font-size: 3.5rem;
-            color: #dd5555;
+            color: $primary;
         }
 
         h4 {
@@ -37,7 +41,7 @@
         }
 
         p {
-            color: #595959;
+            color: $dark-gray-text;
             font-size: 1.5em;
         }
 

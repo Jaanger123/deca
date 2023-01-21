@@ -2,7 +2,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper';
 import SectionOne from './SectionOneSlides';
 import SectionTwo from './SectionTwoSlides';
-import React from 'react';
 
 import 'swiper/css/scrollbar';
 

@@ -1,13 +1,15 @@
 import TemplateSlide from './TemplateSlide';
-import React from 'react';
 
 import './Slides.scss';
 
-const SecondSlide = () => {
+const ThirdSlide = () => {
     return (
-        <div className="hm-so-slide hm-so-slide-second">
+        <div className="hm-so-slide hm-so-slide-third">
             <TemplateSlide
-                slideImg={require('../../../assets/images/people.svg').default}
+                slideImg={
+                    require('../../../assets/images/halloween-pumpkin.svg')
+                        .default
+                }
                 imgAlt="People"
             >
                 <h2>Lorem ipsum dolor sit amet</h2>
@@ -24,4 +26,4 @@ const SecondSlide = () => {
     );
 };
 
-export default SecondSlide;
+export default ThirdSlide;

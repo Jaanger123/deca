@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import NavbarFooterLayout from './NavbarFooterLayout';
 import { Home, About, Register } from '../pages';
-import React from 'react';
 
 const AppRouter = () => {
     return (
