@@ -1,3 +1,6 @@
+@import '../../assets/css/variables.scss';
+@import '../../assets/css/mixins.scss';
+
 .about-main {
     width: 100%;
     background-image: url('../../assets/images/page-background.png');
@@ -28,7 +31,7 @@
             margin-top: 1.2em;
             font-size: 5rem;
             font-weight: 400;
-            color: #dd5555;
+            color: $primary;
             margin-bottom: -0.125em;
         }
 
@@ -37,7 +40,7 @@
             font-weight: 100;
             font-size: 1.75rem;
             width: 30%;
-            color: #797979;
+            color: $light-gray;
         }
 
         & > img {
@@ -75,11 +78,9 @@
             padding-top: 2em;
 
             .about-us {
+                @include information-card;
                 display: flex;
                 align-items: center;
-                background-color: white;
-                border-radius: 1em;
-                box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                 padding: 0 1em;
 
                 & > h3 {
@@ -87,7 +88,7 @@
                     text-align: center;
                     margin-inline: 1em;
                     font-size: 3.5rem;
-                    color: #dd5555;
+                    color: $primary;
                 }
 
                 .about-us-text {
@@ -121,9 +122,7 @@
                 }
 
                 .about-our-goal {
-                    background-color: white;
-                    border-radius: 1em;
-                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    @include information-card;
                     width: 75%;
                     margin-block: 3em;
                     padding: 2.5em 0 1em 3.5em;
@@ -147,9 +146,7 @@
                 width: 100%;
 
                 .about-success {
-                    background-color: #fff;
-                    border-radius: 1em;
-                    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+                    @include information-card;
                     width: 74%;
                     padding: 6em 3.5em;
                 }
@@ -157,14 +154,14 @@
                 & > button {
                     font-size: 1.25rem;
                     border-radius: 0.5em;
-                    color: #fff;
-                    background-color: #dd5555;
-                    border: 0.125em solid #dd5555;
+                    color: white;
+                    background-color: $primary;
+                    border: 0.125em solid $primary;
                     padding: 0.625em 1.75em;
 
                     &:hover {
-                        background-color: #fff;
-                        color: #dd5555;
+                        background-color: white;
+                        color: $primary;
                     }
                 }
             }

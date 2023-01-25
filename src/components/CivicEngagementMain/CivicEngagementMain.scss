@@ -1,0 +1,130 @@
+@import '../../assets/css/variables.scss';
+@import '../../assets/css/mixins.scss';
+
+.civic-main {
+    width: 100%;
+    background-image: url('../../assets/images/page-background.png');
+    background-size: 100%;
+
+    .civic-header {
+        height: 85vh;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+
+        .civic-header-text {
+            width: 100%;
+            margin-top: 16%;
+            margin-left: 4em;
+
+            & > h1 {
+                font-size: 4rem;
+                font-weight: 400;
+                color: $dark-text;
+                margin-bottom: 0.125em;
+            }
+
+            & > p {
+                @include roboto;
+                font-weight: 100;
+                font-size: 1.75rem;
+                width: 30%;
+                color: $light-gray;
+            }
+        }
+
+        & > a {
+            align-self: center;
+
+            .civic-arrow {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 3rem;
+                height: 3rem;
+                border-radius: 50%;
+                animation: 1s arrow-bounce ease-in-out infinite alternate;
+
+                & > img {
+                    width: 70%;
+                }
+            }
+        }
+    }
+
+    .civic-content {
+        padding-top: 3em;
+        margin-bottom: 6em;
+        width: 100%;
+
+        & p {
+            @include roboto;
+            font-size: 1.5rem;
+            font-weight: 100;
+            line-height: 115%;
+            color: $dark-text;
+        }
+
+        .civic-container {
+            width: 90%;
+            margin: auto;
+            padding-top: 2em;
+
+            .civic-subtitle {
+                @include hammersmith-one;
+                color: $primary;
+                font-weight: 400;
+                font-size: 1.375rem;
+                margin-top: 2.5em;
+                margin-bottom: 0.5em;
+            }
+
+            .civic-civic-engagement {
+                @include information-card;
+                display: flex;
+                align-items: center;
+                padding-right: 4em;
+
+                & > img {
+                    width: 9%;
+                    margin: 4em 5em;
+                }
+
+                .civic-civic-engagement-text {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2em;
+                    width: 100%;
+                }
+            }
+
+            // .civic-contribution-to-society-wrapper {
+            .civic-card-wrapper {
+                display: flex;
+                flex-direction: column;
+
+                .civic-contribution-to-society {
+                    @include information-card;
+                    padding: 3.2em 6em 3.2em 3em;
+                }
+
+                .civic-how-we-help {
+                    @include information-card;
+                    padding: 2.5em 6em 2.5em 3em;
+                }
+            }
+        }
+    }
+}
+
+@keyframes arrow-bounce {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 10px;
+    }
+}
