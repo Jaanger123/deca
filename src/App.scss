@@ -43,6 +43,32 @@ hr {
     background-color: white;
 }
 
+.form-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.75em;
+    width: 100%;
+
+    // span {
+    //     @include roboto;
+    //     font-size: 1rem;
+    //     font-weight: 400;
+    // }
+
+    & input {
+        color: $dark-text;
+        background-color: $input-bg-color;
+        border: none;
+        border-radius: 0.75em;
+        padding: 0.75em 1em;
+        outline-color: $primary;
+
+        &::placeholder {
+            color: $placeholder-color;
+        }
+    }
+}
+
 @media screen and (max-width: 1820px) {
     html {
         font-size: 20px;

@@ -1,5 +1,5 @@
 import Home from './Home';
 import About from './About';
-import Register from './Register';
+import GameOrder from './GameOrder';
 
-export { Home, About, Register };
+export { Home, About, GameOrder };

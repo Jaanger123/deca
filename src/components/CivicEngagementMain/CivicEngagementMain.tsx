@@ -1,4 +1,5 @@
 import './CivicEngagementMain.scss';
+import { text } from './helper/data';
 
 const CivicEngagementMain = () => {
     return (
@@ -29,26 +30,9 @@ const CivicEngagementMain = () => {
                             alt="Earth icon"
                         />
                         <div className="civic-civic-engagement-text">
-                            <p>
-                                At DECA, we believe that civic engagement is key
-                                to creating successful and impactful community
-                                projects. That's why we make it a priority to
-                                involve members of the community in every step
-                                of the process, from planning to implementation.
-                                By engaging with residents, businesses, and
-                                other stakeholders, we are able to gain valuable
-                                insights and perspectives that help guide our
-                                work.
-                            </p>
-                            <p>
-                                This approach not only helps to ensure that our
-                                project is responsive to the needs of the
-                                community, but it also helps to build trust and
-                                support for our efforts. We believe that by
-                                working together, we can create positive change
-                                and make a real difference in the lives of those
-                                we serve.
-                            </p>
+                            {text.map(({ title }) => (
+                                <p>{title}</p>
+                            ))}
                         </div>
                     </div>
                     {/* <div className="civic-contribution-to-society-wrapper"> */}

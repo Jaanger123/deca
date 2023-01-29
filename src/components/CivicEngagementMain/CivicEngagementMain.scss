@@ -16,7 +16,7 @@
         .civic-header-text {
             width: 100%;
             margin-top: 16%;
-            margin-left: 4em;
+            padding-left: 4em;
 
             & > h1 {
                 font-size: 4rem;
@@ -89,7 +89,7 @@
 
                 & > img {
                     width: 9%;
-                    margin: 4em 5em;
+                    margin: 0 5em;
                 }
 
                 .civic-civic-engagement-text {
@@ -97,6 +97,7 @@
                     flex-direction: column;
                     gap: 2em;
                     width: 100%;
+                    margin: 1.625em 0;
                 }
             }
 

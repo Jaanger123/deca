@@ -1,7 +1,5 @@
 import CivicEngagementMain from '../components/CivicEngagementMain';
 
-const CivicEngagement = () => {
-    return <CivicEngagementMain></CivicEngagementMain>;
-};
+const CivicEngagement = () => <CivicEngagementMain />;
 
 export default CivicEngagement;

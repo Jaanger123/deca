@@ -18,23 +18,25 @@ import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import { useContext } from 'react';
 
-import './RegisterMain.scss';
+import './GameOrderMain.scss';
 import './Calendar.scss';
 
 // import KG from '../../assets/images/input-kyrgyz-flag.svg'; // ????
 // import RU from '../../assets/images/input-russian-flag.svg'; // ????
-const KG = require('../../assets/images/input-kyrgyz-flag.svg') as string; // ????
-const RU = require('../../assets/images/input-russian-flag.svg') as string; // ????
+const KG = require('../../assets/images/input-kyrgyz-flag.svg') as ISVG; // ????
+const RU = require('../../assets/images/input-russian-flag.svg') as ISVG; // ????
 
-const RegisterMain = () => {
+interface ISVG {
+    default: string;
+}
+
+const GameOrderMain = () => {
     const [surnameError, setSurnameError] = useState(false);
     const [nameError, setNameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [numberError, setNumberError] = useState(false);
     const [showPopup, setShowPopup] = useState(false);
     const [numberLength, setNumberLength] = useState(0);
-
-    console.log(numberLength);
 
     const gameOrderContext = useContext(GameOrderContext); // ?????????
 
@@ -110,13 +112,13 @@ const RegisterMain = () => {
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
             />
-            <main className="register-main">
-                <div className="register-form">
-                    <h2 className="register-title">Register to a game</h2>
-                    <div className="register-contact-form">
+            <main className="game-order-main">
+                <div className="game-order-form">
+                    <h2 className="game-order-title">Register to a game</h2>
+                    <div className="game-order-contact-form">
                         <p>Contact information</p>
                         <hr />
-                        <div className="register-contact-form-inputs">
+                        <div className="game-order-contact-form-inputs">
                             <div className="form-input">
                                 <span>Surname</span>
                                 <input
@@ -182,21 +184,21 @@ const RegisterMain = () => {
                             </div>
                             <div className="form-input">
                                 <span>Number</span>
-                                <div className="register-contact-form-editable-select">
+                                <div className="game-order-contact-form-editable-select">
                                     <input
                                         type="tel"
                                         name="number"
                                         value={formData.number}
                                         onChange={numberInputHandler}
                                     />
-                                    <div className="register-contact-form-flag-arrow">
-                                        <div className="register-contact-form-flag-wrapper">
+                                    <div className="game-order-contact-form-flag-arrow">
+                                        <div className="game-order-contact-form-flag-wrapper">
                                             <img
-                                                className="register-contact-form-flag"
+                                                className="game-order-contact-form-flag"
                                                 src={
                                                     countryCode === '+996 '
-                                                        ? KG
-                                                        : RU
+                                                        ? KG.default
+                                                        : RU.default
                                                 }
                                                 alt="Country"
                                             />
@@ -217,7 +219,7 @@ const RegisterMain = () => {
                                             <option value="+7 ">+7</option>
                                         </select>
                                         <img
-                                            className="register-contact-form-arrow"
+                                            className="game-order-contact-form-arrow"
                                             src={
                                                 require('../../assets/images/input-arrow-down.svg')
                                                     .default
@@ -234,10 +236,10 @@ const RegisterMain = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="register-game-form">
+                    <div className="game-order-game-form">
                         <p>Game information</p>
                         <hr />
-                        <div className="register-game-form-selects">
+                        <div className="game-order-game-form-selects">
                             <div className="form-select">
                                 <span>Game set</span>
                                 <select
@@ -259,7 +261,7 @@ const RegisterMain = () => {
                                     <option value="Jaga">Jaga</option>
                                 </select>
                             </div>
-                            <div className="register-game-form-inputs-wrapper">
+                            <div className="game-order-game-form-inputs-wrapper">
                                 <div className="form-select">
                                     <span>Number of players</span>
                                     <select
@@ -313,10 +315,10 @@ const RegisterMain = () => {
                         </div>
                     </div>
 
-                    <div className="register-date-form">
+                    <div className="game-order-date-form">
                         <p>Date</p>
                         <hr />
-                        <div className="register-date-form-inputs-wrapper">
+                        <div className="game-order-date-form-inputs-wrapper">
                             <Calendar
                                 onChange={(date: Date) => {
                                     dateCalendarHandler(
@@ -327,7 +329,7 @@ const RegisterMain = () => {
                                 }}
                                 value={date}
                             />
-                            <div className="register-date-form-inputs">
+                            <div className="game-order-date-form-inputs">
                                 <div className="form-input">
                                     <span>Date</span>
                                     <input
@@ -377,4 +379,4 @@ const RegisterMain = () => {
     );
 };
 
-export default RegisterMain;
+export default GameOrderMain;

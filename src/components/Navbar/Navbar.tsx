@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import './Navbar.scss';
 
@@ -28,8 +28,12 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="nav-auth-buttons">
-                        <button className="nav-sign-in">Sign in</button>
-                        <button className="nav-sign-up">Sign up</button>
+                        <Link to="sign-in">
+                            <button className="nav-sign-in">Sign in</button>
+                        </Link>
+                        <Link to="sign-up">
+                            <button className="nav-sign-up">Sign up</button>
+                        </Link>
                     </div>
                 </div>
             </div>

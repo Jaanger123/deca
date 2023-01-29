@@ -1,10 +1,7 @@
 @import '../../assets/css/variables.scss';
 @import '../../assets/css/mixins.scss';
 
-$input-bg-color: #eeeeee;
-$placeholder-color: #8a8a8a;
-
-.register-main {
+.game-order-main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -57,7 +54,7 @@ $placeholder-color: #8a8a8a;
         font-size: 0.825rem;
     }
 
-    .register-form {
+    .game-order-form {
         width: 40%;
         min-width: 550px;
         background-color: white;
@@ -84,7 +81,7 @@ $placeholder-color: #8a8a8a;
             }
         }
 
-        .register-title {
+        .game-order-title {
             font-size: 2.75rem;
             margin-bottom: 1.375em;
         }
@@ -128,37 +125,37 @@ $placeholder-color: #8a8a8a;
             }
         }
 
-        .form-input {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 0.75em;
-            width: 100%;
+        // .form-input {
+        //     display: flex;
+        //     flex-direction: column;
+        //     margin-bottom: 0.75em;
+        //     width: 100%;
 
-            & input {
-                color: $dark-text;
-                background-color: $input-bg-color;
-                border: none;
-                border-radius: 0.75em;
-                padding: 0.75em 1em;
-                outline-color: $primary;
+        //     & input {
+        //         color: $dark-text;
+        //         background-color: $input-bg-color;
+        //         border: none;
+        //         border-radius: 0.75em;
+        //         padding: 0.75em 1em;
+        //         outline-color: $primary;
 
-                &::placeholder {
-                    color: $placeholder-color;
-                }
-            }
-        }
+        //         &::placeholder {
+        //             color: $placeholder-color;
+        //         }
+        //     }
+        // }
 
-        .register-contact-form {
+        .game-order-contact-form {
             margin-bottom: 4em;
 
-            .form-input .register-contact-form-editable-select {
+            .form-input .game-order-contact-form-editable-select {
                 position: relative;
 
                 & > input {
                     width: 100%;
                 }
 
-                .register-contact-form-flag-arrow {
+                .game-order-contact-form-flag-arrow {
                     position: absolute;
                     right: 0;
                     top: 50%;
@@ -168,7 +165,7 @@ $placeholder-color: #8a8a8a;
                     display: flex;
                     align-items: center;
 
-                    .register-contact-form-flag-wrapper {
+                    .game-order-contact-form-flag-wrapper {
                         display: flex;
                         align-items: center;
                         width: 2.5rem;
@@ -177,12 +174,12 @@ $placeholder-color: #8a8a8a;
                         border-radius: 0.25em;
                         overflow: hidden;
 
-                        .register-contact-form-flag {
+                        .game-order-contact-form-flag {
                             width: 100%;
                         }
                     }
 
-                    .register-contact-form-arrow {
+                    .game-order-contact-form-arrow {
                         width: 1rem;
                     }
 
@@ -198,10 +195,10 @@ $placeholder-color: #8a8a8a;
             }
         }
 
-        .register-game-form {
+        .game-order-game-form {
             margin-bottom: 4em;
 
-            .register-game-form-inputs-wrapper {
+            .game-order-game-form-inputs-wrapper {
                 display: flex;
                 justify-content: space-between;
                 gap: 2em;
@@ -213,13 +210,13 @@ $placeholder-color: #8a8a8a;
             }
         }
 
-        .register-date-form {
-            .register-date-form-inputs-wrapper {
+        .game-order-date-form {
+            .game-order-date-form-inputs-wrapper {
                 display: flex;
                 justify-content: space-between;
             }
 
-            .register-date-form-inputs {
+            .game-order-date-form-inputs {
                 width: 44%;
             }
         }

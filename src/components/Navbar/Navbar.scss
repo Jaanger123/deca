@@ -1,15 +1,16 @@
-@import '../../assets/css/mixins.scss';
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
 
 nav {
     height: 4rem;
     box-shadow: 0.75em -1em 2.125em rgba(0, 0, 0, 0.25);
-    background-color: #fff;
+    background-color: white;
 
     .nav-wrapper {
         width: 92%;
         height: 100%;
         margin: auto;
-        @include flex-sb-center;
+        @include flex(row, space-between, center);
 
         & > a {
             display: flex;
@@ -23,50 +24,41 @@ nav {
 
         .nav-buttons {
             width: 55%;
-            @include flex-sb-center;
+            @include flex(row, space-between, center);
 
             ul {
                 width: 55%;
                 list-style: none;
-                @include flex-sb-center;
+                @include flex(row, space-between, center);
 
                 a {
                     transition: 0.2s;
 
                     &:hover {
-                        color: #dd5555;
+                        color: $primary;
                     }
                 }
             }
 
             .nav-auth-buttons {
-                display: flex;
-                justify-content: right;
-
-                button {
-                    padding: 0.375em 1.375em;
-                    border-radius: 0.5em;
-                }
+                @include flex(row, right);
 
                 .nav-sign-in {
-                    border: 0.125em solid #252525;
-                }
-
-                .nav-sign-in:hover {
-                    background-color: #252525;
-                    color: #fff;
+                    @include button(
+                        0.375em,
+                        1.375em,
+                        1rem,
+                        white,
+                        $dark-text,
+                        $dark-text,
+                        $dark-text,
+                        white
+                    );
                 }
 
                 .nav-sign-up {
-                    color: #fff;
-                    background-color: #dd5555;
-                    border: 0.125em solid #dd5555;
+                    @include button(0.375em, 1.375em, 1rem);
                     margin-left: 1em;
-                }
-
-                .nav-sign-up:hover {
-                    background-color: #fff;
-                    color: #dd5555;
                 }
             }
         }

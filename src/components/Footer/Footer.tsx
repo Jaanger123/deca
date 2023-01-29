@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 const Footer = () => {
@@ -10,7 +11,9 @@ const Footer = () => {
                         <p>deca10@gmail.com</p>
                         <hr />
                     </div>
-                    <button>Register now</button>
+                    <Link to="sign-up">
+                        <button>Register now</button>
+                    </Link>
                     <div className="footer-number">
                         <p>+996 707 080 904</p>
                         <hr />

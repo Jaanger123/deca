@@ -1,3 +1,5 @@
+@import 'assets/css/variables.scss';
+
 @mixin hammersmith-one {
     font-family: 'Hammersmith One', sans-serif;
 }
@@ -6,10 +8,34 @@
     font-family: 'Roboto', sans-serif;
 }
 
-@mixin flex-sb-center {
+@mixin flex($fd: row, $jc: flex-start, $ai: 'normal') {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: $fd;
+    justify-content: $jc;
+    align-items: $ai;
+}
+
+@mixin button(
+    $pb,
+    $pi,
+    $fs: 1rem,
+    $bgc: $primary,
+    $bc: $primary,
+    $c: white,
+    $hbgc: white,
+    $hc: $primary
+) {
+    font-size: $fs;
+    border-radius: 0.5em;
+    background-color: $bgc;
+    border: 0.125em solid $bc;
+    color: $c;
+    padding: $pb $pi;
+
+    &:hover {
+        background-color: $hbgc;
+        color: $hc;
+    }
 }
 
 @mixin information-card {

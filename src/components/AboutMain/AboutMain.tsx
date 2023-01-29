@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './AboutMain.scss';
 
 const AboutMain = () => {
@@ -82,7 +83,9 @@ const AboutMain = () => {
                                 successful.
                             </p>
                         </div>
-                        <button>Register now</button>
+                        <Link to="/sign-up">
+                            <button>Register now</button>
+                        </Link>
                     </div>
                     <div className="about-collaboration">
                         <p>In collaboration with</p>

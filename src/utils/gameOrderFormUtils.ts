@@ -3,6 +3,7 @@ import { monthNames } from '../consts';
 import { IFormData } from '../types/gameOrderTypes';
 
 export const transformDate = (date: Date) => {
+    console.log(date, 'data');
     return `${date.getDate()} ${
         monthNames[date.getMonth()]
     }, ${date.getFullYear()}`;
@@ -145,17 +146,15 @@ export const emailInputHandler = (
 };
 
 export const validateNumber = (
-    event: React.ChangeEvent<HTMLInputElement>,
+    { target: { name: key, value } }: React.ChangeEvent<HTMLInputElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>,
     countryCode: string
 ) => {
-    const key = event.target.name;
-
     setFormData((prev) => {
         const newObj = { ...prev };
         const number = numberPattern(
             countryCode,
-            event.target.value.slice(countryCode.length),
+            value.slice(countryCode.length),
             prev.number.slice(countryCode.length)
         );
 
