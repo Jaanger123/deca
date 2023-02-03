@@ -15,6 +15,14 @@
     align-items: $ai;
 }
 
+@mixin background($bi, $w: 100%, $bs: auto, $bp: left top) {
+    width: $w;
+    background-image: url($bi);
+    background-repeat: no-repeat;
+    background-size: $bs;
+    background-position: $bp;
+}
+
 @mixin button(
     $pb,
     $pi,
@@ -31,6 +39,7 @@
     border: 0.125em solid $bc;
     color: $c;
     padding: $pb $pi;
+    cursor: pointer;
 
     &:hover {
         background-color: $hbgc;
@@ -38,8 +47,31 @@
     }
 }
 
+@mixin arrow {
+    @include flex(row, center, center);
+    position: relative;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    animation: 1s arrow-bounce ease-in-out infinite alternate;
+
+    & > img {
+        width: 70%;
+    }
+}
+
 @mixin information-card {
     background-color: white;
     border-radius: 1em;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes arrow-bounce {
+    0% {
+        top: 0;
+    }
+
+    100% {
+        top: 10px;
+    }
 }

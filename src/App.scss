@@ -56,12 +56,15 @@ hr {
     // }
 
     & input {
+        @include roboto;
         color: $dark-text;
         background-color: $input-bg-color;
         border: none;
         border-radius: 0.75em;
         padding: 0.75em 1em;
         outline-color: $primary;
+        font-size: 1rem;
+        font-weight: 400;
 
         &::placeholder {
             color: $placeholder-color;

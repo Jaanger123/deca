@@ -63,6 +63,7 @@ $banner-bg-color: rgba(49, 49, 49, 0.8);
             a {
                 color: $primary;
                 text-decoration: underline;
+                cursor: pointer;
             }
 
             .auth-form {

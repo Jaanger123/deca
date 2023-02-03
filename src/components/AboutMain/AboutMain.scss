@@ -1,33 +1,19 @@
-@import '../../assets/css/variables.scss';
-@import '../../assets/css/mixins.scss';
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
 
 .about-main {
-    width: 100%;
-    background-image: url('../../assets/images/page-background.png');
-    background-size: 100%;
+    @include background('/assets/images/page-background.png', 100%, 100%);
 
     .about-welcome {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flex(column, space-between, center);
         text-align: center;
+        height: 85vh;
 
         .about-arrow {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 3rem;
-            height: 3rem;
-            border-radius: 50%;
-            animation: 1s arrow-bounce ease-in-out infinite alternate;
-
-            & > img {
-                width: 70%;
-            }
+            @include arrow;
         }
 
-        & > h1 {
+        h1 {
             margin-top: 1.2em;
             font-size: 5rem;
             font-weight: 400;
@@ -35,10 +21,11 @@
             margin-bottom: -0.125em;
         }
 
-        & > p {
-            font-family: 'Roboto', sans-serif;
+        p {
+            @include roboto;
             font-weight: 100;
             font-size: 1.75rem;
+            line-height: 115%;
             width: 30%;
             color: $light-gray;
         }
@@ -50,11 +37,11 @@
         }
 
         @media screen and (max-width: 1300px) {
-            & > h1 {
+            h1 {
                 font-size: 4.5rem;
             }
 
-            & > p {
+            p {
                 width: 40%;
             }
         }
@@ -64,11 +51,11 @@
         padding-top: 5em;
         width: 100%;
 
-        & p {
-            font-family: 'Roboto', sans-serif;
+        p {
+            @include roboto;
             font-size: 1.5rem;
             font-weight: 100;
-            line-height: 97%;
+            line-height: 115%;
             color: #121212;
         }
 
@@ -79,11 +66,10 @@
 
             .about-us {
                 @include information-card;
-                display: flex;
-                align-items: center;
+                @include flex(row, flex-start, center);
                 padding: 0 1em;
 
-                & > h3 {
+                h3 {
                     width: 30%;
                     text-align: center;
                     margin-inline: 1em;
@@ -102,20 +88,19 @@
             }
 
             .about-our-goal-wrapper {
-                display: flex;
+                @include flex;
                 width: 100%;
 
                 .about-character {
-                    display: flex;
-                    justify-content: right;
-                    align-items: flex-end;
-                    width: 25%;
-                    background-image: url('../../assets/images/kyrgyz-flag-sm.png');
-                    background-repeat: no-repeat;
-                    background-size: 80%;
-                    background-position: center 40%;
+                    @include flex(row, right, flex-end);
+                    @include background(
+                        '/assets/images/kyrgyz-flag-sm.png',
+                        25%,
+                        80%,
+                        center 40%
+                    );
 
-                    & > img {
+                    img {
                         width: 30%;
                         margin-right: 2em;
                     }
@@ -127,12 +112,12 @@
                     margin-block: 3em;
                     padding: 2.5em 0 1em 3.5em;
 
-                    & > p {
+                    p {
                         width: 88%;
                         margin-bottom: 1em;
                     }
 
-                    & > p:first-child {
+                    p:first-child {
                         width: 86%;
                         margin-bottom: 1em;
                     }
@@ -140,9 +125,7 @@
             }
 
             .about-success-wrapper {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+                @include flex(row, space-between, center);
                 width: 100%;
 
                 .about-success {
@@ -151,43 +134,30 @@
                     padding: 6em 3.5em;
                 }
 
-                & a button {
-                    font-size: 1.25rem;
-                    border-radius: 0.5em;
-                    color: white;
-                    background-color: $primary;
-                    border: 0.125em solid $primary;
-                    padding: 0.625em 1.75em;
-
-                    &:hover {
-                        background-color: white;
-                        color: $primary;
-                    }
+                a button {
+                    @include button(
+                        0.625em,
+                        1.75em,
+                        1.25rem,
+                        $primary,
+                        $primary,
+                        white,
+                        white,
+                        $primary
+                    );
                 }
             }
 
             .about-collaboration {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+                @include flex(row, space-between, center);
                 width: 60%;
                 margin: auto;
                 padding: 4em 0 6em;
 
-                & > img {
+                img {
                     width: 30%;
                 }
             }
         }
-    }
-}
-
-@keyframes arrow-bounce {
-    0% {
-        top: 0;
-    }
-
-    100% {
-        top: 10px;
     }
 }
