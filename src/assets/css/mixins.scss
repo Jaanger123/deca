@@ -8,6 +8,10 @@
     font-family: 'Roboto', sans-serif;
 }
 
+@mixin verdana {
+    font-family: 'Verdana', sans-serif;
+}
+
 @mixin flex($fd: row, $jc: flex-start, $ai: 'normal') {
     display: flex;
     flex-direction: $fd;

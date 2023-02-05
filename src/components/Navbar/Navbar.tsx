@@ -1,3 +1,4 @@
+import { ABOUT_ROUTE, CIVIC_ENGAGEMENT_ROUTE } from 'utils/consts';
 import { Link, NavLink } from 'react-router-dom';
 
 import './Navbar.scss';
@@ -16,10 +17,10 @@ const Navbar = () => {
                 <div className="nav-buttons">
                     <ul>
                         <li>
-                            <NavLink to="/about">About</NavLink>
+                            <NavLink to={ABOUT_ROUTE}>About</NavLink>
                         </li>
                         <li>
-                            <NavLink to="/civic-engagement">
+                            <NavLink to={CIVIC_ENGAGEMENT_ROUTE}>
                                 Civic Engagement
                             </NavLink>
                         </li>

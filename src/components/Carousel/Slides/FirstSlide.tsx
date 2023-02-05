@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+import { ABOUT_ROUTE } from 'utils/consts';
 
 import './Slides.scss';
 
@@ -15,7 +16,7 @@ const FirstSlide = () => {
                     <p className="slide-description">
                         Role-playing board games now in Kyrgyzstan
                     </p>
-                    <NavLink to="/about">
+                    <NavLink to={ABOUT_ROUTE}>
                         <button className="slide-button">ABOUT US</button>
                     </NavLink>
                 </div>

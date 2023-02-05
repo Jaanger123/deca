@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState, createContext, useContext } from 'react';
 import { IFormData } from '../types/gameOrderTypes';
-import { transformDate } from '../utils/gameOrderFormUtils';
+import { transformDate } from '../utils/gameOrder';
 
-interface IGameOrder {
+interface IGameOrderContext {
     formData: IFormData;
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>;
     date: Date;
@@ -15,16 +15,9 @@ interface IGameOrderProviderProps {
     children: React.ReactNode;
 }
 
-// interface IValues {
-//     formData: IFormData;
-//     setFormData: React.Dispatch<React.SetStateAction<IFormData>>;
-//     date: Date;
-//     setDate: React.Dispatch<React.SetStateAction<Date>>;
-//     countryCode: string;
-//     setCountryCode: React.Dispatch<React.SetStateAction<string>>;
-// }
+export const GameOrderContext = createContext<IGameOrderContext | null>(null);
 
-export const GameOrderContext = React.createContext<IGameOrder | null>(null);
+export const useGameOrder = () => useContext(GameOrderContext);
 
 export const GameOrderProvider = ({ children }: IGameOrderProviderProps) => {
     const [date, setDate] = useState(new Date());

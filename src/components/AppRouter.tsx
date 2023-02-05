@@ -2,22 +2,31 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import CivicEngagement from '../pages/CivicEngagement';
 import NavbarFooterLayout from './NavbarFooterLayout';
 import { Home, About, GameOrder } from '../pages';
-import SignIn from '../pages/SignIn';
-import SignUp from '../pages/SignUp';
 import Auth from '../pages/Auth';
+import {
+    ABOUT_ROUTE,
+    CIVIC_ENGAGEMENT_ROUTE,
+    GAME_ORDER_ROUTE,
+    HOME_ROUTE,
+    SIGN_IN_ROUTE,
+    SIGN_UP_ROUTE,
+} from 'utils/consts';
 
 const AppRouter = () => {
     return (
         <Routes>
-            <Route path="/" element={<NavbarFooterLayout />}>
+            <Route path={HOME_ROUTE} element={<NavbarFooterLayout />}>
                 <Route index element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/civic-engagement" element={<CivicEngagement />} />
-                <Route path="/game-order" element={<GameOrder />} />
+                <Route path={ABOUT_ROUTE} element={<About />} />
+                <Route
+                    path={CIVIC_ENGAGEMENT_ROUTE}
+                    element={<CivicEngagement />}
+                />
+                <Route path={GAME_ORDER_ROUTE} element={<GameOrder />} />
             </Route>
-            <Route path="/sign-up" element={<Auth />} />
-            <Route path="/sign-in" element={<Auth />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path={SIGN_UP_ROUTE} element={<Auth />} />
+            <Route path={SIGN_IN_ROUTE} element={<Auth />} />
+            <Route path="*" element={<Navigate to={HOME_ROUTE} />} />
         </Routes>
     );
 };

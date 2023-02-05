@@ -9,14 +9,13 @@ import {
     charactersSelectHandler,
     dateCalendarHandler,
     timeSelectHandler,
-} from '../../utils/gameOrderFormUtils';
-import { GameOrderContext } from '../../contexts/GameOrderContext';
+} from '../../utils/gameOrder';
+import { useGameOrder } from '../../contexts/GameOrderContext';
 import { addDocument } from '../../firestoreClient';
 import PopupModal from '../PopupModal/PopupModal';
 import { ORDERS_COLLECTION } from '../../consts';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
-import { useContext } from 'react';
 
 import './GameOrderMain.scss';
 import './Calendar.scss';
@@ -38,9 +37,9 @@ const GameOrderMain = () => {
     const [showPopup, setShowPopup] = useState(false);
     const [numberLength, setNumberLength] = useState(0);
 
-    const gameOrderContext = useContext(GameOrderContext); // ?????????
+    const gameOrderContextValues = useGameOrder(); // ?????????
 
-    if (!gameOrderContext) return null;
+    if (!gameOrderContextValues) return null;
 
     const {
         formData,
@@ -49,11 +48,10 @@ const GameOrderMain = () => {
         setDate,
         countryCode,
         setCountryCode,
-    } = gameOrderContext;
+    } = gameOrderContextValues;
 
     const numberInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         validateNumber(event, setFormData, countryCode);
-        console.log(formData.number.length);
 
         if (countryCode === '+996 ') {
             setNumberError(

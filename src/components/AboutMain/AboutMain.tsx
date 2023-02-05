@@ -1,4 +1,6 @@
+import { SIGN_UP_ROUTE } from 'utils/consts';
 import { Link } from 'react-router-dom';
+
 import './AboutMain.scss';
 
 const AboutMain = () => {
@@ -83,7 +85,7 @@ const AboutMain = () => {
                                 successful.
                             </p>
                         </div>
-                        <Link to="/sign-up">
+                        <Link to={SIGN_UP_ROUTE}>
                             <button>Register now</button>
                         </Link>
                     </div>

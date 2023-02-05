@@ -1,16 +1,19 @@
-import { GameOrderProvider } from './contexts/GameOrderContext';
+import AuthContextProvider from 'contexts/AuthContextProvider';
+import { GameOrderProvider } from 'contexts/GameOrderContext';
 import { BrowserRouter } from 'react-router-dom';
-import AppRouter from './components/AppRouter';
+import AppRouter from 'components/AppRouter';
 
-import './fonts/HelveticaNeueCyr/stylesheet.css';
+import 'assets/fonts/HelveticaNeueCyr/stylesheet.css';
 import './App.scss';
 
 function App() {
     return (
         <BrowserRouter>
-            <GameOrderProvider>
-                <AppRouter />
-            </GameOrderProvider>
+            <AuthContextProvider>
+                <GameOrderProvider>
+                    <AppRouter />
+                </GameOrderProvider>
+            </AuthContextProvider>
         </BrowserRouter>
     );
 }
