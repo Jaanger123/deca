@@ -74,6 +74,35 @@ $banner-bg-color: rgba(49, 49, 49, 0.8);
                     margin-bottom: 0.25em;
                 }
 
+                .auth-password-input {
+                    position: relative;
+                    width: 100%;
+
+                    // &::after {
+                    //     content: '';
+                    //     position: absolute;
+                    //     top: 50%;
+                    //     right: 4%;
+                    //     transform: translateY(-50%);
+                    //     width: 1.4rem;
+                    //     height: 1.4rem;
+                    //     background-image: url('/assets/images/eye-opened.png');
+                    //     background-size: cover;
+                    // }
+                    img {
+                        position: absolute;
+                        top: 50%;
+                        right: 4%;
+                        transform: translateY(-50%);
+                        width: 1.4rem;
+                        cursor: pointer;
+                    }
+                }
+
+                .auth-password-input input {
+                    width: inherit;
+                }
+
                 .form-buttons {
                     @include flex(column, flex-start, center);
                     margin-top: 1em;

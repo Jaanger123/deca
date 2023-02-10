@@ -77,9 +77,6 @@ const GameOrderMain = () => {
             formData.time.trim() === ''
         ) {
             setShowPopup(true);
-            setTimeout(() => {
-                setShowPopup(false);
-            }, 3000);
             return;
         }
 
@@ -106,7 +103,7 @@ const GameOrderMain = () => {
     return (
         <>
             <PopupModal
-                message={'Fill in all the fields!'}
+                errorMessage={'Fill in all the fields!'}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
             />

@@ -23,11 +23,11 @@ nav {
         }
 
         .nav-buttons {
-            width: 55%;
+            width: 60%;
             @include flex(row, space-between, center);
 
             ul {
-                width: 55%;
+                width: 50%;
                 list-style: none;
                 @include flex(row, space-between, center);
 
@@ -41,9 +41,14 @@ nav {
             }
 
             .nav-auth-buttons {
-                @include flex(row, right);
+                @include flex(row, space-between, center);
 
-                .nav-sign-in {
+                p {
+                    margin-right: 1em;
+                }
+
+                .nav-sign-in,
+                .nav-sign-out {
                     @include button(
                         0.375em,
                         1.375em,

@@ -2,7 +2,12 @@
 @import 'assets/css/mixins.scss';
 
 .about-main {
-    @include background('/assets/images/page-background.png', 100%, 100%);
+    @include background(
+        '/assets/images/page-background.png',
+        100%,
+        repeat,
+        contain
+    );
 
     .about-welcome {
         @include flex(column, space-between, center);
@@ -96,6 +101,7 @@
                     @include background(
                         '/assets/images/kyrgyz-flag-sm.png',
                         25%,
+                        no-repeat,
                         80%,
                         center 40%
                     );

@@ -19,10 +19,10 @@
     align-items: $ai;
 }
 
-@mixin background($bi, $w: 100%, $bs: auto, $bp: left top) {
+@mixin background($bi, $w: 100%, $br: no-repeat, $bs: auto, $bp: left top) {
     width: $w;
     background-image: url($bi);
-    background-repeat: no-repeat;
+    background-repeat: $br;
     background-size: $bs;
     background-position: $bp;
 }
@@ -49,6 +49,24 @@
         background-color: $hbgc;
         color: $hc;
     }
+
+    div {
+        aspect-ratio: 1 / 1;
+        height: calc($fs + $fs / 4);
+        border: 0.125em solid $bgc;
+        border-radius: 50%;
+        border-left-color: transparent;
+    }
+
+    &.loading {
+        @include flex(row, center, center);
+        background-color: $hbgc;
+        color: $hc;
+    }
+
+    &.loading div {
+        animation: 0.5s loading linear infinite;
+    }
 }
 
 @mixin arrow {
@@ -71,11 +89,21 @@
 }
 
 @keyframes arrow-bounce {
-    0% {
+    from {
         top: 0;
     }
 
-    100% {
+    to {
         top: 10px;
+    }
+}
+
+@keyframes loading {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
     }
 }

@@ -2,7 +2,12 @@
 @import 'assets/css/mixins.scss';
 
 .civic-main {
-    @include background('/assets/images/page-background.png', 100%, 100%);
+    @include background(
+        '/assets/images/page-background.png',
+        100%,
+        repeat,
+        contain
+    );
 
     .civic-header {
         @include flex(column, space-between, flex-start);

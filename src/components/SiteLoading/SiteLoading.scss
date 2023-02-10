@@ -1,0 +1,33 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+.tentacles {
+    @include flex(row, center, center);
+    position: fixed;
+    z-index: 10;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 110px;
+    background-image: url('/assets/images/logo-tentacles.png');
+    background-size: cover;
+    animation: tentacles 1s linear infinite;
+
+    .head {
+        position: absolute;
+        width: 80px;
+        height: 87px;
+        background-image: url('/assets/images/logo-head.png');
+        background-size: cover;
+    }
+}
+
+@keyframes tentacles {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}

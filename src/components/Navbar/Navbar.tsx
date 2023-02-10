@@ -2,8 +2,15 @@ import { ABOUT_ROUTE, CIVIC_ENGAGEMENT_ROUTE } from 'utils/consts';
 import { Link, NavLink } from 'react-router-dom';
 
 import './Navbar.scss';
+import { useAuth } from 'contexts/AuthContextProvider';
 
 const Navbar = () => {
+    const authContextValues = useAuth();
+
+    if (!authContextValues) return null;
+
+    const { user, signOutAccount } = authContextValues;
+
     return (
         <nav>
             <div className="nav-wrapper">
@@ -29,12 +36,30 @@ const Navbar = () => {
                         </li>
                     </ul>
                     <div className="nav-auth-buttons">
-                        <Link to="sign-in">
-                            <button className="nav-sign-in">Sign in</button>
-                        </Link>
-                        <Link to="sign-up">
-                            <button className="nav-sign-up">Sign up</button>
-                        </Link>
+                        {user ? (
+                            <>
+                                <p>{user.email}</p>
+                                <button
+                                    onClick={() => signOutAccount()}
+                                    className="nav-sign-out"
+                                >
+                                    Sign out
+                                </button>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="sign-in">
+                                    <button className="nav-sign-in">
+                                        Sign in
+                                    </button>
+                                </Link>
+                                <Link to="sign-up">
+                                    <button className="nav-sign-up">
+                                        Sign up
+                                    </button>
+                                </Link>
+                            </>
+                        )}
                     </div>
                 </div>
             </div>

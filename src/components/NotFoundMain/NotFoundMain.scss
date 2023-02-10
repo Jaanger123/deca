@@ -1,0 +1,65 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+.not-found {
+    @include flex(column, space-between, center);
+    @include background(
+        '/assets/images/page-background.png',
+        100%,
+        repeat,
+        contain
+    );
+    position: relative;
+    text-align: center;
+    padding: 8% 0 5%;
+
+    h2 {
+        font-size: 3rem;
+        font-weight: 400;
+        margin: 0.25em 0;
+    }
+
+    p {
+        @include roboto;
+        font-weight: 100;
+        font-size: 1.5rem;
+        line-height: 115%;
+        width: 35%;
+        color: $light-gray;
+    }
+
+    button {
+        @include button(0.625em, 1.25em);
+        margin-top: 1em;
+    }
+
+    img {
+        position: absolute;
+        width: 6rem;
+    }
+
+    .not-found-error {
+        position: static;
+        width: 70%;
+    }
+
+    #top-left-corner {
+        top: 0;
+        left: 0;
+    }
+
+    #top-right-corner {
+        top: 0;
+        right: 0;
+    }
+
+    #bottom-left-corner {
+        bottom: 0;
+        left: 0;
+    }
+
+    #bottom-right-corner {
+        bottom: 0;
+        right: 0;
+    }
+}

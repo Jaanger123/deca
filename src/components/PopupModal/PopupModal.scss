@@ -1,24 +1,25 @@
+@import '../../assets/css/variables.scss';
 @import '../../assets/css/mixins.scss';
 
 .popup {
+    @include flex(column, space-between, center);
     position: fixed;
     z-index: 2;
     top: 0.75rem;
     left: 50%;
     transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    width: 20%;
-    height: 100px;
+    width: 28%;
     background-color: white;
     border-radius: 1em;
     box-shadow: 0px 0.25em 0.5em rgba(0, 0, 0, 0.25);
-    padding: 0.5em 0.5em 1em;
+    padding: 1em 1em 1em 1.5em;
     transition: top 0.4s;
 
-    & > img {
+    &.show {
+        top: -200px;
+    }
+
+    img {
         align-self: flex-end;
         width: 1rem;
         cursor: pointer;
@@ -29,10 +30,32 @@
         }
     }
 
-    & > h4 {
-        @include roboto;
-        font-size: 1.5rem;
-        font-weight: 400;
-        color: red;
+    .popup-text {
+        width: 100%;
+
+        h4 {
+            @include roboto;
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: $dark-text;
+        }
+
+        p {
+            @include roboto;
+            font-size: 1rem;
+            font-weight: 300;
+            color: $light-gray;
+            margin-top: 0.25em;
+        }
+    }
+
+    .popup-button {
+        @include flex(row, right);
+        width: 100%;
+        padding-top: 1em;
+
+        button {
+            @include button(0.375em, 2em);
+        }
     }
 }

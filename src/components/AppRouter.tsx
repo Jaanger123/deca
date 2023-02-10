@@ -1,8 +1,13 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import CivicEngagement from '../pages/CivicEngagement';
 import NavbarFooterLayout from './NavbarFooterLayout';
-import { Home, About, GameOrder } from '../pages';
-import Auth from '../pages/Auth';
+import {
+    CivicEngagement,
+    GameOrder,
+    NotFound,
+    About,
+    Auth,
+    Home,
+} from '../pages';
 import {
     ABOUT_ROUTE,
     CIVIC_ENGAGEMENT_ROUTE,
@@ -23,10 +28,10 @@ const AppRouter = () => {
                     element={<CivicEngagement />}
                 />
                 <Route path={GAME_ORDER_ROUTE} element={<GameOrder />} />
+                <Route path="*" element={<NotFound />} />
             </Route>
             <Route path={SIGN_UP_ROUTE} element={<Auth />} />
             <Route path={SIGN_IN_ROUTE} element={<Auth />} />
-            <Route path="*" element={<Navigate to={HOME_ROUTE} />} />
         </Routes>
     );
 };
