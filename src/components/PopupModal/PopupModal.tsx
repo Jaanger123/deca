@@ -1,19 +1,22 @@
+import { BTN_VARIANT_ERROR, BTN_VARIANT_GREET } from 'utils/consts';
 import './PopupModal.scss';
 
 interface IPopupModalProps {
-    errorTitle?: string;
+    title?: string;
     buttonMessage?: string;
+    variant?: string;
     // delay?: number;
-    errorMessage: string;
+    message: string;
     showPopup: boolean;
     setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const PopupModal = ({
-    errorTitle = 'Oops, something went wrong...',
+    title = 'Oops, something went wrong...',
     buttonMessage = 'Got it',
+    variant = BTN_VARIANT_ERROR,
     // delay = 4000,
-    errorMessage,
+    message,
     showPopup,
     setShowPopup,
 }: IPopupModalProps) => {
@@ -33,11 +36,25 @@ const PopupModal = ({
                 alt="Close"
                 onClick={closePopup}
             />
-            <div className="popup-text">
-                <h4>{errorTitle}</h4>
-                <p>{errorMessage}</p>
+            <div
+                className={`popup-text ${
+                    variant === BTN_VARIANT_GREET && 'popup-text-greet'
+                }`}
+            >
+                {variant === BTN_VARIANT_GREET && (
+                    <img
+                        src={require('../../assets/images/pieces.png')}
+                        alt="Puzzle icon"
+                    />
+                )}
+                <h4>{title}</h4>
+                <p>{message}</p>
             </div>
-            <div className="popup-button">
+            <div
+                className={`popup-button ${
+                    variant === BTN_VARIANT_GREET && 'popup-button-greet'
+                }`}
+            >
                 <button onClick={closePopup}>{buttonMessage}</button>
             </div>
         </div>

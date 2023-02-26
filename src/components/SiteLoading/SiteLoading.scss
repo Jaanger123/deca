@@ -1,33 +1,31 @@
 @import 'assets/css/variables.scss';
 @import 'assets/css/mixins.scss';
 
-.tentacles {
+.site-loading {
     @include flex(row, center, center);
-    position: fixed;
-    z-index: 10;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 100px;
-    height: 110px;
-    background-image: url('/assets/images/logo-tentacles.png');
-    background-size: cover;
-    animation: tentacles 1s linear infinite;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
 
-    .head {
-        position: absolute;
-        width: 80px;
-        height: 87px;
-        background-image: url('/assets/images/logo-head.png');
-        background-size: cover;
-    }
-}
+    .site-loading-animation {
+        @include flex(row, space-between, center);
+        width: 3rem;
+        height: 3rem;
 
-@keyframes tentacles {
-    from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(360deg);
+        .site-loading-animation-column {
+            height: 40%;
+            width: 22%;
+            background-color: rgba(221, 85, 85, 1);
+            border-radius: 1rem;
+            animation: site-loading 0.3s linear infinite alternate;
+
+            &:nth-child(2) {
+                animation: site-loading 0.3s 0.1s linear infinite alternate;
+            }
+
+            &:nth-child(3) {
+                animation: site-loading 0.3s 0.3s linear infinite alternate;
+            }
+        }
     }
 }

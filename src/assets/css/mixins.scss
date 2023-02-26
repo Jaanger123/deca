@@ -107,3 +107,14 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes site-loading {
+    from {
+        height: 40%;
+        background-color: rgba(221, 85, 85, 0.5);
+    }
+    to {
+        height: 100%;
+        background-color: rgba(221, 85, 85, 1);
+    }
+}

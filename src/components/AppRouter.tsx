@@ -16,8 +16,24 @@ import {
     SIGN_IN_ROUTE,
     SIGN_UP_ROUTE,
 } from 'utils/consts';
+import SiteLoading from './SiteLoading';
+import { useAuth } from 'contexts/AuthContextProvider';
 
 const AppRouter = () => {
+    const authContextValues = useAuth();
+
+    if (!authContextValues) return null;
+
+    const { siteLoading } = authContextValues;
+
+    if (siteLoading) {
+        return (
+            <Routes>
+                <Route path={'*'} element={<SiteLoading />} />;
+            </Routes>
+        );
+    }
+
     return (
         <Routes>
             <Route path={HOME_ROUTE} element={<NavbarFooterLayout />}>

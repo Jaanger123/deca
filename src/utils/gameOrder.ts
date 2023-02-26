@@ -1,6 +1,6 @@
 import React from 'react';
-import { monthNames } from '../consts';
-import { IFormData } from '../types/gameOrderTypes';
+import { monthNames } from './consts';
+import { IFormData } from 'types/gameOrderTypes';
 
 export const transformDate = (date: Date) => {
     console.log(date, 'data');

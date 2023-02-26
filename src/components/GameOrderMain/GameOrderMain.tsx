@@ -13,7 +13,7 @@ import {
 import { useGameOrder } from '../../contexts/GameOrderContext';
 import { addDocument } from '../../firestoreClient';
 import PopupModal from '../PopupModal/PopupModal';
-import { ORDERS_COLLECTION } from '../../consts';
+import { ORDERS_COLLECTION } from 'utils/consts';
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 
@@ -103,7 +103,7 @@ const GameOrderMain = () => {
     return (
         <>
             <PopupModal
-                errorMessage={'Fill in all the fields!'}
+                message={'Fill in all the fields!'}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
             />

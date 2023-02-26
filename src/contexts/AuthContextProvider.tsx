@@ -25,6 +25,7 @@ interface IAuthContext {
     user: User | null;
     loadingBtn: boolean;
     loadingGoogleBtn: boolean;
+    siteLoading: boolean;
 }
 
 interface IAuthContextProviderProps {
@@ -43,11 +44,14 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [loadingBtn, setLoadingBtn] = useState<boolean>(false);
     const [loadingGoogleBtn, setLoadingGoogleBtn] = useState<boolean>(false);
+    const [siteLoading, setSiteLoading] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
+        setSiteLoading(true);
         onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser);
+            setSiteLoading(false);
         });
     }, []);
 
@@ -193,6 +197,7 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
         user,
         loadingBtn,
         loadingGoogleBtn,
+        siteLoading,
     };
 
     return (

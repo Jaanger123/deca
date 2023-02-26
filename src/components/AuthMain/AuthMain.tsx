@@ -47,7 +47,7 @@ const AuthMain = () => {
     return (
         <>
             <PopupModal
-                errorMessage={errorMessage}
+                message={errorMessage}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
             />

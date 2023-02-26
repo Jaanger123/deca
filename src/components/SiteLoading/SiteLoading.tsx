@@ -1,11 +1,13 @@
-import './SiteLoading.scss'; // ! PATH
+import './SiteLoading.scss';
 
-const SiteLoading = () => {
-    return (
-        <div className="tentacles">
-            <div className="head"></div>
+const SiteLoading = () => (
+    <div className="site-loading">
+        <div className="site-loading-animation">
+            <div className="site-loading-animation-column"></div>
+            <div className="site-loading-animation-column"></div>
+            <div className="site-loading-animation-column"></div>
         </div>
-    );
-};
+    </div>
+);
 
 export default SiteLoading;
