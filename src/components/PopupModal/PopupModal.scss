@@ -13,13 +13,13 @@
     border-radius: 1em;
     box-shadow: 0px 0.25em 0.5em rgba(0, 0, 0, 0.25);
     padding: 1em 1em 1em 1.5em;
-    transition: top 0.4s;
+    transition: top 0.8s;
 
     &.show {
-        top: -200px;
+        top: -400px;
     }
 
-    img {
+    .popup-close {
         align-self: flex-end;
         width: 1rem;
         cursor: pointer;
@@ -52,7 +52,9 @@
     .popup-text-greet {
         text-align: center;
 
-        // img {}
+        .popup-puzzle {
+            width: 3rem;
+        }
     }
 
     .popup-button {

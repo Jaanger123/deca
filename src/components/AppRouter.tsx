@@ -13,11 +13,13 @@ import {
     CIVIC_ENGAGEMENT_ROUTE,
     GAME_ORDER_ROUTE,
     HOME_ROUTE,
+    PRODUCTS_ROUTE,
     SIGN_IN_ROUTE,
     SIGN_UP_ROUTE,
 } from 'utils/consts';
 import SiteLoading from './SiteLoading';
 import { useAuth } from 'contexts/AuthContextProvider';
+import Products from 'pages/Products';
 
 const AppRouter = () => {
     const authContextValues = useAuth();
@@ -43,6 +45,7 @@ const AppRouter = () => {
                     path={CIVIC_ENGAGEMENT_ROUTE}
                     element={<CivicEngagement />}
                 />
+                <Route path={PRODUCTS_ROUTE} element={<Products />} />
                 <Route path={GAME_ORDER_ROUTE} element={<GameOrder />} />
                 <Route path="*" element={<NotFound />} />
             </Route>

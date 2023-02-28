@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { BTN_VARIANT_ERROR, BTN_VARIANT_GREET } from 'utils/consts';
 import './PopupModal.scss';
 
@@ -5,7 +6,8 @@ interface IPopupModalProps {
     title?: string;
     buttonMessage?: string;
     variant?: string;
-    // delay?: number;
+    delay?: boolean;
+    delayTime?: number;
     message: string;
     showPopup: boolean;
     setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
@@ -13,25 +15,30 @@ interface IPopupModalProps {
 
 const PopupModal = ({
     title = 'Oops, something went wrong...',
+    message = 'We are faced with unexpected issues ;(',
     buttonMessage = 'Got it',
     variant = BTN_VARIANT_ERROR,
-    // delay = 4000,
-    message,
+    delay = false,
+    delayTime = 4000,
     showPopup,
     setShowPopup,
 }: IPopupModalProps) => {
-    // const popupTimeout = setTimeout(() => {
-    //     setShowPopup(false);
-    // }, delay);
+    useEffect(() => {
+        if (delay && showPopup === true) {
+            setTimeout(() => {
+                setShowPopup(false);
+            }, delayTime);
+        }
+    }, [showPopup]);
 
     const closePopup = () => {
-        // clearTimeout(popupTimeout);
         setShowPopup(false);
     };
 
     return (
         <div className={`popup ${showPopup ? '' : 'show'}`}>
             <img
+                className="popup-close"
                 src={require('../../assets/images/close.svg').default}
                 alt="Close"
                 onClick={closePopup}
@@ -43,6 +50,7 @@ const PopupModal = ({
             >
                 {variant === BTN_VARIANT_GREET && (
                     <img
+                        className="popup-puzzle"
                         src={require('../../assets/images/pieces.png')}
                         alt="Puzzle icon"
                     />

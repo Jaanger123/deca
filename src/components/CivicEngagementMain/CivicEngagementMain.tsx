@@ -1,25 +1,20 @@
+import HeaderTemplate from 'HeaderTemplate';
 import './CivicEngagementMain.scss';
 import { text } from './helper/data';
 
 const CivicEngagementMain = () => {
+    const headerTitle = 'Civic Engagement';
+    const headerDescription =
+        'Is crucial for the success of any community project.';
+    const anchorLink = '#civic-us';
+
     return (
         <main className="civic-main">
-            <section className="civic-header">
-                <div className="civic-header-text">
-                    <h1>Civic Engagement</h1>
-                    <p>Is crucial for the success of any community project.</p>
-                </div>
-                <a href="#civic-us">
-                    <div className="civic-arrow">
-                        <img
-                            src={
-                                require('../../assets/images/arrow.svg').default
-                            }
-                            alt="Arrow icon"
-                        />
-                    </div>
-                </a>
-            </section>
+            <HeaderTemplate
+                title={headerTitle}
+                description={headerDescription}
+                anchorLink={anchorLink}
+            />
             <section className="civic-content">
                 <div className="civic-container" id="civic-us">
                     <div className="civic-civic-engagement">

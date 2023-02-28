@@ -9,8 +9,9 @@ import {
 import { validateEmail, validatePassword } from 'utils/auth';
 import { User } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
-import { HOME_ROUTE } from 'utils/consts';
+import { BTN_VARIANT_GREET, HOME_ROUTE } from 'utils/consts';
 import { auth, provider } from 'firebaseConfig';
+import PopupModal from 'components/PopupModal';
 
 interface IAuthContext {
     signUp: Function;
@@ -39,6 +40,7 @@ export const useAuth = () => useContext(AuthContext);
 const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
     const [user, setUser] = useState<User | null>(null);
     const [showPopup, setShowPopup] = useState<boolean>(false);
+    const [greetShowPopup, setGreetShowPopup] = useState<boolean>(false);
     const [emailError, setEmailError] = useState<string>('');
     const [passwordError, setPasswordError] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
@@ -46,6 +48,11 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
     const [loadingGoogleBtn, setLoadingGoogleBtn] = useState<boolean>(false);
     const [siteLoading, setSiteLoading] = useState(false);
     const navigate = useNavigate();
+
+    const title = 'Welcome to DECA!';
+    const message =
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.';
+    const buttonMessage = 'Get started';
 
     useEffect(() => {
         setSiteLoading(true);
@@ -96,7 +103,7 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
                     trimmedEmail,
                     trimmedPassword
                 );
-
+                setGreetShowPopup(true);
                 navigate(HOME_ROUTE);
             } catch (error: any) {
                 // ! HOW TYPE FIREBBASE AUTHENTICATION ERRORS
@@ -201,7 +208,18 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
     };
 
     return (
-        <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
+        <AuthContext.Provider value={values}>
+            <PopupModal
+                title={title}
+                message={message}
+                buttonMessage={buttonMessage}
+                showPopup={greetShowPopup}
+                setShowPopup={setGreetShowPopup}
+                variant={BTN_VARIANT_GREET}
+                delay={true}
+            />
+            {children}
+        </AuthContext.Provider>
     );
 };
 

@@ -1,0 +1,50 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+.header-template {
+    @include flex(column, space-between, flex-start);
+    height: 85vh;
+
+    .header-template-text {
+        width: 100%;
+        margin-top: 16%;
+        padding-left: 4em;
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 400;
+            color: $dark-text;
+            margin-bottom: 0.125em;
+        }
+
+        p {
+            @include roboto;
+            font-weight: 100;
+            font-size: 1.75rem;
+            width: 30%;
+            color: $light-gray;
+            margin-bottom: 1.25em;
+        }
+
+        button {
+            @include button(
+                0.375em,
+                3.5em,
+                1rem,
+                $primary,
+                $primary,
+                white,
+                white,
+                $primary
+            );
+        }
+    }
+
+    a {
+        align-self: center;
+
+        .civic-arrow {
+            @include arrow;
+        }
+    }
+}

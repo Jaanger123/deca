@@ -3,6 +3,7 @@ export const ORDERS_COLLECTION = 'orders';
 export const HOME_ROUTE = '/';
 export const ABOUT_ROUTE = '/about';
 export const CIVIC_ENGAGEMENT_ROUTE = '/civic-engagement';
+export const PRODUCTS_ROUTE = '/products';
 export const GAME_ORDER_ROUTE = '/game-order';
 export const SIGN_UP_ROUTE = '/sign-up';
 export const SIGN_IN_ROUTE = '/sign-in';

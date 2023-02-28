@@ -34,7 +34,6 @@ const GameOrderMain = () => {
     const [nameError, setNameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [numberError, setNumberError] = useState(false);
-    const [showPopup, setShowPopup] = useState(false);
     const [numberLength, setNumberLength] = useState(0);
 
     const gameOrderContextValues = useGameOrder(); // ?????????
@@ -48,6 +47,8 @@ const GameOrderMain = () => {
         setDate,
         countryCode,
         setCountryCode,
+        showPopup,
+        setShowPopup,
     } = gameOrderContextValues;
 
     const numberInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {

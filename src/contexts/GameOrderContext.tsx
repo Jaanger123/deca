@@ -9,6 +9,8 @@ interface IGameOrderContext {
     setDate: React.Dispatch<React.SetStateAction<Date>>;
     countryCode: string;
     setCountryCode: React.Dispatch<React.SetStateAction<string>>;
+    showPopup: boolean;
+    setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 interface IGameOrderProviderProps {
@@ -20,6 +22,7 @@ export const GameOrderContext = createContext<IGameOrderContext | null>(null);
 export const useGameOrder = () => useContext(GameOrderContext);
 
 export const GameOrderProvider = ({ children }: IGameOrderProviderProps) => {
+    const [showPopup, setShowPopup] = useState(false);
     const [date, setDate] = useState(new Date());
     const [countryCode, setCountryCode] = useState('+996 ');
 
@@ -42,6 +45,8 @@ export const GameOrderProvider = ({ children }: IGameOrderProviderProps) => {
         setDate,
         countryCode,
         setCountryCode,
+        showPopup,
+        setShowPopup,
     };
 
     return (

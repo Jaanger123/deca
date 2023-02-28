@@ -27,13 +27,13 @@ const AuthMain = () => {
         signUp,
         signIn,
         signUpInGoogle,
-        showPopup,
-        setShowPopup,
         errorMessage,
         emailError,
         passwordError,
         loadingBtn,
         loadingGoogleBtn,
+        showPopup,
+        setShowPopup,
     } = authContextValues;
 
     const authHandler = (email: string, password: string) => {
