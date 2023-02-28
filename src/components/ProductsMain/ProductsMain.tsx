@@ -1,3 +1,4 @@
+import GameSetList from 'components/GameSetList';
 import HeaderTemplate from 'HeaderTemplate';
 
 import './ProductsMain.scss';
@@ -14,7 +15,9 @@ const ProductsMain = () => {
                 description={headerDescription}
                 productsPage={true}
             />
-            <h1>Products</h1>
+            <div className="products-content">
+                <GameSetList />
+            </div>
         </div>
     );
 };

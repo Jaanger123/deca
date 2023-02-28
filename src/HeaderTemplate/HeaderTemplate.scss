@@ -10,11 +10,20 @@
         margin-top: 16%;
         padding-left: 4em;
 
+        &.products {
+            margin-top: 14%;
+        }
+
         h1 {
             font-size: 4rem;
             font-weight: 400;
             color: $dark-text;
-            margin-bottom: 0.125em;
+            margin-bottom: 0.25em;
+
+            &.products {
+                width: 50%;
+                line-height: 1em;
+            }
         }
 
         p {
@@ -24,6 +33,10 @@
             width: 30%;
             color: $light-gray;
             margin-bottom: 1.25em;
+
+            &.products {
+                width: 45%;
+            }
         }
 
         button {

@@ -6,6 +6,7 @@ import SectionTwo from './SectionTwoSlides';
 import 'swiper/css/scrollbar';
 
 import './HomeMain.scss';
+import GameSetList from 'components/GameSetList';
 
 const Main = () => {
     return (
@@ -43,24 +44,7 @@ const Main = () => {
                 </Swiper>
             </section>
             <section className="home-section home-section-two">
-                <div className="home-container">
-                    <div className="home-part-title">
-                        <p>RECOMMENDED GAMES</p>
-                        <hr />
-                    </div>
-
-                    <div className="custom-slider">
-                        <div className="custom-slide-wrapper new-game">
-                            <SectionTwo.FirstSlide />
-                        </div>
-                        <div className="custom-slide-wrapper st-mid-slide">
-                            <SectionTwo.SecondSlide />
-                        </div>
-                        <div className="custom-slide-wrapper">
-                            <SectionTwo.ThirdSlide />
-                        </div>
-                    </div>
-                </div>
+                <GameSetList />
             </section>
         </main>
     );

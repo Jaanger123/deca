@@ -94,49 +94,4 @@ $hover-swiper-button-bg-color: rgba(99, 99, 99, 0.7);
 
 .home-section-two {
     padding-bottom: 1.125em;
-
-    .home-container {
-        .custom-slider {
-            margin-top: 1.5em;
-            overflow: auto;
-            white-space: nowrap;
-            padding-bottom: 1em;
-
-            .st-mid-slide {
-                margin-inline: 2em;
-            }
-
-            .custom-slide-wrapper {
-                width: 40%;
-                display: inline-block;
-            }
-
-            .custom-slide-wrapper.new-game h3 {
-                opacity: 1;
-            }
-        }
-
-        .custom-slider::-webkit-scrollbar {
-            height: 0.375em;
-        }
-
-        .custom-slider::-webkit-scrollbar-track {
-            width: 300px;
-            background-color: $scrollbar-track;
-            height: 10px;
-            margin-inline: 26em;
-            border-radius: 0.5em;
-        }
-
-        @media screen and (max-width: 1270px) {
-            .custom-slider::-webkit-scrollbar-track {
-                margin-inline: 24em;
-            }
-        }
-
-        .custom-slider::-webkit-scrollbar-thumb {
-            background-color: $primary;
-            border-radius: 0.5em;
-        }
-    }
 }
