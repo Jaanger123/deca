@@ -8,38 +8,36 @@ import 'swiper/css';
 
 import './Carousel.scss';
 
-const Carousel = () => {
-    return (
-        <Swiper
-            followFinger={false}
-            centeredSlides={true}
-            allowTouchMove={false}
-            loop={true}
-            speed={1500}
-            autoplay={{
-                delay: 6000,
-                disableOnInteraction: false,
-            }}
-            navigation={false}
-            pagination={{
-                clickable: true,
-                bulletActiveClass: 'active-bullet',
-                bulletClass: 'bullets swiper-pagination-bullet',
-            }}
-            modules={[Autoplay, Pagination]}
-            className="main-swiper"
-        >
-            <SwiperSlide>
-                <FirstSlide />
-            </SwiperSlide>
-            <SwiperSlide className="video-slide">
-                <SecondSlide />
-            </SwiperSlide>
-            <SwiperSlide>
-                <ThirdSlide />
-            </SwiperSlide>
-        </Swiper>
-    );
-};
+const Carousel = () => (
+    <Swiper
+        followFinger={false}
+        // centeredSlides={true}
+        allowTouchMove={false}
+        loop={true}
+        speed={1500}
+        autoplay={{
+            delay: 6000,
+            disableOnInteraction: false,
+        }}
+        navigation={false}
+        pagination={{
+            clickable: true,
+            bulletActiveClass: 'active-bullet',
+            bulletClass: 'bullets swiper-pagination-bullet',
+        }}
+        modules={[Autoplay, Pagination]}
+        className="main-swiper"
+    >
+        <SwiperSlide>
+            <FirstSlide />
+        </SwiperSlide>
+        <SwiperSlide className="video-slide">
+            <SecondSlide />
+        </SwiperSlide>
+        <SwiperSlide>
+            <ThirdSlide />
+        </SwiperSlide>
+    </Swiper>
+);
 
 export default Carousel;

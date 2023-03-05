@@ -22,10 +22,7 @@ const SecondSlide = () => (
                 </div>
                 <div className="second-slide-reviews">
                     <img
-                        src={
-                            require('../../../assets/images/camera-icon.svg')
-                                .default
-                        }
+                        src={require('assets/images/camera-icon.svg').default}
                         alt="Camera icon"
                     />
                     <p>AUCA TSI - Reviews</p>

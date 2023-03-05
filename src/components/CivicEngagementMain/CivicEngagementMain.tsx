@@ -25,8 +25,8 @@ const CivicEngagementMain = () => {
                             alt="Earth icon"
                         />
                         <div className="civic-civic-engagement-text">
-                            {text.map(({ title }) => (
-                                <p>{title}</p>
+                            {text.map(({ title }, index) => (
+                                <p key={index}>{title}</p>
                             ))}
                         </div>
                     </div>

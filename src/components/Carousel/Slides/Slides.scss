@@ -1,18 +1,22 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
 .slide {
-    background-color: #f5f5f5;
+    @include background(
+        '/assets/images/page-background.png',
+        100%,
+        no-repeat,
+        100%
+    );
+    background-color: $bg-color;
     height: 100%;
-    background-image: url('../../../assets/images/header-background.svg');
-    background-size: 100%;
-    background-repeat: no-repeat;
 }
 
 .slide-container {
+    @include flex(row, space-between, center);
     height: 100%;
     width: 88%;
     margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 
     .slide-content {
         .slide-title {
@@ -23,11 +27,11 @@
         }
 
         .slide-description {
-            font-family: 'HelveticaNeueCyr', sans-serif;
-            font-weight: 100;
+            @include roboto();
+            font-weight: 200;
             font-size: 2.25rem;
             line-height: 1.065em;
-            color: #797979;
+            color: $light-gray;
             width: 65%;
             padding-bottom: 1.25em;
         }
@@ -45,11 +49,11 @@
 }
 
 .slide-button {
-    background-color: #dd5555;
+    background-color: $primary;
     padding: 0.375em 3.75em;
     border-radius: 0.25em;
-    color: #fff;
-    border: 0.125em solid #dd5555;
+    color: white;
+    border: 0.125em solid $primary;
 }
 
 // FIRST SLIDE
@@ -61,8 +65,8 @@ img.first-slide-puzzle {
 }
 
 .slide-button:hover {
-    background-color: #fff;
-    color: #dd5555;
+    background-color: white;
+    color: $primary;
 }
 
 @media screen and (max-width: 1200px) {
@@ -76,11 +80,11 @@ img.first-slide-puzzle {
 .second-slide {
     height: 100%;
     width: 100%;
-    background-color: #000;
-    color: #fff;
+    background-color: black;
+    color: white;
 
     video {
-        position: fixed;
+        position: absolute;
         left: 50%;
         transform: translateX(-50%);
         width: 125%;
@@ -103,9 +107,7 @@ img.first-slide-puzzle {
         }
 
         .second-slide-reviews {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include flex(row, space-between, center);
             align-self: flex-start;
             padding-top: 2em;
             margin-right: -2.25em;
@@ -159,23 +161,23 @@ img.first-slide-puzzle {
         }
 
         .swiper-button-prev {
-            background-image: url('../../../assets/images/red-prev.png');
+            background-image: url('/assets/images/red-prev.png');
             left: 4% !important;
         }
 
         .swiper-button-next {
-            background-image: url('../../../assets/images/red-next.png');
+            background-image: url('/assets/images/red-next.png');
             right: 4% !important;
         }
 
         @media screen and (max-width: 960px) {
             .swiper-button-prev {
-                background-image: url('../../../assets/images/red-prev.png');
+                background-image: url('/assets/images/red-prev.png');
                 left: 8% !important;
             }
 
             .swiper-button-next {
-                background-image: url('../../../assets/images/red-next.png');
+                background-image: url('/assets/images/red-next.png');
                 right: 8% !important;
             }
         }

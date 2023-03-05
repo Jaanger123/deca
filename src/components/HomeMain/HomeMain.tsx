@@ -44,7 +44,9 @@ const Main = () => {
                 </Swiper>
             </section>
             <section className="home-section home-section-two">
-                <GameSetList />
+                <div className="home-container">
+                    <GameSetList />
+                </div>
             </section>
         </main>
     );

@@ -4,7 +4,7 @@
 $scrollbar-track: #dcdcdc;
 
 .gs-list-container {
-    width: 90%;
+    width: 100%;
     margin: auto;
     padding-top: 1.5em;
 
@@ -37,16 +37,14 @@ $scrollbar-track: #dcdcdc;
         }
 
         &::-webkit-scrollbar-track {
-            width: 300px;
             background-color: $scrollbar-track;
-            height: 10px;
-            margin-inline: 26em;
+            margin-inline: 22em;
             border-radius: 0.5em;
         }
 
         @media screen and (max-width: 1270px) {
             &::-webkit-scrollbar-track {
-                margin-inline: 24em;
+                margin-inline: 18em;
             }
         }
 
