@@ -19,8 +19,7 @@
     align-items: $ai;
 }
 
-@mixin background($bi, $w: 100%, $br: no-repeat, $bs: auto, $bp: left top) {
-    width: $w;
+@mixin background($bi, $br: no-repeat, $bs: auto, $bp: left top) {
     background-image: url($bi);
     background-repeat: $br;
     background-size: $bs;
