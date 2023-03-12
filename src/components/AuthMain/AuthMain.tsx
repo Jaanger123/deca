@@ -1,19 +1,19 @@
-import { SIGN_IN_ROUTE, SIGN_UP_ROUTE } from 'utils/consts';
-import { Link, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { SIGN_IN_ROUTE, SIGN_UP_ROUTE } from "utils/consts";
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
 
-import { useAuth } from 'contexts/AuthContextProvider';
-import PopupModal from 'components/PopupModal';
-import eyeOpened from 'assets/images/eye-opened.png';
-import eyeClosed from 'assets/images/eye-closed.png';
+import { useAuth } from "contexts/AuthContextProvider";
+import PopupModal from "components/PopupModal";
+import eyeOpened from "assets/images/eye-opened.png";
+import eyeClosed from "assets/images/eye-closed.png";
 
 // import './AuthMain.scss';
-import 'components/AuthMain/AuthMain.scss';
-import Loading from 'components/Loading';
+import "components/AuthMain/AuthMain.scss";
+import Loading from "components/Loading";
 
 const AuthMain = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const location = useLocation();
 
@@ -56,7 +56,7 @@ const AuthMain = () => {
                     <div className="auth-banner">
                         <img
                             src={
-                                require('assets/images/auth-banner.svg').default
+                                require("assets/images/auth-banner.svg").default
                             }
                             alt="Players banner"
                         />
@@ -64,7 +64,7 @@ const AuthMain = () => {
                         <p>Innovative board games now in Kyrgyzstan!</p>
                     </div>
                     <div className="auth-form-wrapper">
-                        <h2>{hasUser ? 'Welcome back!' : 'Welcome!'}</h2>
+                        <h2>{hasUser ? "Welcome back!" : "Welcome!"}</h2>
                         <div className="auth-form">
                             <div className="auth-form-inputs">
                                 <div className="form-input">
@@ -89,8 +89,8 @@ const AuthMain = () => {
                                         <input
                                             type={
                                                 showPassword
-                                                    ? 'text'
-                                                    : 'password'
+                                                    ? "text"
+                                                    : "password"
                                             }
                                             placeholder="Password"
                                             value={password}
@@ -120,29 +120,29 @@ const AuthMain = () => {
                             <div className="form-buttons">
                                 <button
                                     className={`auth-sign-in-up ${
-                                        loadingBtn ? 'loading' : ''
+                                        loadingBtn ? "loading" : ""
                                     }`}
                                     onClick={() => authHandler(email, password)}
                                 >
                                     {loadingBtn ? (
                                         <Loading />
                                     ) : hasUser ? (
-                                        'Sign in'
+                                        "Sign in"
                                     ) : (
-                                        'Sign up'
+                                        "Sign up"
                                     )}
                                 </button>
                                 <span>OR</span>
                                 <button
                                     className={`auth-sign-in-up-google ${
-                                        loadingGoogleBtn ? 'loading' : ''
+                                        loadingGoogleBtn ? "loading" : ""
                                     }`}
                                     onClick={() => signUpInGoogle()}
                                 >
                                     {!loadingGoogleBtn && (
                                         <img
                                             src={
-                                                require('assets/images/google-icon.svg')
+                                                require("assets/images/google-icon.svg")
                                                     .default
                                             }
                                         />
@@ -150,19 +150,19 @@ const AuthMain = () => {
                                     {loadingGoogleBtn ? (
                                         <Loading />
                                     ) : hasUser ? (
-                                        'Sign in with Google'
+                                        "Sign in with Google"
                                     ) : (
-                                        'Sign up with Google'
+                                        "Sign up with Google"
                                     )}
                                 </button>
                             </div>
                         </div>
                         <span>
                             {hasUser
-                                ? 'Don’t have an account? '
-                                : 'Already have an account? '}
+                                ? "Don’t have an account? "
+                                : "Already have an account? "}
                             <Link to={hasUser ? SIGN_UP_ROUTE : SIGN_IN_ROUTE}>
-                                {hasUser ? 'Sign up' : 'Sign in'}
+                                {hasUser ? "Sign up" : "Sign in"}
                             </Link>
                         </span>
                     </div>

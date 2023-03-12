@@ -9,21 +9,21 @@ import {
     charactersSelectHandler,
     dateCalendarHandler,
     timeSelectHandler,
-} from '../../utils/gameOrder';
-import { useGameOrder } from '../../contexts/GameOrderContext';
-import { addDocument } from '../../firestoreClient';
-import PopupModal from '../PopupModal/PopupModal';
-import { ORDERS_COLLECTION } from 'utils/consts';
-import React, { useState } from 'react';
-import Calendar from 'react-calendar';
+} from "contexts/helpers/gameOrder";
+import { useGameOrder } from "contexts/GameOrderContextProvider";
+import { addDocument } from "firebaseClients/firestoreClient";
+import { ORDERS_COLLECTION } from "utils/consts";
+import PopupModal from "components/PopupModal";
+import React, { useState } from "react";
+import Calendar from "react-calendar";
 
-import './GameOrderMain.scss';
-import './Calendar.scss';
+import "./GameOrderMain.scss";
+import "./Calendar.scss";
 
 // import KG from '../../assets/images/input-kyrgyz-flag.svg'; // ????
 // import RU from '../../assets/images/input-russian-flag.svg'; // ????
-const KG = require('../../assets/images/input-kyrgyz-flag.svg') as ISVG; // ????
-const RU = require('../../assets/images/input-russian-flag.svg') as ISVG; // ????
+const KG = require("../../assets/images/input-kyrgyz-flag.svg") as ISVG; // ????
+const RU = require("../../assets/images/input-russian-flag.svg") as ISVG; // ????
 
 interface ISVG {
     default: string;
@@ -54,35 +54,35 @@ const GameOrderMain = () => {
     const numberInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         validateNumber(event, setFormData, countryCode);
 
-        if (countryCode === '+996 ') {
+        if (countryCode === "+996 ") {
             setNumberError(
                 !(
                     formData.number.length === 19 ||
                     formData.number.length === 18
                 )
             );
-        } else if (countryCode === '+7 ') {
+        } else if (countryCode === "+7 ") {
             setNumberError(!(formData.number.length === 18));
         }
     };
 
     const onCheckout = () => {
         if (
-            formData.surname.trim() === '' ||
-            formData.name.trim() === '' ||
-            formData.email.trim() === '' ||
-            formData.number.trim() === '' ||
-            formData.gameSet.trim() === '' ||
-            formData.players.trim() === '' ||
-            formData.characters.trim() === '' ||
-            formData.time.trim() === ''
+            formData.surname.trim() === "" ||
+            formData.name.trim() === "" ||
+            formData.email.trim() === "" ||
+            formData.number.trim() === "" ||
+            formData.gameSet.trim() === "" ||
+            formData.players.trim() === "" ||
+            formData.characters.trim() === "" ||
+            formData.time.trim() === ""
         ) {
             setShowPopup(true);
             return;
         }
 
         if (surnameError || nameError || emailError || numberError) {
-            alert('Invalid data given');
+            alert("Invalid data given");
             return;
         }
 
@@ -104,7 +104,7 @@ const GameOrderMain = () => {
     return (
         <>
             <PopupModal
-                message={'Fill in all the fields!'}
+                message={"Fill in all the fields!"}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
             />
@@ -192,7 +192,7 @@ const GameOrderMain = () => {
                                             <img
                                                 className="game-order-contact-form-flag"
                                                 src={
-                                                    countryCode === '+996 '
+                                                    countryCode === "+996 "
                                                         ? KG.default
                                                         : RU.default
                                                 }
@@ -217,7 +217,7 @@ const GameOrderMain = () => {
                                         <img
                                             className="game-order-contact-form-arrow"
                                             src={
-                                                require('../../assets/images/input-arrow-down.svg')
+                                                require("../../assets/images/input-arrow-down.svg")
                                                     .default
                                             }
                                             alt="Arrow down"
@@ -245,9 +245,9 @@ const GameOrderMain = () => {
                                         gameSetSelectHandler(event, setFormData)
                                     }
                                     className={
-                                        formData.gameSet !== ''
-                                            ? ''
-                                            : 'disabled'
+                                        formData.gameSet !== ""
+                                            ? ""
+                                            : "disabled"
                                     }
                                 >
                                     <option value="" disabled hidden>
@@ -270,9 +270,9 @@ const GameOrderMain = () => {
                                             )
                                         }
                                         className={
-                                            formData.players !== ''
-                                                ? ''
-                                                : 'disabled'
+                                            formData.players !== ""
+                                                ? ""
+                                                : "disabled"
                                         }
                                     >
                                         <option value="" disabled hidden>
@@ -295,9 +295,9 @@ const GameOrderMain = () => {
                                             )
                                         }
                                         className={
-                                            formData.characters !== ''
-                                                ? ''
-                                                : 'disabled'
+                                            formData.characters !== ""
+                                                ? ""
+                                                : "disabled"
                                         }
                                     >
                                         <option value="" disabled hidden>
@@ -346,9 +346,9 @@ const GameOrderMain = () => {
                                             )
                                         }
                                         className={
-                                            formData.time !== ''
-                                                ? ''
-                                                : 'disabled'
+                                            formData.time !== ""
+                                                ? ""
+                                                : "disabled"
                                         }
                                     >
                                         <option value="" disabled hidden>

@@ -1,17 +1,17 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from "react";
 import {
     createUserWithEmailAndPassword,
     onAuthStateChanged,
     signInWithEmailAndPassword,
     signInWithPopup,
     signOut,
-} from 'firebase/auth';
-import { validateEmail, validatePassword } from 'utils/auth';
-import { User } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import { BTN_VARIANT_GREET, HOME_ROUTE } from 'utils/consts';
-import { auth, provider } from 'firebaseConfig';
-import PopupModal from 'components/PopupModal';
+} from "firebase/auth";
+import { validateEmail, validatePassword } from "contexts/helpers/auth";
+import { User } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import { BTN_VARIANT_GREET, HOME_ROUTE } from "utils/consts";
+import PopupModal from "components/PopupModal";
+import { auth, provider } from "firebaseConfig";
 
 interface IAuthContext {
     signUp: Function;
@@ -41,18 +41,18 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
     const [user, setUser] = useState<User | null>(null);
     const [showPopup, setShowPopup] = useState<boolean>(false);
     const [greetShowPopup, setGreetShowPopup] = useState<boolean>(false);
-    const [emailError, setEmailError] = useState<string>('');
-    const [passwordError, setPasswordError] = useState<string>('');
-    const [errorMessage, setErrorMessage] = useState<string>('');
+    const [emailError, setEmailError] = useState<string>("");
+    const [passwordError, setPasswordError] = useState<string>("");
+    const [errorMessage, setErrorMessage] = useState<string>("");
     const [loadingBtn, setLoadingBtn] = useState<boolean>(false);
     const [loadingGoogleBtn, setLoadingGoogleBtn] = useState<boolean>(false);
     const [siteLoading, setSiteLoading] = useState(false);
     const navigate = useNavigate();
 
-    const title = 'Welcome to DECA!';
+    const title = "Welcome to DECA!";
     const message =
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.';
-    const buttonMessage = 'Get started';
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.";
+    const buttonMessage = "Get started";
 
     useEffect(() => {
         setSiteLoading(true);
@@ -63,21 +63,21 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
     }, []);
 
     const validateData = (email: string, password: string, hasUser = false) => {
-        setEmailError('');
-        setPasswordError('');
+        setEmailError("");
+        setPasswordError("");
 
         if (!email) {
-            setEmailError('Please, enter your email');
+            setEmailError("Please, enter your email");
             return false;
         }
 
         if (!password) {
-            setPasswordError('Please, enter your password');
+            setPasswordError("Please, enter your password");
             return false;
         }
 
         if (!validateEmail(email)) {
-            setEmailError('Invalid email given');
+            setEmailError("Invalid email given");
             return false;
         }
 
@@ -108,14 +108,14 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
             } catch (error: any) {
                 // ! HOW TYPE FIREBBASE AUTHENTICATION ERRORS
                 switch (error.code) {
-                    case 'auth/email-already-in-use':
-                        setErrorMessage('This email address already in use.');
+                    case "auth/email-already-in-use":
+                        setErrorMessage("This email address already in use.");
                         setShowPopup(true);
                         break;
 
                     default:
                         setShowPopup(true);
-                        setErrorMessage('Unexpected error ;(');
+                        setErrorMessage("Unexpected error ;(");
                 }
             } finally {
                 setLoadingBtn(false);
@@ -124,8 +124,8 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
     };
 
     const signIn = async (email: string, password: string) => {
-        setEmailError('');
-        setPasswordError('');
+        setEmailError("");
+        setPasswordError("");
         const trimmedEmail = email.trim();
         const trimmedPassword = password.trim();
 
@@ -142,12 +142,12 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
             } catch (error: any) {
                 // ! HOW TYPE FIREBBASE AUTHENTICATION ERRORS
                 switch (error.code) {
-                    case 'auth/user-not-found':
-                        setErrorMessage('User with such email does not exist.');
+                    case "auth/user-not-found":
+                        setErrorMessage("User with such email does not exist.");
                         setShowPopup(true);
                         break;
-                    case 'auth/wrong-password':
-                        setErrorMessage('Wrong password given');
+                    case "auth/wrong-password":
+                        setErrorMessage("Wrong password given");
                         setShowPopup(true);
                         break;
 
@@ -155,7 +155,7 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
                         console.log(error.code);
 
                         setShowPopup(true);
-                        setErrorMessage('Unexpected error ;(');
+                        setErrorMessage("Unexpected error ;(");
                 }
             } finally {
                 setLoadingBtn(false);
@@ -175,7 +175,7 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
             switch (error.code) {
                 default:
                     setShowPopup(true);
-                    setErrorMessage('Unexpected error ;(');
+                    setErrorMessage("Unexpected error ;(");
             }
         } finally {
             setLoadingGoogleBtn(false);
@@ -187,7 +187,7 @@ const AuthContextProvider = ({ children }: IAuthContextProviderProps) => {
             await signOut(auth);
         } catch (error) {
             setShowPopup(true);
-            setErrorMessage('Unexpected error ;(');
+            setErrorMessage("Unexpected error ;(");
         }
     };
 

@@ -1,6 +1,6 @@
-import filledStar from 'assets/images/filled-star.svg';
+import filledStar from "assets/images/filled-star.svg";
 
-import './GameSet.scss';
+import "./GameSet.scss";
 
 interface IGameSetProps {
     gameSetObj: IGameSetObj;
@@ -31,9 +31,9 @@ const GameSet = ({
                 className="game-set-characters"
                 style={{ backgroundImage: `url(${bgImg})` }}
             >
-                {characterImgs.map((img, index) => (
-                    <img key={index} src={img} alt="character" />
-                ))}
+                {characterImgs.map((img, index) => {
+                    return <img key={index} src={img} alt="character" />;
+                })}
             </div>
             <div className="game-set-info-wrapper">
                 <div className="game-set-info">

@@ -1,4 +1,9 @@
 const swiperBreakpoints = {
+    1920: {
+        coverflowEffect: {
+            stretch: 590,
+        },
+    },
     1540: {
         coverflowEffect: {
             stretch: 540,

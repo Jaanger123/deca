@@ -1,8 +1,8 @@
-import { ABOUT_ROUTE, CIVIC_ENGAGEMENT_ROUTE } from 'utils/consts';
-import { Link, NavLink } from 'react-router-dom';
+import { ABOUT_ROUTE, CIVIC_ENGAGEMENT_ROUTE } from "utils/consts";
+import { Link, NavLink } from "react-router-dom";
 
-import './Navbar.scss';
-import { useAuth } from 'contexts/AuthContextProvider';
+import "./Navbar.scss";
+import { useAuth } from "contexts/AuthContextProvider";
 
 const Navbar = () => {
     const authContextValues = useAuth();
@@ -17,7 +17,7 @@ const Navbar = () => {
                 <NavLink to="/">
                     <img
                         className="nav-logo"
-                        src={require('../../assets/images/logo.svg').default}
+                        src={require("../../assets/images/logo.svg").default}
                         alt="Deca logo"
                     />
                 </NavLink>

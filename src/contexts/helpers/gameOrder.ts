@@ -1,9 +1,9 @@
-import React from 'react';
-import { monthNames } from './consts';
-import { IFormData } from 'types/gameOrderTypes';
+import React from "react";
+import { monthNames } from "utils/consts";
+import { IFormData } from "./types";
 
 export const transformDate = (date: Date) => {
-    console.log(date, 'data');
+    console.log(date, "data");
     return `${date.getDate()} ${
         monthNames[date.getMonth()]
     }, ${date.getFullYear()}`;
@@ -15,27 +15,27 @@ export const numberPattern = (
     prevNumber: string
 ) => {
     const re = /^[0-9()\- ]+$/g;
-    const format = code === '+996 ' ? [13, 14, 9, 12] : [14, 15, 10, 13];
+    const format = code === "+996 " ? [13, 14, 9, 12] : [14, 15, 10, 13];
 
     if (re.test(number) || number.length === 0) {
         if (number.length > format[0]) {
             return code + number.slice(0, format[1]);
         } else if (number.length === 1 && number.length > prevNumber.length) {
-            return code + '(' + number;
+            return code + "(" + number;
         } else if (number.length === 5 && number.length > prevNumber.length) {
             return (
                 code +
                 number.slice(0, number.length - 1) +
-                ') ' +
+                ") " +
                 number[number.length - 1]
             );
         } else if (number.length === 4 && number.length > prevNumber.length) {
-            return code + number + ')';
+            return code + number + ")";
         } else if (number.length === 6 && number.length > prevNumber.length) {
             return (
                 code +
                 number.slice(0, number.length - 1) +
-                ' ' +
+                " " +
                 number[number.length - 1]
             );
         } else if (
@@ -45,7 +45,7 @@ export const numberPattern = (
             return (
                 code +
                 number.slice(0, number.length - 1) +
-                '-' +
+                "-" +
                 number[number.length - 1]
             );
         } else if (
@@ -55,7 +55,7 @@ export const numberPattern = (
             return (
                 code +
                 number.slice(0, number.length - 1) +
-                '-' +
+                "-" +
                 number[number.length - 1]
             );
         }

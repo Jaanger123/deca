@@ -1,6 +1,6 @@
-import { useState, createContext, useContext } from 'react';
-import { IFormData } from '../types/gameOrderTypes';
-import { transformDate } from '../utils/gameOrder';
+import { useState, createContext, useContext } from "react";
+import { IFormData } from "./helpers/types";
+import { transformDate } from "./helpers/gameOrder";
 
 interface IGameOrderContext {
     formData: IFormData;
@@ -21,20 +21,20 @@ export const GameOrderContext = createContext<IGameOrderContext | null>(null);
 
 export const useGameOrder = () => useContext(GameOrderContext);
 
-export const GameOrderProvider = ({ children }: IGameOrderProviderProps) => {
+const GameOrderContextProvider = ({ children }: IGameOrderProviderProps) => {
     const [showPopup, setShowPopup] = useState(false);
     const [date, setDate] = useState(new Date());
-    const [countryCode, setCountryCode] = useState('+996 ');
+    const [countryCode, setCountryCode] = useState("+996 ");
 
     const [formData, setFormData] = useState<IFormData>({
-        surname: '',
-        name: '',
-        email: '',
-        number: '+996 ',
-        gameSet: '',
-        players: '',
-        characters: '',
-        time: '',
+        surname: "",
+        name: "",
+        email: "",
+        number: "+996 ",
+        gameSet: "",
+        players: "",
+        characters: "",
+        time: "",
         dateInput: transformDate(date),
     });
 
@@ -55,3 +55,5 @@ export const GameOrderProvider = ({ children }: IGameOrderProviderProps) => {
         </GameOrderContext.Provider>
     );
 };
+
+export default GameOrderContextProvider;
