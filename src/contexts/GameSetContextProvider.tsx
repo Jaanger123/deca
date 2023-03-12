@@ -1,5 +1,5 @@
 import { getDocuments } from "firebaseClients/firestoreClient";
-import React, { createContext, useContext, useReducer } from "react";
+import React, { createContext, useContext, useEffect, useReducer } from "react";
 import { GAMESETS_COLLECTION, GAMESET_CONTEXT_ACTIONS } from "utils/consts";
 import { IGameSet } from "./helpers/types";
 import { IReducerAction } from "./helpers/types";
@@ -33,6 +33,10 @@ const reducer = (state = INIT_STATE, action: IReducerAction) => {
 const GameSetContextProvider = ({ children }: IGameSetContextProviderProps) => {
     const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
+    useEffect(() => {
+        getGameSets();
+    }, []);
+
     const getGameSets = async () => {
         try {
             const gameSets: Array<IGameSet> = [];
@@ -50,8 +54,6 @@ const GameSetContextProvider = ({ children }: IGameSetContextProviderProps) => {
             console.log(error.message);
         }
     };
-
-    getGameSets().then((res) => console.log(res));
 
     const values = {
         gameSets: state.gameSets,
