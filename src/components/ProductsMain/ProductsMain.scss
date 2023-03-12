@@ -2,12 +2,7 @@
 @import 'assets/css/mixins.scss';
 
 .products-main {
-    @include background(
-        '/assets/images/page-background.png',
-        100%,
-        repeat,
-        contain
-    );
+    @include background('/assets/images/page-background.png', repeat, contain);
 
     .products-content {
         background-color: white;
@@ -17,6 +12,7 @@
         .products-container {
             width: 90%;
             margin: auto;
+            // padding-inline: 2.5em;
         }
 
         .products-rating {

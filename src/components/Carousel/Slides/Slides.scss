@@ -2,12 +2,7 @@
 @import 'assets/css/mixins.scss';
 
 .slide {
-    @include background(
-        '/assets/images/page-background.png',
-        100%,
-        no-repeat,
-        100%
-    );
+    @include background('/assets/images/page-background.png', no-repeat, cover);
     background-color: $bg-color;
     height: 100%;
 }

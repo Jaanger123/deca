@@ -6,12 +6,41 @@ import './GameSetList.scss';
 const gameSets = [
     {
         characterImgs: [require('assets/images/character-two.png')],
-
         bgImg: require('assets/images/kyrgyz-flag-sm.png'),
-        gameSetTitle: 'Classic game set',
+        gameSetTitle: 'Manas game set',
         playersQuantity: '4-6',
         gameSetPrice: 1200,
         gameSetRating: 2,
+    },
+    {
+        characterImgs: [
+            require('assets/images/character-three.png'),
+            require('assets/images/character-five.png'),
+        ],
+        bgImg: require('assets/images/skull-sm.png'),
+        gameSetTitle: 'Classic game set',
+        playersQuantity: '4-6',
+        gameSetPrice: 1200,
+        gameSetRating: 4,
+    },
+    {
+        characterImgs: [require('assets/images/character-two.png')],
+        bgImg: require('assets/images/kyrgyz-flag-sm.png'),
+        gameSetTitle: 'Manas game set',
+        playersQuantity: '4-6',
+        gameSetPrice: 1200,
+        gameSetRating: 5,
+    },
+    {
+        characterImgs: [
+            require('assets/images/character-three.png'),
+            require('assets/images/character-five.png'),
+        ],
+        bgImg: require('assets/images/skull-sm.png'),
+        gameSetTitle: 'Classic game set',
+        playersQuantity: '4-6',
+        gameSetPrice: 1200,
+        gameSetRating: 3,
     },
 ];
 

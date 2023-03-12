@@ -30,7 +30,7 @@ $scrollbar-track: #dcdcdc;
         margin-top: 1.5em;
         overflow: auto;
         white-space: nowrap;
-        padding-bottom: 1em;
+        padding-bottom: 2.5em;
 
         &::-webkit-scrollbar {
             height: 0.375em;
@@ -54,9 +54,12 @@ $scrollbar-track: #dcdcdc;
         }
 
         .gs-list-slider {
+            // position: relative;
+            // z-index: 1;
             display: flex;
             gap: 2em;
-            width: 120%;
+            // padding-inline: 0.25em;
+            // width: 120%;
 
             .gs-list-slide-wrapper {
                 width: 40%;

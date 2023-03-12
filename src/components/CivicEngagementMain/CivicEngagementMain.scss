@@ -2,12 +2,7 @@
 @import 'assets/css/mixins.scss';
 
 .civic-main {
-    @include background(
-        '/assets/images/page-background.png',
-        100%,
-        repeat,
-        contain
-    );
+    @include background('/assets/images/page-background.png', repeat, contain);
 
     .civic-content {
         padding-top: 3em;

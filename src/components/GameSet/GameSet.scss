@@ -8,18 +8,26 @@
     .game-set-characters {
         @include flex(row, left, flex-end);
         background-repeat: no-repeat;
-        background-size: 60%;
+        background-size: 70%;
         background-position: center;
         padding-top: 3em;
+        height: auto;
 
         img {
             font-size: 1rem;
-            width: 6em;
+            height: 14em;
             margin-left: 2.5em;
+        }
+
+        img:nth-child(2) {
+            font-size: 0.8rem;
+            margin-left: 0.5em;
         }
     }
 
     .game-set-info-wrapper {
+        // position: relative;
+        // z-index: 5;
         background-color: white;
         padding-block: 1.125em;
         border-radius: 1.25em;
