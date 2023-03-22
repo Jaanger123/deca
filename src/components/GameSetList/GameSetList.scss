@@ -9,8 +9,9 @@ $scrollbar-track: #dcdcdc;
     padding-top: 1.5em;
 
     .gs-list-title {
-        width: 25%;
+        width: 30%;
         font-size: 1.5rem;
+        padding-left: 0.6666em;
 
         p {
             color: $dark-text;
@@ -54,12 +55,9 @@ $scrollbar-track: #dcdcdc;
         }
 
         .gs-list-slider {
-            // position: relative;
-            // z-index: 1;
             display: flex;
             gap: 2em;
-            // padding-inline: 0.25em;
-            // width: 120%;
+            padding-inline: 1em;
 
             .gs-list-slide-wrapper {
                 width: 40%;

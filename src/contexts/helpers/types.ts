@@ -1,3 +1,7 @@
+export interface IContextProviderProps {
+    children: React.ReactNode;
+}
+
 export interface IReducerAction<payloadType = any> {
     type: string;
     payload?: payloadType;

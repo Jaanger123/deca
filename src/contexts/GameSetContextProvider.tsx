@@ -1,15 +1,11 @@
-import { getDocuments } from "firebaseClients/firestoreClient";
-import React, { createContext, useContext, useEffect, useReducer } from "react";
-import { GAMESETS_COLLECTION, GAMESET_CONTEXT_ACTIONS } from "utils/consts";
-import { IGameSet } from "./helpers/types";
-import { IReducerAction } from "./helpers/types";
+import { GAMESETS_COLLECTION, GAMESET_CONTEXT_ACTIONS } from 'utils/consts';
+import { createContext, useContext, useEffect, useReducer } from 'react';
+import { IContextProviderProps, IGameSet } from './helpers/types';
+import { getDocuments } from 'firebaseClients/firestoreClient';
+import { IReducerAction } from './helpers/types';
 
 interface IGameSetContext {
     gameSets: Array<IGameSet>;
-}
-
-interface IGameSetContextProviderProps {
-    children: React.ReactNode;
 }
 
 export const GameSetContext = createContext<IGameSetContext | null>(null);
@@ -30,7 +26,7 @@ const reducer = (state = INIT_STATE, action: IReducerAction) => {
     }
 };
 
-const GameSetContextProvider = ({ children }: IGameSetContextProviderProps) => {
+const GameSetContextProvider = ({ children }: IContextProviderProps) => {
     const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
     useEffect(() => {

@@ -9,36 +9,52 @@ import {
     charactersSelectHandler,
     dateCalendarHandler,
     timeSelectHandler,
-} from "contexts/helpers/gameOrder";
-import { useGameOrder } from "contexts/GameOrderContextProvider";
-import { addDocument } from "firebaseClients/firestoreClient";
-import { ORDERS_COLLECTION } from "utils/consts";
-import PopupModal from "components/PopupModal";
-import React, { useState } from "react";
-import Calendar from "react-calendar";
+    gameSetAutoFill,
+    searchGameSetTitle,
+} from 'contexts/helpers/gameOrder';
+import { useGameOrder } from 'contexts/GameOrderContextProvider';
+import { addDocument } from 'firebaseClients/firestoreClient';
+import { useGameSet } from 'contexts/GameSetContextProvider';
+import { useSearchParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { ORDERS_COLLECTION } from 'utils/consts';
+import PopupModal from 'components/PopupModal';
+import Calendar from 'react-calendar';
 
-import "./GameOrderMain.scss";
-import "./Calendar.scss";
+import PhoneInput from 'react-phone-number-input';
+import './GameOrderMain.scss';
+import './Calendar.scss';
 
 // import KG from '../../assets/images/input-kyrgyz-flag.svg'; // ????
 // import RU from '../../assets/images/input-russian-flag.svg'; // ????
-const KG = require("../../assets/images/input-kyrgyz-flag.svg") as ISVG; // ????
-const RU = require("../../assets/images/input-russian-flag.svg") as ISVG; // ????
+const KG = require('../../assets/images/input-kyrgyz-flag.svg') as ISVG; // ????
+const RU = require('../../assets/images/input-russian-flag.svg') as ISVG; // ????
 
 interface ISVG {
     default: string;
 }
 
 const GameOrderMain = () => {
+    const [searchParams] = useSearchParams();
     const [surnameError, setSurnameError] = useState(false);
     const [nameError, setNameError] = useState(false);
     const [emailError, setEmailError] = useState(false);
     const [numberError, setNumberError] = useState(false);
     const [numberLength, setNumberLength] = useState(0);
+    const [number, setNumber] = useState<string>();
+    const currentDate = new Date();
 
     const gameOrderContextValues = useGameOrder(); // ?????????
+    const gameSetContextValues = useGameSet();
 
-    if (!gameOrderContextValues) return null;
+    useEffect(() => {
+        const gameSetParam = searchParams.get('game-set');
+        if (gameSetParam && searchGameSetTitle(gameSets, gameSetParam)) {
+            gameSetAutoFill(gameSetParam, setFormData);
+        }
+    }, [searchParams]);
+
+    if (!gameOrderContextValues || !gameSetContextValues) return null;
 
     const {
         formData,
@@ -51,38 +67,40 @@ const GameOrderMain = () => {
         setShowPopup,
     } = gameOrderContextValues;
 
+    const { gameSets } = gameSetContextValues;
+
     const numberInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
         validateNumber(event, setFormData, countryCode);
 
-        if (countryCode === "+996 ") {
+        if (countryCode === '+996 ') {
             setNumberError(
                 !(
                     formData.number.length === 19 ||
                     formData.number.length === 18
                 )
             );
-        } else if (countryCode === "+7 ") {
+        } else if (countryCode === '+7 ') {
             setNumberError(!(formData.number.length === 18));
         }
     };
 
     const onCheckout = () => {
         if (
-            formData.surname.trim() === "" ||
-            formData.name.trim() === "" ||
-            formData.email.trim() === "" ||
-            formData.number.trim() === "" ||
-            formData.gameSet.trim() === "" ||
-            formData.players.trim() === "" ||
-            formData.characters.trim() === "" ||
-            formData.time.trim() === ""
+            formData.surname.trim() === '' ||
+            formData.name.trim() === '' ||
+            formData.email.trim() === '' ||
+            formData.number.trim() === '' ||
+            formData.gameSet.trim() === '' ||
+            formData.players.trim() === '' ||
+            formData.characters.trim() === '' ||
+            formData.time.trim() === ''
         ) {
             setShowPopup(true);
             return;
         }
 
         if (surnameError || nameError || emailError || numberError) {
-            alert("Invalid data given");
+            alert('Invalid data given');
             return;
         }
 
@@ -104,7 +122,7 @@ const GameOrderMain = () => {
     return (
         <>
             <PopupModal
-                message={"Fill in all the fields!"}
+                message={'Fill in all the fields!'}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
             />
@@ -180,7 +198,14 @@ const GameOrderMain = () => {
                             </div>
                             <div className="form-input">
                                 <span>Number</span>
-                                <div className="game-order-contact-form-editable-select">
+                                <PhoneInput
+                                    defaultCountry="KG"
+                                    // countryCallingCodeEditable={false}
+                                    placeholder="Enter phone number"
+                                    value={number}
+                                    onChange={(value) => setNumber(value)}
+                                />
+                                {/* <div className="game-order-contact-form-editable-select">
                                     <input
                                         type="tel"
                                         name="number"
@@ -192,7 +217,7 @@ const GameOrderMain = () => {
                                             <img
                                                 className="game-order-contact-form-flag"
                                                 src={
-                                                    countryCode === "+996 "
+                                                    countryCode === '+996 '
                                                         ? KG.default
                                                         : RU.default
                                                 }
@@ -217,13 +242,13 @@ const GameOrderMain = () => {
                                         <img
                                             className="game-order-contact-form-arrow"
                                             src={
-                                                require("../../assets/images/input-arrow-down.svg")
+                                                require('../../assets/images/input-arrow-down.svg')
                                                     .default
                                             }
                                             alt="Arrow down"
                                         />
                                     </div>
-                                </div>
+                                </div> */}
                                 {numberError ? (
                                     <span className="error-message">
                                         Invalid phone number given
@@ -245,16 +270,22 @@ const GameOrderMain = () => {
                                         gameSetSelectHandler(event, setFormData)
                                     }
                                     className={
-                                        formData.gameSet !== ""
-                                            ? ""
-                                            : "disabled"
+                                        formData.gameSet !== ''
+                                            ? ''
+                                            : 'disabled'
                                     }
                                 >
                                     <option value="" disabled hidden>
                                         Choose a game set
                                     </option>
-                                    <option value="Aika">Aika</option>
-                                    <option value="Jaga">Jaga</option>
+                                    {gameSets.map(({ gameSetTitle }, index) => (
+                                        <option
+                                            key={index}
+                                            value={gameSetTitle}
+                                        >
+                                            {gameSetTitle}
+                                        </option>
+                                    ))}
                                 </select>
                             </div>
                             <div className="game-order-game-form-inputs-wrapper">
@@ -270,9 +301,9 @@ const GameOrderMain = () => {
                                             )
                                         }
                                         className={
-                                            formData.players !== ""
-                                                ? ""
-                                                : "disabled"
+                                            formData.players !== ''
+                                                ? ''
+                                                : 'disabled'
                                         }
                                     >
                                         <option value="" disabled hidden>
@@ -295,9 +326,9 @@ const GameOrderMain = () => {
                                             )
                                         }
                                         className={
-                                            formData.characters !== ""
-                                                ? ""
-                                                : "disabled"
+                                            formData.characters !== ''
+                                                ? ''
+                                                : 'disabled'
                                         }
                                     >
                                         <option value="" disabled hidden>
@@ -316,6 +347,7 @@ const GameOrderMain = () => {
                         <hr />
                         <div className="game-order-date-form-inputs-wrapper">
                             <Calendar
+                                tileDisabled={({ date }) => date < currentDate}
                                 onChange={(date: Date) => {
                                     dateCalendarHandler(
                                         date,
@@ -329,6 +361,7 @@ const GameOrderMain = () => {
                                 <div className="form-input">
                                     <span>Date</span>
                                     <input
+                                        className="inactive-input"
                                         type="text"
                                         value={formData.dateInput}
                                         readOnly
@@ -346,9 +379,9 @@ const GameOrderMain = () => {
                                             )
                                         }
                                         className={
-                                            formData.time !== ""
-                                                ? ""
-                                                : "disabled"
+                                            formData.time !== ''
+                                                ? ''
+                                                : 'disabled'
                                         }
                                     >
                                         <option value="" disabled hidden>

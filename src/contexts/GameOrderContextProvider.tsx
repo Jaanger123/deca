@@ -1,6 +1,6 @@
-import { useState, createContext, useContext } from "react";
-import { IFormData } from "./helpers/types";
-import { transformDate } from "./helpers/gameOrder";
+import { getTomorrowDate, transformDate } from './helpers/gameOrder';
+import { IContextProviderProps, IFormData } from './helpers/types';
+import { useState, createContext, useContext } from 'react';
 
 interface IGameOrderContext {
     formData: IFormData;
@@ -13,28 +13,24 @@ interface IGameOrderContext {
     setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-interface IGameOrderProviderProps {
-    children: React.ReactNode;
-}
-
 export const GameOrderContext = createContext<IGameOrderContext | null>(null);
 
 export const useGameOrder = () => useContext(GameOrderContext);
 
-const GameOrderContextProvider = ({ children }: IGameOrderProviderProps) => {
+const GameOrderContextProvider = ({ children }: IContextProviderProps) => {
     const [showPopup, setShowPopup] = useState(false);
-    const [date, setDate] = useState(new Date());
-    const [countryCode, setCountryCode] = useState("+996 ");
+    const [date, setDate] = useState(new Date(getTomorrowDate()));
+    const [countryCode, setCountryCode] = useState('+996 ');
 
     const [formData, setFormData] = useState<IFormData>({
-        surname: "",
-        name: "",
-        email: "",
-        number: "+996 ",
-        gameSet: "",
-        players: "",
-        characters: "",
-        time: "",
+        surname: '',
+        name: '',
+        email: '',
+        number: '+996 ',
+        gameSet: '',
+        players: '',
+        characters: '',
+        time: '',
         dateInput: transformDate(date),
     });
 

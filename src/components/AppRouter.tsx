@@ -1,5 +1,5 @@
-import { Routes, Route, Navigate } from "react-router-dom";
-import NavbarFooterLayout from "./NavbarFooterLayout";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import NavbarFooterLayout from './NavbarFooterLayout';
 import {
     CivicEngagement,
     GameOrder,
@@ -7,19 +7,21 @@ import {
     About,
     Auth,
     Home,
-} from "../pages";
+    GameSetDetail,
+} from 'pages';
 import {
     ABOUT_ROUTE,
     CIVIC_ENGAGEMENT_ROUTE,
+    GAMESET_DETAIL,
     GAME_ORDER_ROUTE,
     HOME_ROUTE,
     PRODUCTS_ROUTE,
     SIGN_IN_ROUTE,
     SIGN_UP_ROUTE,
-} from "utils/consts";
-import SiteLoading from "./SiteLoading";
-import { useAuth } from "contexts/AuthContextProvider";
-import Products from "pages/Products";
+} from 'utils/consts';
+import SiteLoading from './SiteLoading';
+import { useAuth } from 'contexts/AuthContextProvider';
+import Products from 'pages/Products';
 
 const AppRouter = () => {
     const authContextValues = useAuth();
@@ -31,7 +33,7 @@ const AppRouter = () => {
     if (siteLoading) {
         return (
             <Routes>
-                <Route path={"*"} element={<SiteLoading />} />;
+                <Route path={'*'} element={<SiteLoading />} />;
             </Routes>
         );
     }
@@ -46,6 +48,7 @@ const AppRouter = () => {
                     element={<CivicEngagement />}
                 />
                 <Route path={PRODUCTS_ROUTE} element={<Products />} />
+                <Route path={GAMESET_DETAIL} element={<GameSetDetail />} />
                 <Route path={GAME_ORDER_ROUTE} element={<GameOrder />} />
                 <Route path="*" element={<NotFound />} />
             </Route>

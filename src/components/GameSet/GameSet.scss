@@ -26,8 +26,6 @@
     }
 
     .game-set-info-wrapper {
-        // position: relative;
-        // z-index: 5;
         background-color: white;
         padding-block: 1.125em;
         border-radius: 1.25em;
@@ -40,7 +38,12 @@
 
             .game-set-text {
                 h4 {
+                    transition: color 0.2s;
                     font-size: 1.375rem;
+
+                    &:hover {
+                        color: $primary;
+                    }
                 }
 
                 p {

@@ -1,113 +1,91 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
 footer {
     width: 100%;
-    background-color: #252525;
-    color: #fff;
+    background-color: $dark-text;
+    color: white;
     padding: 2.75em 0 2.25em;
 
     .footer-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flex(column, flex-start, center);
         width: 92%;
         margin: auto;
 
-        & > p {
+        p {
             font-weight: 400;
             font-size: 2rem;
             padding-bottom: 1.5em;
         }
 
-        & > hr {
+        hr {
             width: 100%;
-            background-color: #333333;
+            background-color: $hr-bg;
         }
 
         .footer-contacts {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include flex(row, space-between, center);
             width: 88%;
             padding-bottom: 2.125em;
 
-            & p {
+            p {
                 font-size: 1.5rem;
                 font-weight: 400;
                 padding-bottom: 0.25em;
                 user-select: text;
             }
 
-            & a button {
-                padding: 0.625em 4em;
-                color: #fff;
-                border-radius: 0.5em;
-                border: 0.1em solid #fff;
-                background-color: transparent;
+            hr {
+                background-color: white;
+            }
 
-                &:hover {
-                    background-color: #fff;
-                    color: #252525;
-                }
+            a button {
+                @include button(
+                    0.625em,
+                    4em,
+                    1rem,
+                    transparent,
+                    white,
+                    white,
+                    white,
+                    $dark-text
+                );
             }
 
             .footer-number {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
+                @include flex(column, flex-start, center);
 
-                & > hr {
+                hr {
                     width: 115%;
                 }
 
-                & > span {
-                    font-family: 'HelveticaNeueCyr', sans-serif;
-                    font-weight: 400;
+                span {
+                    @include roboto;
+                    font-weight: 300;
                     font-size: 1.25rem;
-                    color: #8c8c8c;
+                    color: $light-gray;
                     padding-top: 0.5em;
                     user-select: text;
                 }
             }
         }
 
-        .footer-payment-social {
-            display: flex;
-            justify-content: space-between;
-            width: 45%;
-            padding-top: 2em;
+        .footer-social {
+            @include flex;
+            gap: 2em;
+            margin: 2em auto 0;
 
-            .footer-payment {
-                width: 50%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-
-                .apple-pay-icon {
-                    width: 28%;
-                }
-
-                .pay-pal-icon {
-                    width: 44%;
-                }
+            img {
+                cursor: pointer;
             }
 
-            .footer-social {
-                width: 35%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+            .instagram-icon {
+                width: 2.7em;
+            }
 
-                img {
-                    cursor: pointer;
-                }
-
-                .instagram-icon {
-                    width: 22%;
-                }
-
-                .twitter-icon,
-                .facebook-icon {
-                    width: 20%;
-                }
+            .twitter-icon,
+            .facebook-icon {
+                width: 2.25em;
             }
         }
     }

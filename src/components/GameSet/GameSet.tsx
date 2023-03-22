@@ -1,6 +1,8 @@
-import filledStar from "assets/images/filled-star.svg";
+import filledStar from 'assets/images/filled-star.svg';
+import { GAMESET_DETAIL, GAME_ORDER_ROUTE } from 'utils/consts';
+import { Link } from 'react-router-dom';
 
-import "./GameSet.scss";
+import './GameSet.scss';
 
 interface IGameSetProps {
     gameSetObj: IGameSetObj;
@@ -38,7 +40,14 @@ const GameSet = ({
             <div className="game-set-info-wrapper">
                 <div className="game-set-info">
                     <div className="game-set-text">
-                        <h4>{gameSetTitle}</h4>
+                        {/* <Link
+                            to={`${GAME_ORDER_ROUTE}?game-set=${gameSetTitle}`}
+                        >
+                            <h4>{gameSetTitle}</h4>
+                        </Link> */}
+                        <Link to={GAMESET_DETAIL}>
+                            <h4>{gameSetTitle}</h4>
+                        </Link>
                         <p>({playersQuantity} players)</p>
                     </div>
                     <div className="game-set-rating-price">
@@ -51,8 +60,6 @@ const GameSet = ({
                                     alt="filled star"
                                 />
                             ))}
-                            {/* <img src={filledStar} alt="filled star" />
-                            <img src={filledStar} alt="filled star" /> */}
                         </div>
                     </div>
                 </div>

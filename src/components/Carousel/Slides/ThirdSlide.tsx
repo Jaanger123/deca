@@ -23,7 +23,7 @@ const ThirdSlide = () => (
                 </p>
                 <NavLink to="#">
                     <button className="slide-button third-slide-button">
-                        CHARACTER CREATOR
+                        CHOOSE YOUR GAMEMODE
                     </button>
                 </NavLink>
             </div>

@@ -1,6 +1,6 @@
-@import url("https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Roboto:wght@100;300;400;500;700;900&display=swap");
-@import "./assets/css/variables.scss";
-@import "./assets/css/mixins.scss";
+@import url('https://fonts.googleapis.com/css2?family=Hammersmith+One&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import './assets/css/variables.scss';
+@import './assets/css/mixins.scss';
 
 * {
     @include hammersmith-one;
@@ -50,7 +50,7 @@ hr {
     width: 100%;
 
     input,
-    input[type="password"] {
+    input[type='password'] {
         @include roboto;
         color: $dark-text;
         background-color: $input-bg-color;
@@ -69,9 +69,14 @@ hr {
         }
     }
 
-    input[type="password"] {
+    input[type='password'] {
         @include verdana;
         letter-spacing: 0.0625em;
+    }
+
+    .inactive-input {
+        outline: none;
+        cursor: default;
     }
 
     .error-message {
