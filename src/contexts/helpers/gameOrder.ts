@@ -3,7 +3,6 @@ import { monthNames } from 'utils/consts';
 import { IFormData, IGameSet } from './types';
 
 export const transformDate = (date: Date) => {
-    console.log(date, 'data');
     return `${date.getDate()} ${
         monthNames[date.getMonth()]
     }, ${date.getFullYear()}`;

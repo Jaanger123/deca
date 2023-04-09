@@ -22,6 +22,18 @@ export interface IGameSet {
     bgImg: string;
 }
 
+export interface IGameSetInfo {
+    surname: string;
+    name: string;
+    email: string;
+    phoneNumber: string;
+    gameSet: string;
+    playersQuantity: string;
+    characters: string;
+    time: string;
+    date: Date;
+}
+
 export interface IFormData {
     [key: string]: string;
     surname: string;

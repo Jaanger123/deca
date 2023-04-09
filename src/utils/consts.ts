@@ -1,3 +1,5 @@
+export const TELEGRAM_BOT_API_SEND_MESSAGE_URL = `https://api.telegram.org/bot${process.env.REACT_APP_TELEGRAM_BOT_TOKEN}/sendMessage?chat_id=${process.env.REACT_APP_TELEGRAM_RECEIVER_CHAT_ID}&parse_mode=html&text=`;
+
 export const ORDERS_COLLECTION = 'orders';
 export const GAMESETS_COLLECTION = 'gameSets';
 

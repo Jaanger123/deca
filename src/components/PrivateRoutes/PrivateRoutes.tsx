@@ -4,8 +4,9 @@ import { SIGN_UP_ROUTE } from 'utils/consts';
 
 const PrivateRoutes = () => {
     const { user } = useAuth();
+    const loggedIn = localStorage.getItem('loggedIn');
 
-    return user ? <Outlet /> : <Navigate to={SIGN_UP_ROUTE} />;
+    return user || loggedIn ? <Outlet /> : <Navigate to={SIGN_UP_ROUTE} />;
 };
 
 export default PrivateRoutes;

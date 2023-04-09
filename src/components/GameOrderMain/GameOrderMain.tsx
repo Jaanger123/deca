@@ -14,8 +14,10 @@ import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import { ORDERS_COLLECTION, PRODUCTS_ROUTE } from 'utils/consts';
 import { useGameOrder } from 'contexts/GameOrderContextProvider';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { sendMessageToReceiver } from 'utils/telegramBotUtils';
 import { addDocument } from 'firebaseClients/firestoreClient';
 import { useGameSet } from 'contexts/GameSetContextProvider';
+import { IGameSetInfo } from 'contexts/helpers/types';
 import { E164Number } from 'libphonenumber-js/types';
 import PopupModal from 'components/PopupModal';
 import { useEffect, useState } from 'react';
@@ -57,7 +59,7 @@ const GameOrderMain = () => {
             return;
         }
 
-        const data = {
+        const data: IGameSetInfo = {
             surname: formData.surname,
             name: formData.name,
             email: formData.email,
@@ -69,8 +71,9 @@ const GameOrderMain = () => {
             date,
         };
 
-        addDocument(ORDERS_COLLECTION, data);
-        navigate(PRODUCTS_ROUTE);
+        // addDocument(ORDERS_COLLECTION, data);
+        sendMessageToReceiver(data);
+        // navigate(PRODUCTS_ROUTE);
     };
 
     const phoneInputHandler = (value: E164Number) => {

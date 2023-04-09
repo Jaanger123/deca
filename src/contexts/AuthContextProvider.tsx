@@ -85,8 +85,10 @@ const AuthContextProvider = ({ children }: IContextProviderProps) => {
                     trimmedPassword
                 );
                 setGreetShowPopup(true);
+                localStorage.setItem('loggedIn', 'true');
                 navigate(HOME_ROUTE);
             } catch (error: any) {
+                localStorage.removeItem('loggedIn');
                 // ! HOW TYPE FIREBASE AUTHENTICATION ERRORS
                 switch (error.code) {
                     case 'auth/email-already-in-use':
@@ -119,8 +121,10 @@ const AuthContextProvider = ({ children }: IContextProviderProps) => {
                     trimmedPassword
                 );
 
+                localStorage.setItem('loggedIn', 'true');
                 navigate(HOME_ROUTE);
             } catch (error: any) {
+                localStorage.removeItem('loggedIn');
                 // ! HOW TYPE FIREBBASE AUTHENTICATION ERRORS
                 switch (error.code) {
                     case 'auth/user-not-found':
@@ -150,8 +154,12 @@ const AuthContextProvider = ({ children }: IContextProviderProps) => {
 
             await signInWithPopup(auth, provider);
 
+            localStorage.setItem('loggedIn', 'true');
+            console.log('work');
+
             navigate(HOME_ROUTE);
         } catch (error: any) {
+            localStorage.removeItem('loggedIn');
             // ! HOW TYPE FIREBBASE AUTHENTICATION ERRORS
             switch (error.code) {
                 default:
@@ -166,7 +174,9 @@ const AuthContextProvider = ({ children }: IContextProviderProps) => {
     const signOutAccount = async () => {
         try {
             await signOut(auth);
+            localStorage.removeItem('loggedIn');
         } catch (error) {
+            localStorage.removeItem('loggedIn');
             setShowPopup(true);
             setErrorMessage('Unexpected error ;(');
         }
