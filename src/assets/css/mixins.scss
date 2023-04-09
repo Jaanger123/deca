@@ -12,6 +12,12 @@
     font-family: 'Verdana', sans-serif;
 }
 
+@mixin font($size: 1rem, $weight: 400, $height: normal) {
+    font-size: $size;
+    font-weight: $weight;
+    line-height: $height;
+}
+
 @mixin flex($fd: row, $jc: flex-start, $ai: 'normal') {
     display: flex;
     flex-direction: $fd;

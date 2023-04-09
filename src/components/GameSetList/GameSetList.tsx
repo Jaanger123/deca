@@ -1,14 +1,10 @@
-import { useGameSet } from "contexts/GameSetContextProvider";
-import GameSet from "components/GameSet/GameSet";
+import { useGameSet } from 'contexts/GameSetContextProvider';
+import GameSet from 'components/GameSet/GameSet';
 
-import "./GameSetList.scss";
+import './GameSetList.scss';
 
 const GameSetList = () => {
-    const gameSetContextValues = useGameSet();
-
-    if (!gameSetContextValues) return null;
-
-    const { gameSets } = gameSetContextValues;
+    const { gameSets } = useGameSet();
 
     return (
         <div className="gs-list-container">

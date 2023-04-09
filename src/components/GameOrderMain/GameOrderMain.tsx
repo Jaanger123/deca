@@ -2,8 +2,6 @@ import {
     surnameInputHandler,
     nameInputHandler,
     emailInputHandler,
-    validateNumber,
-    countryCodeInputHandler,
     gameSetSelectHandler,
     playersSelectHandler,
     charactersSelectHandler,
@@ -12,40 +10,30 @@ import {
     gameSetAutoFill,
     searchGameSetTitle,
 } from 'contexts/helpers/gameOrder';
+import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
+import { ORDERS_COLLECTION, PRODUCTS_ROUTE } from 'utils/consts';
 import { useGameOrder } from 'contexts/GameOrderContextProvider';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { addDocument } from 'firebaseClients/firestoreClient';
 import { useGameSet } from 'contexts/GameSetContextProvider';
-import { useSearchParams } from 'react-router-dom';
-import React, { useEffect, useState } from 'react';
-import { ORDERS_COLLECTION } from 'utils/consts';
+import { E164Number } from 'libphonenumber-js/types';
 import PopupModal from 'components/PopupModal';
+import { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 
-import PhoneInput from 'react-phone-number-input';
 import './GameOrderMain.scss';
 import './Calendar.scss';
 
-// import KG from '../../assets/images/input-kyrgyz-flag.svg'; // ????
-// import RU from '../../assets/images/input-russian-flag.svg'; // ????
-const KG = require('../../assets/images/input-kyrgyz-flag.svg') as ISVG; // ????
-const RU = require('../../assets/images/input-russian-flag.svg') as ISVG; // ????
-
-interface ISVG {
-    default: string;
-}
-
 const GameOrderMain = () => {
+    const { formData, setFormData, date, setDate, showPopup, setShowPopup } =
+        useGameOrder();
+    const { gameSets } = useGameSet();
     const [searchParams] = useSearchParams();
-    const [surnameError, setSurnameError] = useState(false);
-    const [nameError, setNameError] = useState(false);
-    const [emailError, setEmailError] = useState(false);
-    const [numberError, setNumberError] = useState(false);
-    const [numberLength, setNumberLength] = useState(0);
-    const [number, setNumber] = useState<string>();
-    const currentDate = new Date();
-
-    const gameOrderContextValues = useGameOrder(); // ?????????
-    const gameSetContextValues = useGameSet();
+    const [surnameError, setSurnameError] = useState<Boolean>(false);
+    const [nameError, setNameError] = useState<Boolean>(false);
+    const [emailError, setEmailError] = useState<Boolean>(false);
+    const [numberError, setNumberError] = useState<Boolean>(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const gameSetParam = searchParams.get('game-set');
@@ -54,49 +42,14 @@ const GameOrderMain = () => {
         }
     }, [searchParams]);
 
-    if (!gameOrderContextValues || !gameSetContextValues) return null;
-
-    const {
-        formData,
-        setFormData,
-        date,
-        setDate,
-        countryCode,
-        setCountryCode,
-        showPopup,
-        setShowPopup,
-    } = gameOrderContextValues;
-
-    const { gameSets } = gameSetContextValues;
-
-    const numberInputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
-        validateNumber(event, setFormData, countryCode);
-
-        if (countryCode === '+996 ') {
-            setNumberError(
-                !(
-                    formData.number.length === 19 ||
-                    formData.number.length === 18
-                )
-            );
-        } else if (countryCode === '+7 ') {
-            setNumberError(!(formData.number.length === 18));
-        }
-    };
+    const currentDate = new Date();
 
     const onCheckout = () => {
-        if (
-            formData.surname.trim() === '' ||
-            formData.name.trim() === '' ||
-            formData.email.trim() === '' ||
-            formData.number.trim() === '' ||
-            formData.gameSet.trim() === '' ||
-            formData.players.trim() === '' ||
-            formData.characters.trim() === '' ||
-            formData.time.trim() === ''
-        ) {
-            setShowPopup(true);
-            return;
+        for (let field in formData) {
+            if (!formData[field].trim()) {
+                setShowPopup(true);
+                return;
+            }
         }
 
         if (surnameError || nameError || emailError || numberError) {
@@ -117,12 +70,24 @@ const GameOrderMain = () => {
         };
 
         addDocument(ORDERS_COLLECTION, data);
+        navigate(PRODUCTS_ROUTE);
+    };
+
+    const phoneInputHandler = (value: E164Number) => {
+        if (value) {
+            if (!isValidPhoneNumber(value)) return setNumberError(true);
+            else setNumberError(false);
+        }
+
+        setFormData((prev) => {
+            return { ...prev, number: value };
+        });
     };
 
     return (
         <>
             <PopupModal
-                message={'Fill in all the fields!'}
+                message={'Fill in all the fields and provide valid data!'}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
             />
@@ -196,59 +161,17 @@ const GameOrderMain = () => {
                                     </span>
                                 ) : null}
                             </div>
-                            <div className="form-input">
+                            <div className="form-input phone-input">
                                 <span>Number</span>
                                 <PhoneInput
+                                    international
                                     defaultCountry="KG"
-                                    // countryCallingCodeEditable={false}
+                                    countryCallingCodeEditable={false}
                                     placeholder="Enter phone number"
-                                    value={number}
-                                    onChange={(value) => setNumber(value)}
+                                    countries={['KG', 'RU', 'KZ']}
+                                    value={formData.number}
+                                    onChange={phoneInputHandler}
                                 />
-                                {/* <div className="game-order-contact-form-editable-select">
-                                    <input
-                                        type="tel"
-                                        name="number"
-                                        value={formData.number}
-                                        onChange={numberInputHandler}
-                                    />
-                                    <div className="game-order-contact-form-flag-arrow">
-                                        <div className="game-order-contact-form-flag-wrapper">
-                                            <img
-                                                className="game-order-contact-form-flag"
-                                                src={
-                                                    countryCode === '+996 '
-                                                        ? KG.default
-                                                        : RU.default
-                                                }
-                                                alt="Country"
-                                            />
-                                        </div>
-
-                                        <select
-                                            name="countryCode"
-                                            value={countryCode}
-                                            onChange={(event) =>
-                                                countryCodeInputHandler(
-                                                    event,
-                                                    setFormData,
-                                                    setCountryCode
-                                                )
-                                            }
-                                        >
-                                            <option value="+996 ">+996</option>
-                                            <option value="+7 ">+7</option>
-                                        </select>
-                                        <img
-                                            className="game-order-contact-form-arrow"
-                                            src={
-                                                require('../../assets/images/input-arrow-down.svg')
-                                                    .default
-                                            }
-                                            alt="Arrow down"
-                                        />
-                                    </div>
-                                </div> */}
                                 {numberError ? (
                                     <span className="error-message">
                                         Invalid phone number given

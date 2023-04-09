@@ -11,15 +11,15 @@ import ScrollToTop from 'components/ScrollToTop';
 function App() {
     return (
         <BrowserRouter>
-            <GameSetContextProvider>
-                <AuthContextProvider>
+            <AuthContextProvider>
+                <GameSetContextProvider>
                     <GameOrderContextProvider>
                         <ScrollToTop>
                             <AppRouter />
                         </ScrollToTop>
                     </GameOrderContextProvider>
-                </AuthContextProvider>
-            </GameSetContextProvider>
+                </GameSetContextProvider>
+            </AuthContextProvider>
         </BrowserRouter>
     );
 }

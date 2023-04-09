@@ -1,29 +1,22 @@
-import filledStar from 'assets/images/filled-star.svg';
 import { GAMESET_DETAIL, GAME_ORDER_ROUTE } from 'utils/consts';
+import GenerateStars from 'components/GenerateStars';
+import { IGameSet } from 'contexts/helpers/types';
 import { Link } from 'react-router-dom';
 
 import './GameSet.scss';
 
 interface IGameSetProps {
-    gameSetObj: IGameSetObj;
-}
-
-interface IGameSetObj {
-    characterImgs: Array<string>;
-    bgImg: string;
-    gameSetTitle: string;
-    playersQuantity: string;
-    gameSetRating: number;
-    gameSetPrice: number;
+    gameSetObj: IGameSet;
 }
 
 const GameSet = ({
     gameSetObj: {
+        id,
         characterImgs,
         bgImg,
         gameSetTitle,
         playersQuantity,
-        gameSetRating,
+        gameSetDifficulty,
         gameSetPrice,
     },
 }: IGameSetProps) => {
@@ -40,27 +33,17 @@ const GameSet = ({
             <div className="game-set-info-wrapper">
                 <div className="game-set-info">
                     <div className="game-set-text">
-                        {/* <Link
-                            to={`${GAME_ORDER_ROUTE}?game-set=${gameSetTitle}`}
-                        >
-                            <h4>{gameSetTitle}</h4>
-                        </Link> */}
-                        <Link to={GAMESET_DETAIL}>
+                        <Link to={`${GAMESET_DETAIL}/${id}`}>
                             <h4>{gameSetTitle}</h4>
                         </Link>
                         <p>({playersQuantity} players)</p>
                     </div>
                     <div className="game-set-rating-price">
                         <p>{gameSetPrice}KGS</p>
-                        <div className="game-set-rating">
-                            {[...Array(gameSetRating)].map((_, index) => (
-                                <img
-                                    key={index}
-                                    src={filledStar}
-                                    alt="filled star"
-                                />
-                            ))}
-                        </div>
+                        <GenerateStars
+                            difficulty={gameSetDifficulty}
+                            className="game-set-difficulty"
+                        />
                     </div>
                 </div>
             </div>

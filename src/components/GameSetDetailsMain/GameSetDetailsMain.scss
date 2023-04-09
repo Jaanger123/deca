@@ -1,0 +1,217 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+.gs-details-main-wrapper {
+    @include background('/assets/images/page-background.png', repeat, cover);
+
+    .gs-details-main {
+        width: 80%;
+        margin: auto;
+        background-color: white;
+        box-shadow: $shadow;
+
+        @media screen and (min-width: $desktop) {
+            max-width: 70%;
+        }
+
+        .gs-details-container {
+            // min-height: 100vh;
+            width: 90%;
+            margin: auto;
+
+            @media screen and (min-width: $desktop) {
+                max-width: 85%;
+            }
+
+            h3 {
+                @include font(1.5rem, 500);
+            }
+
+            .gs-details-main-info-wrapper {
+                width: 100%;
+                padding-top: 1.5em;
+
+                .gs-details-current-gs {
+                    color: $light-gray;
+                    padding-bottom: 1.5em;
+
+                    p {
+                        @include roboto;
+                        @include font(1rem, 300);
+
+                        span {
+                            font-family: inherit;
+                            font-weight: inherit;
+                            color: black;
+                        }
+                    }
+                }
+
+                .gs-details-main-info {
+                    @include flex(row, space-between);
+                    width: 100%;
+                    padding-bottom: 1.5em;
+                    border-bottom: 0.1rem solid $gray-hr;
+
+                    .gs-details-images {
+                        width: 45%;
+
+                        .gs-details-main-image {
+                            width: 100%;
+                            margin-bottom: 0.75em;
+                            background-color: $beige;
+                            border-radius: 1.25rem;
+                            aspect-ratio: 1 / 1;
+                        }
+
+                        .gs-details-sub-images {
+                            @include flex(row, space-between);
+                            gap: 0.5em;
+                            width: 100%;
+
+                            .gs-details-sub-image {
+                                width: 25%;
+                                background-color: $beige;
+                                border-radius: 1.25rem;
+                                aspect-ratio: 1 / 1;
+                            }
+                        }
+                    }
+
+                    .gs-details-text {
+                        @include flex(column, space-between);
+                        gap: 1em;
+                        width: 50%;
+
+                        .gs-details-title-price-wrapper {
+                            p {
+                                @include roboto;
+                                @include font(1rem, 300, 1.25);
+                                color: $dark-text;
+                            }
+
+                            .gs-details-title-price {
+                                @include flex(row, space-between, center);
+                                width: 100%;
+                                border-bottom: 0.1rem solid $gray-hr;
+                                padding-bottom: 0.75em;
+                                margin-bottom: 1em;
+
+                                h2 {
+                                    @include font(1.625rem, 400);
+                                }
+
+                                span {
+                                    @include roboto;
+                                    @include font(1.25rem, 500);
+                                }
+                            }
+                        }
+
+                        .gs-details-characteristics-button {
+                            .gs-details-characteristics-wrapper {
+                                width: 100%;
+                                margin-bottom: 2em;
+
+                                * {
+                                    @include roboto;
+                                    @include font(1rem, 300);
+                                }
+
+                                h4 {
+                                    @include font(1.25rem, 500);
+                                    padding-bottom: 0.5em;
+                                }
+
+                                .gs-details-characteristics {
+                                    width: 100%;
+
+                                    .gs-details-characteristic {
+                                        @include flex(
+                                            row,
+                                            space-between,
+                                            center
+                                        );
+                                        padding-block: 0.75em;
+                                        border-bottom: 0.1rem solid $gray-hr;
+
+                                        .gs-details-characteristic-difficulty {
+                                            @include flex;
+                                            color: $primary;
+
+                                            span {
+                                                @include font(1rem, 500);
+                                            }
+
+                                            .gs-details-characteristic-difficulty-stars {
+                                                @include flex(
+                                                    row,
+                                                    right,
+                                                    center
+                                                );
+                                                gap: 0.125em;
+                                                margin-left: 0.5em;
+
+                                                img {
+                                                    width: 0.875rem;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            .gs-details-button {
+                                @include flex(row, right);
+                                width: 100%;
+
+                                button {
+                                    @include button(
+                                        0.5em,
+                                        3em,
+                                        1rem,
+                                        $primary,
+                                        $primary,
+                                        white,
+                                        white,
+                                        $primary
+                                    );
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .gs-details-included {
+                @include flex(column);
+                gap: 1em;
+                padding-block: 1.5em;
+                border-bottom: 0.1rem solid $gray-hr;
+
+                ul {
+                    @include flex(column);
+                    gap: 1em;
+                    padding-left: 1em;
+
+                    li {
+                        @include roboto;
+                        @include font(1.25rem, 300);
+                        color: $dark-text;
+                        padding-left: 0.5em;
+                    }
+                }
+            }
+
+            .gs-details-similar {
+                padding-block: 1.5em;
+
+                .gs-details-similar-game-sets {
+                    @include flex;
+                    gap: 2em;
+                    padding-block: 1.5em;
+                }
+            }
+        }
+    }
+}

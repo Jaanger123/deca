@@ -1,5 +1,5 @@
 import CivicEngagement from './CivicEngagement';
-import GameSetDetail from './GameSetDetail';
+import GameSetDetails from './GameSetDetails';
 import GameOrder from './GameOrder';
 import NotFound from './NotFound';
 import About from './About';
@@ -13,5 +13,5 @@ export {
     About,
     Auth,
     Home,
-    GameSetDetail,
+    GameSetDetails,
 };

@@ -1,0 +1,43 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+.banner-background {
+    @include flex(row, space-between, center);
+    width: 100%;
+    max-height: 12vh;
+    background-color: $primary;
+    overflow: hidden;
+
+    img {
+        &:nth-child(1) {
+            align-self: flex-end;
+        }
+
+        &:nth-child(2) {
+            align-self: flex-start;
+        }
+    }
+
+    .banner-register {
+        @include flex(row, space-between, center);
+        gap: 2em;
+
+        h2 {
+            @include font(1.375rem, 700);
+            color: white;
+        }
+
+        button {
+            @include button(
+                0.25em,
+                2.25em,
+                1.25rem,
+                white,
+                white,
+                $primary,
+                $primary,
+                white
+            );
+        }
+    }
+}

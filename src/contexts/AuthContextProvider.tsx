@@ -7,30 +7,14 @@ import {
     signOut,
 } from 'firebase/auth';
 import { validateEmail, validatePassword } from 'contexts/helpers/auth';
+import { IAuthContext, IContextProviderProps } from './helpers/types';
 import { BTN_VARIANT_GREET, HOME_ROUTE } from 'utils/consts';
-import { IContextProviderProps } from './helpers/types';
 import { auth, provider } from 'firebaseConfig';
 import { useNavigate } from 'react-router-dom';
 import PopupModal from 'components/PopupModal';
 import { User } from 'firebase/auth';
 
-interface IAuthContext {
-    signUp: Function;
-    signIn: Function;
-    signUpInGoogle: Function;
-    signOutAccount: Function;
-    showPopup: boolean;
-    setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
-    errorMessage: string;
-    emailError: string;
-    passwordError: string;
-    user: User | null;
-    loadingBtn: boolean;
-    loadingGoogleBtn: boolean;
-    siteLoading: boolean;
-}
-
-export const AuthContext = createContext<IAuthContext | null>(null);
+export const AuthContext = createContext<IAuthContext>({} as IAuthContext);
 
 export const useAuth = () => useContext(AuthContext);
 
@@ -43,7 +27,7 @@ const AuthContextProvider = ({ children }: IContextProviderProps) => {
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [loadingBtn, setLoadingBtn] = useState<boolean>(false);
     const [loadingGoogleBtn, setLoadingGoogleBtn] = useState<boolean>(false);
-    const [siteLoading, setSiteLoading] = useState(false);
+    const [siteLoading, setSiteLoading] = useState<boolean>(false);
     const navigate = useNavigate();
 
     const title = 'Welcome to DECA!';
@@ -103,7 +87,7 @@ const AuthContextProvider = ({ children }: IContextProviderProps) => {
                 setGreetShowPopup(true);
                 navigate(HOME_ROUTE);
             } catch (error: any) {
-                // ! HOW TYPE FIREBBASE AUTHENTICATION ERRORS
+                // ! HOW TYPE FIREBASE AUTHENTICATION ERRORS
                 switch (error.code) {
                     case 'auth/email-already-in-use':
                         setErrorMessage('This email address already in use.');
@@ -202,6 +186,7 @@ const AuthContextProvider = ({ children }: IContextProviderProps) => {
         loadingBtn,
         loadingGoogleBtn,
         siteLoading,
+        setSiteLoading,
     };
 
     return (

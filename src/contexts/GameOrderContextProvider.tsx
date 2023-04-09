@@ -1,19 +1,14 @@
+import {
+    IContextProviderProps,
+    IFormData,
+    IGameOrderContext,
+} from './helpers/types';
 import { getTomorrowDate, transformDate } from './helpers/gameOrder';
-import { IContextProviderProps, IFormData } from './helpers/types';
 import { useState, createContext, useContext } from 'react';
 
-interface IGameOrderContext {
-    formData: IFormData;
-    setFormData: React.Dispatch<React.SetStateAction<IFormData>>;
-    date: Date;
-    setDate: React.Dispatch<React.SetStateAction<Date>>;
-    countryCode: string;
-    setCountryCode: React.Dispatch<React.SetStateAction<string>>;
-    showPopup: boolean;
-    setShowPopup: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const GameOrderContext = createContext<IGameOrderContext | null>(null);
+export const GameOrderContext = createContext<IGameOrderContext>(
+    {} as IGameOrderContext
+);
 
 export const useGameOrder = () => useContext(GameOrderContext);
 

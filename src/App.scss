@@ -11,7 +11,7 @@
 }
 
 html {
-    font-size: 21px;
+    font-size: 18px;
     scroll-behavior: smooth;
 }
 
@@ -61,6 +61,13 @@ hr {
         font-size: 1rem;
         font-weight: 400;
 
+        &:-webkit-autofill,
+        &:-webkit-autofill:hover,
+        &:-webkit-autofill:focus,
+        &:-webkit-autofill:active {
+            -webkit-box-shadow: 0 0 0 30px $input-bg-color inset !important;
+        }
+
         &::placeholder {
             @include roboto;
             color: $placeholder-color;
@@ -83,12 +90,6 @@ hr {
         margin-top: 0.25em;
         color: red;
         font-size: 0.825rem;
-    }
-}
-
-@media screen and (max-width: 1921px) {
-    html {
-        font-size: 18px;
     }
 }
 

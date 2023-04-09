@@ -8,26 +8,26 @@
     background-image: url('../../assets/images/page-background.png');
     background-size: 100%;
 
-    & p {
+    p {
         font-size: 1.5rem;
         font-weight: 400;
         margin-bottom: 0.25em;
     }
 
-    & span,
-    & input,
-    & select {
+    span,
+    input,
+    select {
         @include roboto;
         font-size: 1rem;
         font-weight: 400;
         color: $primary;
     }
 
-    & span {
+    span {
         margin-bottom: 0.25em;
     }
 
-    & hr {
+    hr {
         width: 65%;
         background-color: $border;
         margin-bottom: 1.25em;
@@ -90,7 +90,6 @@
             &::after {
                 content: '';
                 position: absolute;
-                z-index: 1;
                 top: 65%;
                 transform: translateY(-35%);
                 right: 0;
@@ -104,7 +103,7 @@
                 pointer-events: none;
             }
 
-            & select {
+            select {
                 color: #252525;
                 background-color: $input-bg-color;
                 border: none;
@@ -112,6 +111,7 @@
                 padding: 0.75em 1em;
                 outline-color: $primary;
                 appearance: none;
+                cursor: pointer;
 
                 &.disabled {
                     color: $placeholder-color;
@@ -119,74 +119,108 @@
             }
         }
 
-        // .form-input {
-        //     display: flex;
-        //     flex-direction: column;
-        //     margin-bottom: 0.75em;
-        //     width: 100%;
+        .form-input.phone-input {
+            .PhoneInput {
+                position: relative;
+                @include flex(row-reverse, flex-start, center);
 
-        //     & input {
-        //         color: $dark-text;
-        //         background-color: $input-bg-color;
-        //         border: none;
-        //         border-radius: 0.75em;
-        //         padding: 0.75em 1em;
-        //         outline-color: $primary;
+                input {
+                    width: 100%;
+                }
 
-        //         &::placeholder {
-        //             color: $placeholder-color;
-        //         }
-        //     }
-        // }
+                .PhoneInputCountry {
+                    @include flex(row-reverse, flex-start, center);
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+
+                    select {
+                        width: 1rem;
+                        height: 1rem;
+                        margin-inline: 0.75em;
+                        background-image: url('/assets/images/input-arrow-down.svg');
+                        background-repeat: no-repeat;
+                        background-size: contain;
+                        background-position: center;
+                        background-color: transparent;
+                        color: transparent;
+                        border: none;
+                        outline: none;
+                        cursor: pointer;
+                    }
+
+                    .PhoneInputCountryIcon {
+                        @include flex(row, center, center);
+
+                        &:has(> .PhoneInputCountryIconImg[src*='KG.svg']) {
+                            background-image: url('/assets/images/input-kyrgyz-flag.svg');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            background-position: center;
+
+                            .PhoneInputCountryIconImg {
+                                opacity: 0;
+                                width: 2.5rem;
+                            }
+                        }
+
+                        .PhoneInputCountryIconImg {
+                            width: 2rem;
+                            border-radius: 0.25rem;
+                        }
+                    }
+                }
+            }
+        }
 
         .game-order-contact-form {
             margin-bottom: 4em;
 
-            .form-input .game-order-contact-form-editable-select {
-                position: relative;
+            // .form-input .game-order-contact-form-editable-select {
+            //     position: relative;
 
-                & > input {
-                    width: 100%;
-                }
+            //     & > input {
+            //         width: 100%;
+            //     }
 
-                .game-order-contact-form-flag-arrow {
-                    position: absolute;
-                    right: 0;
-                    top: 50%;
-                    height: 100%;
-                    padding: 0 0.725em;
-                    transform: translateY(-50%);
-                    display: flex;
-                    align-items: center;
+            //     .game-order-contact-form-flag-arrow {
+            //         position: absolute;
+            //         right: 0;
+            //         top: 50%;
+            //         height: 100%;
+            //         padding: 0 0.725em;
+            //         transform: translateY(-50%);
+            //         display: flex;
+            //         align-items: center;
 
-                    .game-order-contact-form-flag-wrapper {
-                        display: flex;
-                        align-items: center;
-                        width: 2.5rem;
-                        height: 1.25rem;
-                        margin-right: 0.5em;
-                        border-radius: 0.25em;
-                        overflow: hidden;
+            //         .game-order-contact-form-flag-wrapper {
+            //             display: flex;
+            //             align-items: center;
+            //             width: 2.5rem;
+            //             height: 1.25rem;
+            //             margin-right: 0.5em;
+            //             border-radius: 0.25em;
+            //             overflow: hidden;
 
-                        .game-order-contact-form-flag {
-                            width: 100%;
-                        }
-                    }
+            //             .game-order-contact-form-flag {
+            //                 width: 100%;
+            //             }
+            //         }
 
-                    .game-order-contact-form-arrow {
-                        width: 1rem;
-                    }
+            //         .game-order-contact-form-arrow {
+            //             width: 1rem;
+            //         }
 
-                    & > select {
-                        position: absolute;
-                        right: 1em;
-                        width: 1.5rem;
-                        height: 1.5rem;
-                        opacity: 0;
-                        cursor: pointer;
-                    }
-                }
-            }
+            //         & > select {
+            //             position: absolute;
+            //             right: 1em;
+            //             width: 1.5rem;
+            //             height: 1.5rem;
+            //             opacity: 0;
+            //             cursor: pointer;
+            //         }
+            //     }
+            // }
         }
 
         .game-order-game-form {
