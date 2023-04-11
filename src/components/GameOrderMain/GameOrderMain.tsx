@@ -46,17 +46,17 @@ const GameOrderMain = () => {
     const currentDate = new Date();
 
     const onCheckout = () => {
-        // for (let field in formData) {
-        //     if (!formData[field].trim()) {
-        //         setShowPopup(true);
-        //         return;
-        //     }
-        // }
+        for (let field in formData) {
+            if (!formData[field].trim()) {
+                setShowPopup(true);
+                return;
+            }
+        }
 
-        // if (surnameError || nameError || emailError || numberError) {
-        //     alert('Invalid data given');
-        //     return;
-        // }
+        if (surnameError || nameError || emailError || numberError) {
+            alert('Invalid data given');
+            return;
+        }
 
         const data: IGameSetInfo = {
             surname: formData.surname,
@@ -69,8 +69,8 @@ const GameOrderMain = () => {
             date,
         };
 
-        // addDocument(ORDERS_COLLECTION, data);
-        // sendMessageToReceiver(data);
+        addDocument(ORDERS_COLLECTION, data);
+        sendMessageToReceiver(data);
         navigate(PAYMENT_ROUTE);
     };
 
