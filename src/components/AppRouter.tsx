@@ -4,6 +4,7 @@ import {
     GAMESET_DETAIL_FULL,
     GAME_ORDER_ROUTE,
     HOME_ROUTE,
+    PAYMENT_ROUTE,
     PRODUCTS_ROUTE,
     SIGN_IN_ROUTE,
     SIGN_UP_ROUTE,
@@ -16,13 +17,14 @@ import {
     Auth,
     Home,
     GameSetDetails,
+    PaymentByQR,
 } from 'pages';
 import { useAuth } from 'contexts/AuthContextProvider';
 import NavbarFooterLayout from './NavbarFooterLayout';
 import { Routes, Route } from 'react-router-dom';
+import PrivateRoutes from './PrivateRoutes';
 import SiteLoading from './SiteLoading';
 import Products from 'pages/Products';
-import PrivateRoutes from './PrivateRoutes';
 
 const AppRouter = () => {
     const { siteLoading } = useAuth();
@@ -44,7 +46,10 @@ const AppRouter = () => {
                     element={<GameSetDetails />}
                 />
                 <Route element={<PrivateRoutes />}>
-                    <Route path={GAME_ORDER_ROUTE} element={<GameOrder />} />
+                    <Route path={GAME_ORDER_ROUTE}>
+                        <Route index element={<GameOrder />} />
+                        <Route path={PAYMENT_ROUTE} element={<PaymentByQR />} />
+                    </Route>
                 </Route>
                 <Route path="*" element={<NotFound />} />
             </Route>

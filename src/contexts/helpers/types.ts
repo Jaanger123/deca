@@ -29,7 +29,6 @@ export interface IGameSetInfo {
     phoneNumber: string;
     gameSet: string;
     playersQuantity: string;
-    characters: string;
     time: string;
     date: Date;
 }
@@ -42,7 +41,6 @@ export interface IFormData {
     number: string;
     gameSet: string;
     players: string;
-    characters: string;
     time: string;
     dateInput: string;
 }

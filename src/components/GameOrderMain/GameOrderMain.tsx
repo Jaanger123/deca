@@ -4,16 +4,15 @@ import {
     emailInputHandler,
     gameSetSelectHandler,
     playersSelectHandler,
-    charactersSelectHandler,
     dateCalendarHandler,
     timeSelectHandler,
     gameSetAutoFill,
     searchGameSetTitle,
 } from 'contexts/helpers/gameOrder';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
-import { ORDERS_COLLECTION, PRODUCTS_ROUTE } from 'utils/consts';
 import { useGameOrder } from 'contexts/GameOrderContextProvider';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { ORDERS_COLLECTION, PAYMENT_ROUTE } from 'utils/consts';
 import { sendMessageToReceiver } from 'utils/telegramBotUtils';
 import { addDocument } from 'firebaseClients/firestoreClient';
 import { useGameSet } from 'contexts/GameSetContextProvider';
@@ -47,17 +46,17 @@ const GameOrderMain = () => {
     const currentDate = new Date();
 
     const onCheckout = () => {
-        for (let field in formData) {
-            if (!formData[field].trim()) {
-                setShowPopup(true);
-                return;
-            }
-        }
+        // for (let field in formData) {
+        //     if (!formData[field].trim()) {
+        //         setShowPopup(true);
+        //         return;
+        //     }
+        // }
 
-        if (surnameError || nameError || emailError || numberError) {
-            alert('Invalid data given');
-            return;
-        }
+        // if (surnameError || nameError || emailError || numberError) {
+        //     alert('Invalid data given');
+        //     return;
+        // }
 
         const data: IGameSetInfo = {
             surname: formData.surname,
@@ -66,14 +65,13 @@ const GameOrderMain = () => {
             phoneNumber: formData.number,
             gameSet: formData.gameSet,
             playersQuantity: formData.players,
-            characters: formData.characters,
             time: formData.time,
             date,
         };
 
         // addDocument(ORDERS_COLLECTION, data);
-        sendMessageToReceiver(data);
-        // navigate(PRODUCTS_ROUTE);
+        // sendMessageToReceiver(data);
+        navigate(PAYMENT_ROUTE);
     };
 
     const phoneInputHandler = (value: E164Number) => {
@@ -238,30 +236,6 @@ const GameOrderMain = () => {
                                         <option value="2">2</option>
                                         <option value="4">4</option>
                                         <option value="6">6</option>
-                                    </select>
-                                </div>
-                                <div className="form-select">
-                                    <span>Characters</span>
-                                    <select
-                                        name="characters"
-                                        value={formData.characters}
-                                        onChange={(event) =>
-                                            charactersSelectHandler(
-                                                event,
-                                                setFormData
-                                            )
-                                        }
-                                        className={
-                                            formData.characters !== ''
-                                                ? ''
-                                                : 'disabled'
-                                        }
-                                    >
-                                        <option value="" disabled hidden>
-                                            Choose a character
-                                        </option>
-                                        <option value="Aika">Aika</option>
-                                        <option value="Jaga">Jaga</option>
                                     </select>
                                 </div>
                             </div>

@@ -205,20 +205,6 @@ export const playersSelectHandler = (
     });
 };
 
-export const charactersSelectHandler = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-    setFormData: React.Dispatch<React.SetStateAction<IFormData>>
-) => {
-    setFormData((prev) => {
-        const key = event.target.name;
-        const newObj = { ...prev };
-
-        newObj[key] = event.target.value;
-
-        return newObj;
-    });
-};
-
 export const dateCalendarHandler = (
     date: Date,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>,

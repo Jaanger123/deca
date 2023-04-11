@@ -24,7 +24,6 @@ const GameOrderContextProvider = ({ children }: IContextProviderProps) => {
         number: '+996 ',
         gameSet: '',
         players: '',
-        characters: '',
         time: '',
         dateInput: transformDate(date),
     });

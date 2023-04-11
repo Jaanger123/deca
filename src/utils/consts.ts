@@ -10,6 +10,7 @@ export const PRODUCTS_ROUTE = '/products';
 export const GAMESET_DETAIL = '/game-sets';
 export const GAMESET_DETAIL_FULL = '/game-sets/:gameSetId';
 export const GAME_ORDER_ROUTE = '/game-order';
+export const PAYMENT_ROUTE = 'payment';
 export const SIGN_UP_ROUTE = '/sign-up';
 export const SIGN_IN_ROUTE = '/sign-in';
 
