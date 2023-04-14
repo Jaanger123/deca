@@ -1,6 +1,7 @@
 import { EffectCoverflow, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import swiperBreakpoints from './swiperStyle';
+import { PRODUCTS_ROUTE } from 'utils/consts';
 import { NavLink } from 'react-router-dom';
 
 import 'swiper/css/effect-coverflow';
@@ -21,7 +22,7 @@ const ThirdSlide = () => (
                 <p className="slide-description third-slide-description">
                     Use our easy-access character creator for your next D&D game
                 </p>
-                <NavLink to="#">
+                <NavLink to={PRODUCTS_ROUTE}>
                     <button className="slide-button third-slide-button">
                         CHOOSE YOUR GAMEMODE
                     </button>

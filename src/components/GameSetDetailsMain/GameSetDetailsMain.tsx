@@ -34,7 +34,10 @@ const GameSetDetailsMain = () => {
                         <div className="gs-details-main-info">
                             <div className="gs-details-images">
                                 <div className="gs-details-main-image">
-                                    <img src="" alt="" />
+                                    <img
+                                        src={require('assets/images/manas.png')}
+                                        alt=""
+                                    />
                                 </div>
                                 <div className="gs-details-sub-images">
                                     <div className="gs-details-sub-image">

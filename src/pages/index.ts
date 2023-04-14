@@ -1,6 +1,6 @@
 import CivicEngagement from './CivicEngagement';
 import GameSetDetails from './GameSetDetails';
-import PaymentByQR from './PaymentByQR';
+import OrderComplete from './OrderComplete';
 import GameOrder from './GameOrder';
 import NotFound from './NotFound';
 import About from './About';
@@ -10,7 +10,7 @@ import Home from './Home';
 export {
     CivicEngagement,
     GameSetDetails,
-    PaymentByQR,
+    OrderComplete,
     GameOrder,
     NotFound,
     About,

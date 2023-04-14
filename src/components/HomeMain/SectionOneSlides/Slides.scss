@@ -4,14 +4,10 @@
     align-items: center;
     width: 100%;
     margin: 4em auto 7em;
+    padding: 1em 4.5em 1em 0;
     background-size: 35%;
     background-repeat: no-repeat;
     background-position: center;
-
-    img {
-        width: 45%;
-        padding: 1em 4.5em 1em 0;
-    }
 
     .hm-so-slide-text {
         width: 50%;
@@ -39,6 +35,19 @@
             }
         }
     }
+
+    .hm-so-slide-img {
+        width: 45%;
+        height: 100%;
+        // padding: 1em 4.5em 1em 0;
+        // border-radius: 1em;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            // height: 100%;
+        }
+    }
 }
 
 // HOME MAIN SECTION ONE FISRT SLIDE
@@ -51,6 +60,11 @@
 
 .hm-so-slide-second {
     background-image: url('../../../assets/images/kyrgyz-flag.png');
+
+    // .hm-so-slide-img {
+    //     background-image: url('/assets/images/community.jpeg');
+    //     background-size: 100%;
+    // }
 }
 
 // HOME MAIN SECTION ONE THIRD SLIDE

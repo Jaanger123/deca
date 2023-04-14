@@ -1,6 +1,6 @@
-import { GAMESET_DETAIL, GAME_ORDER_ROUTE } from 'utils/consts';
 import GenerateStars from 'components/GenerateStars';
 import { IGameSet } from 'contexts/helpers/types';
+import { GAMESET_DETAIL } from 'utils/consts';
 import { Link } from 'react-router-dom';
 
 import './GameSet.scss';
@@ -26,9 +26,7 @@ const GameSet = ({
                 className="game-set-characters"
                 style={{ backgroundImage: `url(${bgImg})` }}
             >
-                {characterImgs.map((img, index) => {
-                    return <img key={index} src={img} alt="character" />;
-                })}
+                <img src={characterImgs[0]} alt="character" />
             </div>
             <div className="game-set-info-wrapper">
                 <div className="game-set-info">

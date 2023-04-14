@@ -1,3 +1,4 @@
+import { PRODUCTS_ROUTE } from 'utils/consts';
 import { NavLink } from 'react-router-dom';
 import Video from './Video';
 
@@ -14,7 +15,7 @@ const SecondSlide = () => (
                         <br />
                         to perceive games
                     </h1>
-                    <NavLink to="#">
+                    <NavLink to={PRODUCTS_ROUTE}>
                         <button className="slide-button second-slide-button">
                             EXPLORE
                         </button>

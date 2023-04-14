@@ -25,10 +25,12 @@ const FirstSlide = () => {
                     {item.desc.map(text => <p>{text}</p>)}
                     </>
                 })} */}
-                <h2>Lorem ipsum dolor sit amet</h2>
+                <h2>Welcome to Our Adventure</h2>
                 <p>
-                    Aliquam gravida fringilla fringilla. In pellentesque magna
-                    ante, ac vulputate nibh imperdiet a.
+                    Welcome to our D&D board game service centered around Kyrgyz
+                    culture and progress! We are thrilled to have you join us on
+                    this epic journey through the beauty, history, and mythology
+                    of Kyrgyzstan.
                 </p>
             </TemplateSlide>
         </div>

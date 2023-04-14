@@ -30,6 +30,8 @@ const reducer = (state: IState, action: IReducerAction) => {
             return { ...state, gameSets: action.payload };
         case GAMESET_CONTEXT_ACTIONS.GET_GAMESET:
             return { ...state, gameSet: action.payload };
+        case GAMESET_CONTEXT_ACTIONS.SET_GAMESET:
+            return { ...state, gameSet: action.payload };
 
         default:
             return state;
@@ -74,10 +76,22 @@ const GameSetContextProvider = ({ children }: IContextProviderProps) => {
         }
     };
 
+    const setGameSet = async (gameSet: IGameSet | undefined) => {
+        try {
+            dispatch({
+                type: GAMESET_CONTEXT_ACTIONS.SET_GAMESET,
+                payload: gameSet,
+            });
+        } catch (error: any) {
+            console.log(error.message);
+        }
+    };
+
     const values = {
         gameSets: state.gameSets,
         gameSet: state.gameSet,
         getGameSet,
+        setGameSet,
     };
 
     return (

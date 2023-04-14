@@ -68,7 +68,7 @@ export const numberPattern = (
 export const surnameInputHandler = (
     event: React.ChangeEvent<HTMLInputElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>,
-    setSurnameError: React.Dispatch<React.SetStateAction<Boolean>>
+    setSurnameError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     const surnameRe = /^[a-zA-Z ]+$/;
     const key = event.target.name;
@@ -94,7 +94,7 @@ export const surnameInputHandler = (
 export const nameInputHandler = (
     event: React.ChangeEvent<HTMLInputElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>,
-    setNameError: React.Dispatch<React.SetStateAction<Boolean>>
+    setNameError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     const nameRe = /^[a-zA-Z ]+$/;
     const key = event.target.name;
@@ -120,7 +120,7 @@ export const nameInputHandler = (
 export const emailInputHandler = (
     event: React.ChangeEvent<HTMLInputElement>,
     setFormData: React.Dispatch<React.SetStateAction<IFormData>>,
-    setEmailError: React.Dispatch<React.SetStateAction<Boolean>>
+    setEmailError: React.Dispatch<React.SetStateAction<boolean>>
 ) => {
     const emailRe =
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -264,4 +264,11 @@ export const searchGameSetTitle = (
         if (gameSet.gameSetTitle === titleToSearch) return true;
     }
     return false;
+};
+
+export const findGameSet = (
+    gameSets: IGameSet[],
+    gameSetTitle: string
+): IGameSet | undefined => {
+    return gameSets.find((gameSet) => gameSet.gameSetTitle === gameSetTitle);
 };

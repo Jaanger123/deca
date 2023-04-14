@@ -77,4 +77,5 @@ export interface IGameSetContext {
     gameSets: Array<IGameSet>;
     gameSet: IGameSet | null;
     getGameSet: (id: string) => Promise<void>;
+    setGameSet: (gameSet: IGameSet | undefined) => Promise<void>;
 }

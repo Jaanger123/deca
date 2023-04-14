@@ -12,15 +12,8 @@ const ThirdSlide = () => {
                 }
                 imgAlt="People"
             >
-                <h2>Lorem ipsum dolor sit amet</h2>
-                <p>
-                    Aliquam gravida fringilla fringilla. In pellentesque magna
-                    ante, ac vulputate nibh imperdiet a.
-                </p>
-                <p>
-                    Nam interdum arcu sed magna vulputate, ut maximus mi
-                    sollicitudin.
-                </p>
+                <h2>Choose your own game set</h2>
+                <p>Different gameplay options</p>
             </TemplateSlide>
         </div>
     );

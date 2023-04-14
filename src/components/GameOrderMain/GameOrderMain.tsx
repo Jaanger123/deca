@@ -8,16 +8,15 @@ import {
     timeSelectHandler,
     gameSetAutoFill,
     searchGameSetTitle,
+    findGameSet,
 } from 'contexts/helpers/gameOrder';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
 import { useGameOrder } from 'contexts/GameOrderContextProvider';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import { ORDERS_COLLECTION, PAYMENT_ROUTE } from 'utils/consts';
-import { sendMessageToReceiver } from 'utils/telegramBotUtils';
-import { addDocument } from 'firebaseClients/firestoreClient';
 import { useGameSet } from 'contexts/GameSetContextProvider';
 import { IGameSetInfo } from 'contexts/helpers/types';
 import { E164Number } from 'libphonenumber-js/types';
+import PaymentModal from 'components/PaymentModal';
+import { useSearchParams } from 'react-router-dom';
 import PopupModal from 'components/PopupModal';
 import { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
@@ -28,13 +27,16 @@ import './Calendar.scss';
 const GameOrderMain = () => {
     const { formData, setFormData, date, setDate, showPopup, setShowPopup } =
         useGameOrder();
-    const { gameSets } = useGameSet();
+    const { gameSets, setGameSet } = useGameSet();
     const [searchParams] = useSearchParams();
-    const [surnameError, setSurnameError] = useState<Boolean>(false);
-    const [nameError, setNameError] = useState<Boolean>(false);
-    const [emailError, setEmailError] = useState<Boolean>(false);
-    const [numberError, setNumberError] = useState<Boolean>(false);
-    const navigate = useNavigate();
+    const [showPaymentModal, setShowPaymentModal] = useState<boolean>(false);
+    const [gameSetData, setGameSetData] = useState<IGameSetInfo>(
+        {} as IGameSetInfo
+    );
+    const [surnameError, setSurnameError] = useState<boolean>(false);
+    const [nameError, setNameError] = useState<boolean>(false);
+    const [emailError, setEmailError] = useState<boolean>(false);
+    const [numberError, setNumberError] = useState<boolean>(false);
 
     useEffect(() => {
         const gameSetParam = searchParams.get('game-set');
@@ -54,7 +56,7 @@ const GameOrderMain = () => {
         }
 
         if (surnameError || nameError || emailError || numberError) {
-            alert('Invalid data given');
+            setShowPopup(true);
             return;
         }
 
@@ -69,9 +71,8 @@ const GameOrderMain = () => {
             date,
         };
 
-        addDocument(ORDERS_COLLECTION, data);
-        sendMessageToReceiver(data);
-        navigate(PAYMENT_ROUTE);
+        setGameSetData(data);
+        setShowPaymentModal(true);
     };
 
     const phoneInputHandler = (value: E164Number) => {
@@ -91,6 +92,11 @@ const GameOrderMain = () => {
                 message={'Fill in all the fields and provide valid data!'}
                 showPopup={showPopup}
                 setShowPopup={setShowPopup}
+            />
+            <PaymentModal
+                showPaymentModal={showPaymentModal}
+                setShowPaymentModal={setShowPaymentModal}
+                data={gameSetData}
             />
             <main className="game-order-main">
                 <div className="game-order-form">
@@ -190,9 +196,17 @@ const GameOrderMain = () => {
                                 <select
                                     name="gameSet"
                                     value={formData.gameSet}
-                                    onChange={(event) =>
-                                        gameSetSelectHandler(event, setFormData)
-                                    }
+                                    onChange={(event) => {
+                                        gameSetSelectHandler(
+                                            event,
+                                            setFormData
+                                        );
+                                        const gameSet = findGameSet(
+                                            gameSets,
+                                            event.target.value
+                                        );
+                                        setGameSet(gameSet);
+                                    }}
                                     className={
                                         formData.gameSet !== ''
                                             ? ''
@@ -202,12 +216,12 @@ const GameOrderMain = () => {
                                     <option value="" disabled hidden>
                                         Choose a game set
                                     </option>
-                                    {gameSets.map(({ gameSetTitle }, index) => (
+                                    {gameSets.map((gameSet, index) => (
                                         <option
                                             key={index}
-                                            value={gameSetTitle}
+                                            value={gameSet.gameSetTitle}
                                         >
-                                            {gameSetTitle}
+                                            {gameSet.gameSetTitle}
                                         </option>
                                     ))}
                                 </select>

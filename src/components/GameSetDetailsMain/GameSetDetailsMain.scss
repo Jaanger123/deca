@@ -57,11 +57,16 @@
                         width: 45%;
 
                         .gs-details-main-image {
+                            @include flex(row, center, flex-end);
                             width: 100%;
                             margin-bottom: 0.75em;
                             background-color: $beige;
                             border-radius: 1.25rem;
                             aspect-ratio: 1 / 1;
+
+                            img {
+                                height: 90%;
+                            }
                         }
 
                         .gs-details-sub-images {

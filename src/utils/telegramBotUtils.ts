@@ -13,7 +13,5 @@ export const sendMessageToReceiver = (data: IGameSetInfo) => {
         data.phoneNumber
     }`;
 
-    fetch(`${TELEGRAM_BOT_API_SEND_MESSAGE_URL}${orderInfo}`)
-        .then((response) => console.log(response))
-        .catch((response) => console.dir(response));
+    fetch(`${TELEGRAM_BOT_API_SEND_MESSAGE_URL}${orderInfo}`);
 };

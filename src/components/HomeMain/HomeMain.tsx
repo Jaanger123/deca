@@ -38,9 +38,9 @@ const Main = () => {
                     <SwiperSlide>
                         <SectionOne.SecondSlide />
                     </SwiperSlide>
-                    <SwiperSlide>
+                    {/* <SwiperSlide>
                         <SectionOne.ThirdSlide />
-                    </SwiperSlide>
+                    </SwiperSlide> */}
                 </Swiper>
             </section>
             <section className="home-section home-section-two">

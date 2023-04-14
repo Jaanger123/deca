@@ -1,0 +1,56 @@
+@import 'assets/css/variables.scss';
+@import 'assets/css/mixins.scss';
+
+.order-complete-background {
+    @include flex(row, center);
+    background-image: url('../../assets/images/page-background.png');
+    background-size: 100%;
+
+    .order-complete {
+        @include flex(column, center, center);
+        gap: 0.5em;
+        width: 40%;
+        margin-block: 10%;
+        padding-block: 5em 3em;
+        background-color: white;
+        border-radius: 2em;
+        box-shadow: $shadow;
+
+        @media screen and (max-width: $tablet) {
+            width: 50%;
+        }
+
+        img {
+            width: 6em;
+            margin-bottom: 1.75em;
+        }
+
+        h2 {
+            font-size: 2.25rem;
+        }
+
+        p {
+            @include roboto;
+            @include font(1rem, 300);
+            color: $light-gray;
+            width: 50%;
+            text-align: center;
+        }
+
+        button {
+            @include roboto;
+            @include font(1rem, 400);
+            @include button(
+                0.5em,
+                2.5em,
+                1rem,
+                $primary,
+                $primary,
+                white,
+                white,
+                $primary
+            );
+            margin-top: 2em;
+        }
+    }
+}

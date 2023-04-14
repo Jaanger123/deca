@@ -10,7 +10,9 @@ const TemplateSlide = ({ children, slideImg, imgAlt }: ITemplateSlideProps) => {
     return (
         <>
             <div className="hm-so-slide-text">{children}</div>
-            <img src={slideImg} alt={imgAlt} />
+            <div className="hm-so-slide-img">
+                <img src={slideImg} alt={imgAlt} />
+            </div>
         </>
     );
 };

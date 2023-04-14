@@ -10,7 +10,7 @@ export const PRODUCTS_ROUTE = '/products';
 export const GAMESET_DETAIL = '/game-sets';
 export const GAMESET_DETAIL_FULL = '/game-sets/:gameSetId';
 export const GAME_ORDER_ROUTE = '/game-order';
-export const PAYMENT_ROUTE = 'payment';
+export const COMPLETE_PAYMENT_ROUTE = 'order-complete';
 export const SIGN_UP_ROUTE = '/sign-up';
 export const SIGN_IN_ROUTE = '/sign-in';
 
@@ -28,6 +28,7 @@ export const BTN_VARIANT_GREET = 'greet';
 export const GAMESET_CONTEXT_ACTIONS = {
     GET_GAMESETS: 'GET_GAMESETS',
     GET_GAMESET: 'GET_GAMESET',
+    SET_GAMESET: 'SET_GAMESET',
 };
 
 export const monthNames = [
