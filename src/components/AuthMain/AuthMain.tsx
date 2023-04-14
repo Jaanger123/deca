@@ -1,20 +1,19 @@
 import { SIGN_IN_ROUTE, SIGN_UP_ROUTE } from 'utils/consts';
+import { useAuth } from 'contexts/AuthContextProvider';
 import { Link, useLocation } from 'react-router-dom';
+import PopupModal from 'components/PopupModal';
+import Loading from 'components/Loading';
 import { useState } from 'react';
 
-import { useAuth } from 'contexts/AuthContextProvider';
-import PopupModal from 'components/PopupModal';
 import eyeOpened from 'assets/images/eye-opened.png';
 import eyeClosed from 'assets/images/eye-closed.png';
 
-// import './AuthMain.scss';
-import 'components/AuthMain/AuthMain.scss';
-import Loading from 'components/Loading';
+import './AuthMain.scss';
 
 const AuthMain = () => {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [showPassword, setShowPassword] = useState<boolean>(false);
     const location = useLocation();
 
     const hasUser = location.pathname === SIGN_IN_ROUTE;
@@ -32,7 +31,7 @@ const AuthMain = () => {
         setShowPopup,
     } = useAuth();
 
-    const authHandler = (email: string, password: string) => {
+    const authHandler = (email: string, password: string): void => {
         if (location.pathname === SIGN_UP_ROUTE) {
             signUp(email, password);
         } else {
@@ -103,7 +102,7 @@ const AuthMain = () => {
                                                     ? eyeClosed
                                                     : eyeOpened
                                             }
-                                            alt=""
+                                            alt="Eye"
                                         />
                                     </div>
                                     {passwordError && (
@@ -141,6 +140,7 @@ const AuthMain = () => {
                                                 require('assets/images/google-icon.svg')
                                                     .default
                                             }
+                                            alt="Google"
                                         />
                                     )}
                                     {loadingGoogleBtn ? (

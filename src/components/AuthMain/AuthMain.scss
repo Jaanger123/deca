@@ -1,20 +1,15 @@
 @import 'assets/css/variables.scss';
 @import 'assets/css/mixins.scss';
 
-$banner-bg-color: rgba(49, 49, 49, 0.8);
-
 .auth-main {
+    @include page-background;
     @include flex(row, center, center);
-    width: 100%;
     height: 100vh;
-    background-image: url('/assets/images/page-background.png');
-    background-size: 100%;
 
     a,
     span {
         @include roboto;
-        font-size: 0.875rem;
-        font-weight: 300;
+        @include font(0.875rem, 300);
         color: $auth-text;
     }
 
@@ -36,16 +31,14 @@ $banner-bg-color: rgba(49, 49, 49, 0.8);
 
             h4 {
                 @include hammersmith-one;
-                font-size: 1.75rem;
-                font-weight: 400;
+                @include font(1.75rem, 400);
                 width: 80%;
                 color: white;
             }
 
             p {
                 @include roboto;
-                font-size: 1.125rem;
-                font-weight: 100;
+                @include font(1.125rem, 100);
                 color: white;
             }
         }
@@ -78,17 +71,6 @@ $banner-bg-color: rgba(49, 49, 49, 0.8);
                     position: relative;
                     width: 100%;
 
-                    // &::after {
-                    //     content: '';
-                    //     position: absolute;
-                    //     top: 50%;
-                    //     right: 4%;
-                    //     transform: translateY(-50%);
-                    //     width: 1.4rem;
-                    //     height: 1.4rem;
-                    //     background-image: url('/assets/images/eye-opened.png');
-                    //     background-size: cover;
-                    // }
                     img {
                         position: absolute;
                         top: 50%;

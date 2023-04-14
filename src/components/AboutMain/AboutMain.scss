@@ -2,8 +2,11 @@
 @import 'assets/css/mixins.scss';
 
 .about-main {
-    @include background('/assets/images/page-background.png', repeat, contain);
-    width: 100%;
+    @include page-background;
+
+    p {
+        @include roboto;
+    }
 
     .about-welcome {
         @include flex(column, space-between, center);
@@ -15,36 +18,30 @@
         }
 
         h1 {
+            @include font(5rem, 400);
             margin-top: 1.2em;
-            font-size: 5rem;
-            font-weight: 400;
             color: $primary;
             margin-bottom: -0.125em;
+
+            @media screen and (max-width: $laptop) {
+                font-size: 4.5rem;
+            }
         }
 
         p {
-            @include roboto;
-            font-weight: 100;
-            font-size: 1.75rem;
-            line-height: 115%;
+            @include font(1.75rem, 100, 115%);
             width: 30%;
             color: $light-gray;
+
+            @media screen and (max-width: $laptop) {
+                width: 40%;
+            }
         }
 
         & > img {
             margin-top: 1em;
             width: 50%;
             min-width: 460px;
-        }
-
-        @media screen and (max-width: 1300px) {
-            h1 {
-                font-size: 4.5rem;
-            }
-
-            p {
-                width: 40%;
-            }
         }
     }
 
@@ -53,11 +50,8 @@
         width: 100%;
 
         p {
-            @include roboto;
-            font-size: 1.5rem;
-            font-weight: 100;
-            line-height: 115%;
-            color: #121212;
+            @include font(1.5rem, 100, 115%);
+            color: $dark-text;
         }
 
         .about-container {

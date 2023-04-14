@@ -1,3 +1,4 @@
+import { secondSlide } from './helper/contentData';
 import { PRODUCTS_ROUTE } from 'utils/consts';
 import { NavLink } from 'react-router-dom';
 import Video from './Video';
@@ -10,14 +11,14 @@ const SecondSlide = () => (
         <div className="second-slide-background">
             <div className="slide-container">
                 <div className="slide-content second-slide-content">
-                    <h1 className="slide-title second-slide-title">
-                        A new way
-                        <br />
-                        to perceive games
-                    </h1>
+                    <div className="slide-title second-slide-title">
+                        {secondSlide.title.map((text, index) => (
+                            <p key={index}>{text}</p>
+                        ))}
+                    </div>
                     <NavLink to={PRODUCTS_ROUTE}>
                         <button className="slide-button second-slide-button">
-                            EXPLORE
+                            {secondSlide.button}
                         </button>
                     </NavLink>
                 </div>
@@ -26,7 +27,7 @@ const SecondSlide = () => (
                         src={require('assets/images/camera-icon.svg').default}
                         alt="Camera icon"
                     />
-                    <p>AUCA TSI - Reviews</p>
+                    <p>{secondSlide.videoTitle}</p>
                 </div>
             </div>
         </div>

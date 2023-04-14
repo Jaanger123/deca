@@ -2,6 +2,7 @@ import { FirstSlide, SecondSlide, ThirdSlide } from './Slides';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper';
 
+import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import 'swiper/css';
@@ -11,7 +12,6 @@ import './Carousel.scss';
 const Carousel = () => (
     <Swiper
         followFinger={false}
-        // centeredSlides={true}
         allowTouchMove={false}
         loop={true}
         speed={1500}

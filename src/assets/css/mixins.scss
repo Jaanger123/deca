@@ -32,6 +32,11 @@
     background-position: $bp;
 }
 
+@mixin page-background {
+    background-image: url('/assets/images/page-background.png');
+    background-size: 100%;
+}
+
 @mixin button(
     $pb,
     $pi,

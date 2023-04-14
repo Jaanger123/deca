@@ -1,20 +1,4 @@
 @import 'assets/css/variables.scss';
-@import 'assets/css/mixins.scss';
-
-.bullets:hover {
-    background-color: $primary;
-    opacity: 1;
-}
-
-.swiper-pagination-bullet {
-    background-color: $border;
-    opacity: 1;
-}
-
-.active-bullet {
-    background-color: $primary;
-    opacity: 1;
-}
 
 header {
     .main-swiper {
@@ -23,6 +7,23 @@ header {
         .swiper-pagination {
             height: 1.25em;
             padding-bottom: 3em;
+
+            .bullets {
+                width: 0.5rem;
+                height: 0.5rem;
+                background-color: $border;
+                opacity: 1;
+
+                &.active-bullet {
+                    background-color: $primary;
+                    opacity: 1;
+                }
+
+                &:hover {
+                    background-color: $primary;
+                    opacity: 1;
+                }
+            }
         }
 
         .video-slide {

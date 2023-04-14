@@ -2,9 +2,22 @@
 @import 'assets/css/mixins.scss';
 
 .slide {
-    @include background('/assets/images/page-background.png', no-repeat, cover);
+    @include page-background;
     background-color: $bg-color;
     height: 100%;
+}
+
+.slide-button {
+    @include button(
+        0.375em,
+        3.75em,
+        1rem,
+        $primary,
+        $primary,
+        white,
+        white,
+        $primary
+    );
 }
 
 .slide-container {
@@ -14,45 +27,34 @@
     margin: auto;
 
     .slide-content {
+        @media screen and (max-width: $laptop) {
+            height: 45%;
+        }
+
         .slide-title {
-            font-size: 4rem;
-            font-weight: 400;
-            line-height: 1em;
+            @include font(4rem, 400, 1em);
             padding-bottom: 0.25em;
+
+            @media screen and (max-width: $laptop) {
+                font-size: 3rem;
+            }
         }
 
         .slide-description {
-            @include roboto();
-            font-weight: 200;
-            font-size: 2.25rem;
-            line-height: 1.065em;
+            @include roboto;
+            @include font(2.25rem, 200, 1.065em);
             color: $light-gray;
             width: 65%;
             padding-bottom: 1.25em;
+
+            @media screen and (max-width: $laptop) {
+                font-size: 1.5rem;
+            }
         }
     }
 }
 
-@media screen and (max-width: 850px) {
-    .slide-title {
-        font-size: 3.5rem;
-    }
-
-    .slide-description {
-        font-size: 2rem;
-    }
-}
-
-.slide-button {
-    background-color: $primary;
-    padding: 0.375em 3.75em;
-    border-radius: 0.25em;
-    color: white;
-    border: 0.125em solid $primary;
-}
-
 // FIRST SLIDE
-
 img.first-slide-puzzle {
     min-width: 250px;
     width: 28%;
@@ -64,14 +66,7 @@ img.first-slide-puzzle {
     color: $primary;
 }
 
-@media screen and (max-width: 1200px) {
-    .slide-content {
-        height: 55%;
-    }
-}
-
-// SECOND SLIDER
-
+// SECOND SLIDE
 .second-slide {
     height: 100%;
     width: 100%;
@@ -86,9 +81,9 @@ img.first-slide-puzzle {
     }
 
     .second-slide-background {
+        position: fixed;
         width: 100%;
         height: 100%;
-        position: fixed;
         background-color: rgba(24, 24, 24, 0.5);
 
         .second-slide-content {
@@ -120,16 +115,12 @@ img.first-slide-puzzle {
 }
 
 // THIRD SLIDE
-
 .slide-container {
     .slide-content {
         .third-slide-description {
             width: 80%;
-        }
-
-        @media screen and (max-width: 1215px) {
-            .third-slide-description {
-                font-size: 2rem;
+            @media screen and (max-width: $laptop) {
+                width: 60%;
             }
         }
     }
@@ -199,3 +190,5 @@ img.first-slide-puzzle {
         }
     }
 }
+
+//!
