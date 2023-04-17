@@ -3,13 +3,17 @@ import GameSet from 'components/GameSet/GameSet';
 
 import './GameSetList.scss';
 
-const GameSetList = () => {
+interface IGameSetListProps {
+    title?: string;
+}
+
+const GameSetList = ({ title = 'RECOMMENDED GAMES' }: IGameSetListProps) => {
     const { gameSets } = useGameSet();
 
     return (
         <div className="gs-list-container">
             <div className="gs-list-title">
-                <p>RECOMMENDED GAMES</p>
+                <p>{title}</p>
                 <hr />
             </div>
 

@@ -4,19 +4,23 @@ import { useAuth } from 'contexts/AuthContextProvider';
 import GenerateStars from 'components/GenerateStars';
 import { Link, useParams } from 'react-router-dom';
 import SiteLoading from 'components/SiteLoading';
-import GameSet from 'components/GameSet/GameSet';
+import GameSetList from 'components/GameSetList';
 import { useEffect } from 'react';
 
 import './GameSetDetailsMain.scss';
 
 const GameSetDetailsMain = () => {
-    const { gameSets, gameSet, getGameSet } = useGameSet();
+    const { gameSet, getGameSet } = useGameSet();
     const { user } = useAuth();
     const { gameSetId } = useParams();
 
     useEffect(() => {
         getGameSet(gameSetId as string);
     }, []);
+
+    useEffect(() => {
+        getGameSet(gameSetId as string);
+    }, [gameSetId]);
 
     if (!gameSet) return <SiteLoading />;
 
@@ -35,7 +39,7 @@ const GameSetDetailsMain = () => {
                             <div className="gs-details-images">
                                 <div className="gs-details-main-image">
                                     <img
-                                        src={require('assets/images/manas.png')}
+                                        src={gameSet.characterImgs[0]}
                                         alt=""
                                     />
                                 </div>
@@ -153,14 +157,7 @@ const GameSetDetailsMain = () => {
                     {/* GAME SET WHAT'S INCLUDED END */}
 
                     {/* SIMILAR GAME SETS START */}
-                    <div className="gs-details-similar">
-                        <h3>SIMILAR GAME SETS</h3>
-                        <div className="gs-details-similar-game-sets">
-                            {gameSets.map((gameSet, index) => (
-                                <GameSet key={index} gameSetObj={gameSet} />
-                            ))}
-                        </div>
-                    </div>
+                    <GameSetList title="SIMILAR GAME SETS" />
                     {/* SIMILAR GAME SETS END */}
                 </div>
             </div>

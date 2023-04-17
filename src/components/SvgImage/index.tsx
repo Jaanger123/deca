@@ -41,3 +41,5 @@ export const SvgImage = ({ type, style }: ISvgImageParams) => {
             );
     }
 };
+
+//!

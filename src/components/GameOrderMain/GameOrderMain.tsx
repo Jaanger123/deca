@@ -1,13 +1,13 @@
 import {
-    surnameInputHandler,
-    nameInputHandler,
-    emailInputHandler,
     gameSetSelectHandler,
     playersSelectHandler,
+    surnameInputHandler,
     dateCalendarHandler,
-    timeSelectHandler,
-    gameSetAutoFill,
     searchGameSetTitle,
+    timeSelectHandler,
+    emailInputHandler,
+    nameInputHandler,
+    gameSetAutoFill,
     findGameSet,
 } from 'contexts/helpers/gameOrder';
 import PhoneInput, { isValidPhoneNumber } from 'react-phone-number-input';
@@ -250,6 +250,7 @@ const GameOrderMain = () => {
                                         <option value="2">2</option>
                                         <option value="4">4</option>
                                         <option value="6">6</option>
+                                        <option value="8">8</option>
                                     </select>
                                 </div>
                             </div>

@@ -13,8 +13,7 @@ footer {
         margin: auto;
 
         p {
-            font-weight: 400;
-            font-size: 2rem;
+            @include font(2rem);
             padding-bottom: 1.5em;
         }
 
@@ -29,8 +28,7 @@ footer {
             padding-bottom: 2.125em;
 
             p {
-                font-size: 1.5rem;
-                font-weight: 400;
+                @include font(1.5rem);
                 padding-bottom: 0.25em;
                 user-select: text;
             }
@@ -61,8 +59,7 @@ footer {
 
                 span {
                     @include roboto;
-                    font-weight: 300;
-                    font-size: 1.25rem;
+                    @include font(1.25rem, 300);
                     color: $light-gray;
                     padding-top: 0.5em;
                     user-select: text;
@@ -74,7 +71,6 @@ footer {
             @include flex(row, right);
             gap: 2em;
             width: 100%;
-            // margin: 2em auto 0;
             margin-top: 1em;
             padding-inline: 4em;
 
@@ -84,11 +80,6 @@ footer {
 
             .instagram-icon {
                 width: 2.7em;
-            }
-
-            .twitter-icon,
-            .facebook-icon {
-                width: 2.25em;
             }
         }
     }

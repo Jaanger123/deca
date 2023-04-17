@@ -2,7 +2,7 @@
 @import 'assets/css/mixins.scss';
 
 .civic-main {
-    @include background('/assets/images/page-background.png', repeat, contain);
+    @include page-background;
 
     .civic-content {
         padding-top: 3em;
@@ -24,9 +24,8 @@
 
             .civic-subtitle {
                 @include hammersmith-one;
+                @include font(1.375rem, 400);
                 color: $primary;
-                font-weight: 400;
-                font-size: 1.375rem;
                 margin-top: 2.5em;
                 margin-bottom: 0.5em;
             }
