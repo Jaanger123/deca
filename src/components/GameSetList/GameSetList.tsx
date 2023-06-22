@@ -22,6 +22,7 @@ const GameSetList = ({ title = 'RECOMMENDED GAMES' }: IGameSetListProps) => {
                     {gameSets.map((gameSetObj, index) => (
                         <GameSet key={index} gameSetObj={gameSetObj} />
                     ))}
+                    <div className="gs-list-slider-space"></div>
                 </div>
             </div>
         </div>

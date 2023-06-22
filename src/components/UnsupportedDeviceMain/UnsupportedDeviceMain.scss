@@ -1,0 +1,50 @@
+@import 'assets/css/mixins.scss';
+
+.unsupported-device {
+    @include flex(row, center, center);
+    @include background('/assets/images/page-background.png', repeat, contain);
+    width: 100vw;
+    height: 100vh;
+
+    img {
+        position: absolute;
+        width: 5.5rem;
+    }
+
+    #top-left-corner {
+        top: 0;
+        left: 0;
+    }
+
+    #top-right-corner {
+        top: 0;
+        right: 0;
+    }
+
+    #bottom-left-corner {
+        bottom: 0;
+        left: 0;
+    }
+
+    #bottom-right-corner {
+        bottom: 0;
+        right: 0;
+    }
+
+    .unsupported-device-message {
+        @include flex(column, space-between, center);
+        width: 60%;
+        text-align: center;
+
+        img {
+            position: static;
+            width: 8rem;
+            padding-bottom: 1.5em;
+        }
+
+        h2 {
+            @include roboto;
+            @include font(1.5rem, 500, 1.5);
+        }
+    }
+}

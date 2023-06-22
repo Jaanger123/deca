@@ -1,3 +1,4 @@
+import UnsupportedDevice from './UnsupportedDevice';
 import CivicEngagement from './CivicEngagement';
 import GameSetDetails from './GameSetDetails';
 import OrderComplete from './OrderComplete';
@@ -8,6 +9,7 @@ import Auth from './Auth';
 import Home from './Home';
 
 export {
+    UnsupportedDevice,
     CivicEngagement,
     GameSetDetails,
     OrderComplete,

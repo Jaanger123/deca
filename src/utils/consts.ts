@@ -51,3 +51,10 @@ export const SVG_TYPES = {
     TWITTER: 'TWITTER',
     FACEBOOK: 'FACEBOOK',
 };
+
+export const screenResolutions = {
+    desktop: 1920,
+    laptopLarge: 1440,
+    laptop: 1024,
+    tablet: 768,
+};

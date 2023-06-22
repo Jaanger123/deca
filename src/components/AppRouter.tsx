@@ -2,6 +2,7 @@ import {
     COMPLETE_PAYMENT_ROUTE,
     CIVIC_ENGAGEMENT_ROUTE,
     GAMESET_DETAIL_FULL,
+    screenResolutions,
     GAME_ORDER_ROUTE,
     PRODUCTS_ROUTE,
     SIGN_IN_ROUTE,
@@ -10,6 +11,7 @@ import {
     HOME_ROUTE,
 } from 'utils/consts';
 import {
+    UnsupportedDevice,
     CivicEngagement,
     GameSetDetails,
     OrderComplete,
@@ -25,11 +27,17 @@ import { Routes, Route } from 'react-router-dom';
 import PrivateRoutes from './PrivateRoutes';
 import SiteLoading from './SiteLoading';
 import Products from 'pages/Products';
+import { useState } from 'react';
 
 const AppRouter = () => {
     const { siteLoading } = useAuth();
+    const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+    window.addEventListener('resize', () => setScreenWidth(window.innerWidth));
 
     if (siteLoading) return <SiteLoading />;
+
+    if (screenWidth < screenResolutions.tablet) return <UnsupportedDevice />;
 
     return (
         <Routes>
